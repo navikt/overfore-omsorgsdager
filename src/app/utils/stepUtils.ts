@@ -1,9 +1,9 @@
 import { IntlShape } from 'react-intl';
-import intlHelper from 'common/utils/intlUtils';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { StepConfigInterface, StepConfigItemTexts, StepID } from 'app/config/stepConfig';
 import { SøknadFormData } from '../types/SøknadFormData';
 import {
-    arbeidStepIsValid, medlemskapStepIsValid, opplysningerOmOverføringIsAvailable
+    arbeidStepIsValid, medlemskapStepIsValid, opplysningerOmOverføringIsValid, welcomingPageIsValid
 } from '../validation/stepValidations';
 
 export const getStepTexts = (intl: IntlShape, stepId: StepID, stepConfig: StepConfigInterface): StepConfigItemTexts => {
@@ -17,7 +17,9 @@ export const getStepTexts = (intl: IntlShape, stepId: StepID, stepConfig: StepCo
     };
 };
 
-export const arbeidStepIsAvailable = (formData: SøknadFormData) => opplysningerOmOverføringIsAvailable(formData);
+export const overføringStepIsAvailable = (formData: SøknadFormData) => welcomingPageIsValid(formData);
+
+export const arbeidStepIsAvailable = (formData: SøknadFormData) => opplysningerOmOverføringIsValid(formData);
 
 export const medlemskapStepAvailable = (formData: SøknadFormData) => arbeidStepIsValid(formData);
 

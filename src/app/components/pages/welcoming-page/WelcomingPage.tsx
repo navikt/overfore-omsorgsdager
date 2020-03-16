@@ -7,8 +7,8 @@ import Page from 'common/components/page/Page';
 import bemHelper from 'common/utils/bemUtils';
 import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps } from '../../../config/stepConfig';
-import BehandlingAvPersonopplysningerModal from '../../content/behandling-av-personopplysninger-modal/BehandlingAvPersonopplysningerModal';
-import DinePlikterModal from '../../content/dine-plikter-modal/DinePlikterModal';
+import BehandlingAvPersonopplysningerModal from '../../information/behandling-av-personopplysninger-modal/BehandlingAvPersonopplysningerModal';
+import DinePlikterModal from '../../information/dine-plikter-modal/DinePlikterModal';
 import SamtykkeForm from './SamtykkeForm';
 import './welcomingPage.less';
 

@@ -5,7 +5,7 @@ import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps, StepID } from '../../../../config/stepConfig';
 import { Arbeidssituasjon, SøknadFormField } from '../../../../types/SøknadFormData';
 import { validateArbeid } from '../../../../validation/fieldValidations';
-import FormikStep from '../formik-step/FormikStep';
+import FormikStep from '../../formik-step/FormikStep';
 
 const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();

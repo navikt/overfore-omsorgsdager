@@ -3,10 +3,10 @@ import { useIntl } from 'react-intl';
 import { Knapp } from 'nav-frontend-knapper';
 import FormBlock from 'common/components/form-block/FormBlock';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
-import { getStepConfig } from '../../../../config/stepConfig';
-import { getStepTexts } from '../../../../utils/stepUtils';
-import Step, { StepProps } from '../../../layout/step/Step';
-import TypedForm from '../../../TypedForm/TypedForm';
+import { getStepConfig } from '../../../config/stepConfig';
+import { getStepTexts } from '../../../utils/stepUtils';
+import Step, { StepProps } from '../../step/Step';
+import TypedForm from '../../TypedForm/TypedForm';
 
 export interface FormikStepProps {
     children: React.ReactNode;

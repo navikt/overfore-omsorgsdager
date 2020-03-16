@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { TypedFormikWrapper } from '@navikt/sif-common-formik/lib';
-import { initialValues, SøknadFormData } from '../../types/SøknadFormData';
-import AppEssentialsLoader from '../app-essentials-loader/AppEssentialsLoader';
+import { initialSøknadValues, SøknadFormData } from '../../types/SøknadFormData';
 import IkkeMyndigPage from '../pages/ikke-myndig-page/IkkeMyndigPage';
 import SøknadContent from './SøknadContent';
+import AppEssentialsLoader from './SøknadEssentialsLoader';
 
 const Søknad = () => (
     <AppEssentialsLoader
@@ -16,7 +16,7 @@ const Søknad = () => (
             }
             return (
                 <TypedFormikWrapper<SøknadFormData>
-                    initialValues={initialValues}
+                    initialValues={initialSøknadValues}
                     onSubmit={() => null}
                     renderForm={() => <SøknadContent />}
                 />

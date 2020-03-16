@@ -12,10 +12,10 @@ import { getNextStepRoute, getSøknadRoute, isAvailable } from '../../utils/rout
 import ConfirmationPage from '../pages/confirmation-page/ConfirmationPage';
 import GeneralErrorPage from '../pages/general-error-page/GeneralErrorPage';
 import WelcomingPage from '../pages/welcoming-page/WelcomingPage';
-import ArbeidStep from './steps/arbeid/ArbeidStep';
-import MedlemsskapStep from './steps/medlemskap/MedlemsskapStep';
-import OverføringStep from './steps/overføring/OverføringStep';
-import SummaryStep from './steps/summary/SummaryStep';
+import ArbeidStep from './steps/arbeid-step/ArbeidStep';
+import MedlemsskapStep from './steps/medlemskap-step/MedlemsskapStep';
+import OverføringStep from './steps/overføring-step/OverføringStep';
+import SummaryStep from './steps/summary-step/SummaryStep';
 
 export interface KvitteringInfo {
     søkernavn: string;
@@ -62,7 +62,7 @@ const SøknadContent: React.FunctionComponent = () => {
             {isAvailable(StepID.OVERFØRING, values) && (
                 <Route
                     path={getSøknadRoute(StepID.OVERFØRING)}
-                    render={() => <OverføringStep onValidSubmit={() => navigateToNextStep(StepID.ARBEID)} />}
+                    render={() => <OverføringStep onValidSubmit={() => navigateToNextStep(StepID.OVERFØRING)} />}
                 />
             )}
 

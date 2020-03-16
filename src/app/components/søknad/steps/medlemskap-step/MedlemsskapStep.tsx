@@ -16,7 +16,7 @@ import { StepConfigProps, StepID } from '../../../../config/stepConfig';
 import getLenker from '../../../../lenker';
 import { SøknadFormData, SøknadFormField } from '../../../../types/SøknadFormData';
 import TypedForm from '../../../TypedForm/TypedForm';
-import FormikStep from '../formik-step/FormikStep';
+import FormikStep from '../../formik-step/FormikStep';
 
 const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubmit }) => {
     const { values } = useFormikContext<SøknadFormData>();

@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import moment from 'moment';
 import Modal from 'nav-frontend-modal';
 import { Locale } from 'common/types/Locale';
-import ApplicationWrapper from './components/layout/application-wrapper/ApplicationWrapper';
+import ApplicationWrapper from './components/application-wrapper/ApplicationWrapper';
 import IntroPage from './components/pages/intro-page/IntroPage';
 import UnavailablePage from './components/pages/unavailable-page/UnavailablePage';
 import Søknad from './components/søknad/Søknad';

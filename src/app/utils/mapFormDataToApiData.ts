@@ -9,8 +9,8 @@ import { SøknadFormData } from '../types/SøknadFormData';
 export const mapFormDataToApiData = (
     {
         kroniskEllerFunksjonshemming,
-        erYrkesaktiv,
         harBekreftetOpplysninger,
+        harSamfunnskritiskJobb,
         harForståttRettigheterOgPlikter,
         harBoddUtenforNorgeSiste12Mnd,
         arbeidssituasjon,
@@ -23,7 +23,7 @@ export const mapFormDataToApiData = (
     const apiData: SøknadApiData = {
         språk: (sprak as any) === 'en' ? 'nn' : sprak,
         kroniskEllerFunksjonshemming: kroniskEllerFunksjonshemming === YesOrNo.YES,
-        erYrkesaktiv: erYrkesaktiv === YesOrNo.YES,
+        harSamfunnskritiskJobb: harSamfunnskritiskJobb === YesOrNo.YES,
         arbeidssituasjon,
         medlemskap: {
             harBoddIUtlandetSiste12Mnd: harBoddUtenforNorgeSiste12Mnd === YesOrNo.YES,

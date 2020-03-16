@@ -6,7 +6,7 @@ export const welcomingPageIsValid = ({
     kroniskEllerFunksjonshemming
 }: SøknadFormData) => kroniskEllerFunksjonshemming === YesOrNo.YES && harForståttRettigheterOgPlikter === true;
 
-export const opplysningerOmOverføringIsAvailable = (values: SøknadFormData) => values !== undefined; // TODO
+export const opplysningerOmOverføringIsValid = (values: SøknadFormData) => values !== undefined; // TODO
 
 export const arbeidStepIsValid = ({ arbeidssituasjon }: SøknadFormData) =>
     arbeidssituasjon !== undefined && arbeidssituasjon.length > 0;

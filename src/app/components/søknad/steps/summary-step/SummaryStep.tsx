@@ -20,7 +20,7 @@ import * as apiUtils from '../../../../utils/apiUtils';
 import { mapFormDataToApiData } from '../../../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../../../utils/navigationUtils';
 import TypedForm from '../../../TypedForm/TypedForm';
-import FormikStep from '../formik-step/FormikStep';
+import FormikStep from '../../formik-step/FormikStep';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import './summary.less';
 
