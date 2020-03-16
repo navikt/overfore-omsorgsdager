@@ -1,6 +1,4 @@
-# Søknad om omsorgspenger
-
-[![CircleCI](https://circleci.com/gh/navikt/overfore-omsorgsdager/tree/master.svg?style=svg)](https://circleci.com/gh/navikt/overfore-omsorgsdager/tree/master)
+# Søknad om overføring av omsorgsdager
 
 Kildekoden til frontend-appen for ny selvbetjeningsløsning for
 overføring av omsorgsdager.
