@@ -1,16 +1,16 @@
 # Søknad om omsorgspenger
 
-[![CircleCI](https://circleci.com/gh/navikt/omsorgspengesoknad/tree/master.svg?style=svg)](https://circleci.com/gh/navikt/omsorgspengesoknad/tree/master)
+[![CircleCI](https://circleci.com/gh/navikt/overfore-omsorgsdager/tree/master.svg?style=svg)](https://circleci.com/gh/navikt/overfore-omsorgsdager/tree/master)
 
 Kildekoden til frontend-appen for ny selvbetjeningsløsning for
-søknad om omsorgspenger.
+overføring av omsorgsdager.
 
 ## Komme i gang
 
 For å kjøre opp app-en i dev:
 
 1.  `npm install`.
-2.  `npm run start`.
+2.  `npm run rev`.
 
 For å kjøre enhetstester:
 
@@ -20,7 +20,7 @@ For å kjøre enhetstester:
 
 Spørsmål knyttet til koden eller prosjektet kan stilles som issues her på GitHub.
 
-Interne henvendelser kan sendes via Slack i kanalen #team-düsseldorf.
+Interne henvendelser kan sendes via Slack i kanalen #team-brukerdialog
 
 ## Icon License
 

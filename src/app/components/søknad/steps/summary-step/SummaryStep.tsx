@@ -1,12 +1,13 @@
-import React from 'react';
-import { FormattedMessage, injectIntl, WrappedComponentProps } from 'react-intl';
+import React, { useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import ContentWithHeader from '@navikt/sif-common-core/lib/components/content-with-header/ContentWithHeader';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
-import { HistoryProps } from '@navikt/sif-common-core/lib/types/History';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
+import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { sendApplication } from '../../../../api/api';
@@ -19,39 +20,28 @@ import { SøknadFormData, SøknadFormField } from '../../../../types/SøknadForm
 import * as apiUtils from '../../../../utils/apiUtils';
 import { mapFormDataToApiData } from '../../../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../../../utils/navigationUtils';
-import TypedForm from '../../../TypedForm/TypedForm';
 import FormikStep from '../../formik-step/FormikStep';
+import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import './summary.less';
 
-interface State {
-    sendingInProgress: boolean;
-}
-
-interface OwnProps {
-    values: SøknadFormData;
+interface Props {
     onApplicationSent: (apiValues: SøknadApiData, søkerdata: Søkerdata) => void;
 }
 
-type Props = OwnProps & HistoryProps & WrappedComponentProps;
+const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
+    const intl = useIntl();
+    const { values } = useFormikContext<SøknadFormData>();
+    const søkerdata = React.useContext(SøkerdataContext);
+    const history = useHistory();
 
-class SummaryStep extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = {
-            sendingInProgress: false
-        };
-        this.navigate = this.navigate.bind(this);
-    }
+    const [sendingInProgress, setSendingInProgress] = useState(false);
 
-    async navigate(apiValues: SøknadApiData, søkerdata: Søkerdata) {
-        const { onApplicationSent, history } = this.props;
-        this.setState({
-            sendingInProgress: true
-        });
+    async function navigate(data: SøknadApiData, søker: Søkerdata) {
+        setSendingInProgress(true);
         try {
-            await sendApplication(apiValues);
-            onApplicationSent(apiValues, søkerdata);
+            await sendApplication(data);
+            onApplicationSent(apiValues, søker);
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
                 navigateToLoginPage();
@@ -61,66 +51,59 @@ class SummaryStep extends React.Component<Props, State> {
         }
     }
 
-    render() {
-        const { values, intl } = this.props;
-        const { sendingInProgress } = this.state;
-        const søkerdata = React.useContext(SøkerdataContext);
-
-        if (!søkerdata) {
-            return null;
-        }
-
-        const {
-            person: { fornavn, mellomnavn, etternavn, fødselsnummer }
-        } = søkerdata;
-        const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
-
-        const { medlemskap } = apiValues;
-
-        return (
-            <FormikStep
-                id={StepID.SUMMARY}
-                onValidFormSubmit={() => {
-                    setTimeout(() => {
-                        // La view oppdatere seg først
-                        this.navigate(apiValues, søkerdata);
-                    });
-                }}
-                useValidationErrorSummary={false}
-                buttonDisabled={sendingInProgress}
-                showButtonSpinner={sendingInProgress}>
-                <CounsellorPanel>
-                    <FormattedMessage id="steg.oppsummering.info" />
-                </CounsellorPanel>
-                <Box margin="xl">
-                    <Panel border={true}>
-                        <ContentWithHeader header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
-                            <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
-                            <Normaltekst>
-                                <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
-                            </Normaltekst>
-                        </ContentWithHeader>
-                    </Panel>
-                </Box>
-
-                <MedlemsskapSummary medlemskap={medlemskap} />
-
-                <Box margin="l">
-                    <TypedForm.ConfirmationCheckbox
-                        label={intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger')}
-                        name={SøknadFormField.harBekreftetOpplysninger}
-                        validate={(value) => {
-                            let result;
-                            if (value !== true) {
-                                result = intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet');
-                            }
-                            return result;
-                        }}
-                    />
-                </Box>
-            </FormikStep>
-        );
+    if (!søkerdata) {
+        return null;
     }
-}
 
-export default injectIntl(SummaryStep);
+    const {
+        person: { fornavn, mellomnavn, etternavn, fødselsnummer }
+    } = søkerdata;
+    const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
+
+    const { medlemskap } = apiValues;
+
+    return (
+        <FormikStep
+            id={StepID.SUMMARY}
+            onValidFormSubmit={() => {
+                setTimeout(() => {
+                    navigate(apiValues, søkerdata); // La view oppdatere seg først
+                });
+            }}
+            useValidationErrorSummary={false}
+            buttonDisabled={sendingInProgress}
+            showButtonSpinner={sendingInProgress}>
+            <CounsellorPanel>
+                <FormattedMessage id="steg.oppsummering.info" />
+            </CounsellorPanel>
+            <Box margin="xl">
+                <Panel border={true}>
+                    <ContentWithHeader header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
+                        <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
+                        <Normaltekst>
+                            <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
+                        </Normaltekst>
+                    </ContentWithHeader>
+                </Panel>
+            </Box>
+
+            <MedlemsskapSummary medlemskap={medlemskap} />
+
+            <Box margin="l">
+                <TypedFormComponents.ConfirmationCheckbox
+                    label={intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger')}
+                    name={SøknadFormField.harBekreftetOpplysninger}
+                    validate={(value) => {
+                        let result;
+                        if (value !== true) {
+                            result = intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet');
+                        }
+                        return result;
+                    }}
+                />
+            </Box>
+        </FormikStep>
+    );
+};
+
+export default SummaryStep;

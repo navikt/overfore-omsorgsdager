@@ -6,7 +6,7 @@ import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer'
 import { getStepConfig } from '../../../config/stepConfig';
 import { getStepTexts } from '../../../utils/stepUtils';
 import Step, { StepProps } from '../../step/Step';
-import TypedForm from '../../TypedForm/TypedForm';
+import TypedFormComponents from '../typed-form-components/TypedFormComponents';
 
 export interface FormikStepProps {
     children: React.ReactNode;
@@ -26,7 +26,7 @@ const FormikStep: React.FunctionComponent<Props> = (props) => {
     const texts = getStepTexts(intl, id, stepConfig);
     return (
         <Step stepConfig={stepConfig} {...props}>
-            <TypedForm.Form
+            <TypedFormComponents.Form
                 onValidSubmit={onValidFormSubmit}
                 includeButtons={false}
                 fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
@@ -42,7 +42,7 @@ const FormikStep: React.FunctionComponent<Props> = (props) => {
                         {texts.nextButtonLabel}
                     </Knapp>
                 </FormBlock>
-            </TypedForm.Form>
+            </TypedFormComponents.Form>
         </Step>
     );
 };

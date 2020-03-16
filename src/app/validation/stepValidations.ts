@@ -1,10 +1,8 @@
 import { YesOrNo } from 'common/types/YesOrNo';
 import { SøknadFormData } from '../types/SøknadFormData';
 
-export const welcomingPageIsValid = ({
-    harForståttRettigheterOgPlikter,
-    kroniskEllerFunksjonshemming
-}: SøknadFormData) => kroniskEllerFunksjonshemming === YesOrNo.YES && harForståttRettigheterOgPlikter === true;
+export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter, harSamfunnskritiskJobb }: SøknadFormData) =>
+    harSamfunnskritiskJobb === YesOrNo.YES && harForståttRettigheterOgPlikter === true;
 
 export const opplysningerOmOverføringIsValid = (values: SøknadFormData) => values !== undefined; // TODO
 

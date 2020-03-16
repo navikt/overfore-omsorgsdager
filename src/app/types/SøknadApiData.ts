@@ -20,7 +20,6 @@ export interface UtenlandsoppholdApiData {
 
 export interface SøknadApiData {
     språk: Locale;
-    kroniskEllerFunksjonshemming: boolean;
     harSamfunnskritiskJobb: boolean;
     arbeidssituasjon: Arbeidssituasjon[];
     medlemskap: MedlemskapApiData;

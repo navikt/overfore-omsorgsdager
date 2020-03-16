@@ -85,8 +85,6 @@ const SøknadContent: React.FunctionComponent = () => {
                     path={getSøknadRoute(StepID.SUMMARY)}
                     render={() => (
                         <SummaryStep
-                            history={history}
-                            values={values}
                             onApplicationSent={(apiData: SøknadApiData, søkerdata: Søkerdata) => {
                                 const info = getKvitteringInfoFromApiData(søkerdata);
                                 setKvitteringInfo(info);

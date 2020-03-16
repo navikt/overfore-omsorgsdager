@@ -4,7 +4,7 @@ import FormikStep from '../../formik-step/FormikStep';
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
-        <FormikStep id={StepID.ARBEID} onValidFormSubmit={onValidSubmit}>
+        <FormikStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
             Skjema legges inn her
         </FormikStep>
     );

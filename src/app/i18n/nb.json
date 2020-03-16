@@ -24,7 +24,7 @@
     "Torsdag": "Torsdag",
     "Fredag": "Fredag",
 
-    "banner.title": "Søknad om ekstra omsorgsdager",
+    "banner.title": "Søknad om overføring av omsorgsdager",
 
     "page.loadingPage.tekst": "Laster ...",
     "gotoApplicationLink.lenketekst": "Gå til den digitale søknaden",
@@ -53,6 +53,10 @@
     "step.sendButtonLabel": "Send inn søknaden",
     "step.sendButtonAriaLabel": "Send inn søknaden",
 
+    "step.overføring.pageTitle": "Overføre omsorgsdager",
+    "step.overføring.stepTitle": "Overføre omsorgsdager",
+    "step.overføring.stepIndicatorLabel": "Overføre omsorgsdager",
+
     "step.arbeid.pageTitle": "Omsorgspengesøknad - arbeidssituasjon",
     "step.arbeid.stepTitle": "Arbeidssituasjon",
     "step.arbeid.stepIndicatorLabel": "Arbeidssituasjon",
@@ -75,14 +79,11 @@
 
     "introPage.tittel": "Søknad om overføring av omsorgsdager",
     "introPage.stegTittel": "Kan jeg bruke den digitale søknaden?",
-    "introPage.intro.html": "<p>Todo - info om hvem som kan bruke denne<p>",
-    "introPage.spm.kroniskEllerFunksjonshemmende": "Har du et barn som har en kronisk sykdom eller funksjonshemming?",
-    "introPage.infoIkkeKroniskEllerFunksjonshemmende.html": "<p>Du må foreløpig bruke <a href=\"{url}\" class=\"lenke\">papirsøknaden</a> hvis du skal<ol><li>søke om å ta over dager fra en annen omsorgsperson</li><li>fordele dager med en annen omsorgsperson</li><li>overføre dager til en ny samlivspartner</li></ol></p>",
 
-    "welcomingPage.sidetittel": "Søknad om ekstra omsorgsdager",
+    "welcomingPage.sidetittel": "Søknad om overføring av omsorgsdager",
     "welcomingPage.banner.tittel": "Hei,",
     "welcomingPage.banner.tekst": "jeg vil hjelpe deg med å fylle ut søknaden!",
-    "welcomingPage.introtittel": "Søknad om ekstra omsorgsdager",
+    "welcomingPage.introtittel": "Søknad om overføring av omsorgsdager",
     "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
     "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
     "welcomingPage.samtykke.harForståttLabel": "For å gå videre med søknaden må du bekrefte at du har lest og forstått {plikterLink}.",
@@ -122,17 +123,6 @@
     "modal.minePlikter.part2a": "Jeg har lest og forstått det som står på",
     "modal.minePlikter.part2b": "nav.no/rettogplikt",
 
-    "steg.omBarnet.hvilketBarn.spm": "Hvilket barn gjelder søknaden for?",
-    "steg.omBarnet.hvilketBarn.info": "Hvis du skal søke for flere barn, må du sende én søknad for hvert barn.",
-    "steg.omBarnet.hvilketBarn.født": "Født {dato}",
-    "steg.omBarnet.gjelderAnnetBarn": "Søknaden gjelder et annet barn",
-    "steg.omBarnet.fnr.spm": "Barnets fødselsnummer/D-nummer",
-    "steg.omBarnet.fnr.ikkeFnrEnda": "Barnet har ikke fått fødselsnummer/D-nummer ennå",
-    "steg.omBarnet.fødselsdato": "Barnets fødselsdato",
-    "steg.omBarnet.navn": "Barnets navn",
-    "steg.omBarnet.relasjon": "Min relasjon til barnet",
-    "steg.omBarnet.veileder.samværsavtale": "Senere i søknaden laster du opp avtale om delt bosted for barnet.",
-
     "steg.arbeid.spm": "Hva er din arbeidssituasjon? Du kan velge flere.",
 
     "steg.medlemsskap.annetLandSiste12.spm": "Har du bodd i andre land enn Norge i hele eller deler av de siste 12 månedene?",
@@ -141,14 +131,6 @@
     "steg.medlemsskap.annetLandSiste12.listeTittel": "Utenlandsopphold siste 12 måneder",
     "steg.medlemsskap.annetLandNeste12.hjelp": "Du svarer ja bare hvis du planlegger å oppholde deg fast i et annet land enn Norge. Korte utlandsturer i forbindelse med for eksempel ferie regnes ikke med.",
     "steg.medlemsskap.annetLandNeste12.listeTittel": "Utenlandsopphold neste 12 måneder",
-
-    "steg.lege.info.html": "Ta bilde av feltene i papirsøknaden som legen har fylt ut om barnet. Vær nøye med at <strong>all tekst</strong> er med på bildet, inkludert legens signatur.",
-    "steg.lege.vedlegg": "Last opp bilde av legeerklæringen (maks 3 bilder)",
-    "steg.lege.intro.1.html": "For de første 8 ukene må legeerklæringen skrives av en sykehuslege. Etter de første 8 ukene kan legeerklæringen skrives av alle leger i spesialisthelsetjenesten.",
-    "steg.lege.intro.2.html": "Disse yrkesgruppene kan <strong>ikke</strong> undertegne legeerklæringen: Sosionom, legesekretær, psykolog, psykologspesialist, fysioterapeut, fastlege og spesialist i allmennmedisin.",
-
-    "steg.samværsavtale.info.html": "<p>Ta bilde av avtalen om delt bosted og last opp.</p>Vær nøye med:<ul><li>å få all tekst med på bildet</li><li>at signaturen fra begge parter er synlig på bildet</li><li>at bildet er leselig</li></ul>",
-    "steg.samværsavtale.vedlegg": "Last opp bilde av avtalen (maks 3 bilder)",
 
     "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn søknaden. Hvis du vil gjøre endringer, kan du gå tilbake.",
     "steg.oppsummering.søker.header": "Navn på søker",
@@ -160,8 +142,6 @@
     "steg.oppsummering.utlandetNeste12.header": "Skal bo i utlandet neste 12 måneder",
     "steg.oppsummering.utlandetSiste12.liste.header": "Utenlandsopphold siste 12 måneder",
     "steg.oppsummering.utlandetNeste12.liste.header": "Utenlandsopphold neste 12 måneder",
-    "steg.oppsummering.legeerklæring.header": "Legeerklæring",
-    "steg.oppsummering.samværsavtale.header": "Avtale om delt bosted",
     "steg.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til omsorgspenger.",
     "steg.oppsummering.bekrefterOpplysninger.ikkeBekreftet": "Du må bekrefte opplysningene",
 
@@ -176,11 +156,11 @@
     "page.generalErrorPage.tittel": "Noe gikk galt...",
     "page.generalErrorPage.tekst": "Beklager, her har det dessverre skjedd en feil. Vennligst prøv igjen senere.",
 
-    "page.ikkeMyndig.sidetittel": "Søknad om ekstra omsorgsdager - ikke myndig",
+    "page.ikkeMyndig.sidetittel": "Søknad om overføring av omsorgsdager - ikke myndig",
     "page.ikkeMyndig.banner.tittel": "Hei!",
     "page.ikkeMyndig.banner.tekst": "Fordi du er under 18 år, må en av foreldrene dine eller en foresatt skrive under på søknaden sammen med deg. Du må derfor fylle ut søknaden på papir og sende den i posten.",
     "page.ikkeMyndig.banner.lastNed": "Her kan du laste ned papirsøknaden",
-    "page.ikkeMyndig.tittel": "Søknad om ekstra omsorgsdager",
+    "page.ikkeMyndig.tittel": "Søknad om overføring av omsorgsdager",
 
     "vedleggsliste.fjernKnapp": "Fjern vedlegg",
     "vedleggsliste.ingenLegeerklæringLastetOpp": "Ingen vedlegg er lastet opp",

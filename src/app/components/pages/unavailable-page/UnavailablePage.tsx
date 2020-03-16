@@ -19,9 +19,9 @@ const UnavailablePage: React.StatelessComponent<{}> = () => {
             <Box margin="xxxl">
                 <AlertStripeAdvarsel>
                     <p>
-                        Den digitale søknaden for omsorgspenger er dessverre ikke tilgjengelig på grunn av teknisk feil.
-                        Vi jobber med å løse feilen slik at du kan søke digitalt. Frem til vi får fikset dette, kan du
-                        fylle ut vårt{' '}
+                        Den digitale søknaden for overføring av omsorgsdager er dessverre ikke tilgjengelig på grunn av
+                        teknisk feil. Vi jobber med å løse feilen slik at du kan søke digitalt. Frem til vi får fikset
+                        dette, kan du fylle ut vårt{' '}
                         <strong>
                             <Lenke href={link}>papirskjema for omsorgspenger</Lenke>
                         </strong>

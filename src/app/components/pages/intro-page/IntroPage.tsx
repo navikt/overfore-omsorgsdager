@@ -44,7 +44,7 @@ const IntroPage: React.StatelessComponent = () => {
             <PageForm.FormikWrapper
                 onSubmit={() => null}
                 initialValues={initialValues}
-                renderForm={({ values }) => (
+                renderForm={({ values: { harSamfunnskritiskJobb } }) => (
                     <PageForm.Form
                         fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}
                         includeButtons={false}>
@@ -53,24 +53,22 @@ const IntroPage: React.StatelessComponent = () => {
                             legend="Har du en jobb som faller inn under samfunnskritiske funksjoner?"
                             description={
                                 <>
-                                    <Lenke href="https://www.ks.no/fagomrader/helse-og-omsorg/informasjon-om-koronaviruset/samfunnets-kritiske-funksjoner/">
+                                    <Lenke
+                                        target="_blank"
+                                        href="https://www.ks.no/fagomrader/helse-og-omsorg/informasjon-om-koronaviruset/samfunnets-kritiske-funksjoner/">
                                         Se hele listen over jobbene som faller inn samfunnskritiske funksjoner her
                                     </Lenke>
                                     .
                                 </>
                             }
                         />
-                        {values[PageFormField.harSamfunnskritiskJobb] === YesOrNo.NO && (
-                            <Box margin="xl">
-                                <AlertStripeInfo>
-                                    <p style={{ marginTop: 0 }}>
-                                        Søknad om å overføre omsorgsdager gjelder <strong>kun</strong> for de som har
-                                        kronisk sykt eller funksjonshemmet barn.
-                                    </p>
-                                </AlertStripeInfo>
+                        {harSamfunnskritiskJobb === YesOrNo.NO && (
+                            <Box margin="l">
+                                <AlertStripeInfo>Info for brukere som ikke skal bruke søknad</AlertStripeInfo>
                             </Box>
                         )}
-                        {values[PageFormField.harSamfunnskritiskJobb] === YesOrNo.YES && (
+
+                        {harSamfunnskritiskJobb === YesOrNo.YES && (
                             <Box margin="xl" textAlignCenter={true}>
                                 <Lenke href={getRouteUrl(RouteConfig.WELCOMING_PAGE_ROUTE)}>
                                     <FormattedMessage id="gotoApplicationLink.lenketekst" />

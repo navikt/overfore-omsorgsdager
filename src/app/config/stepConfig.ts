@@ -55,15 +55,14 @@ export const getStepConfig = (): StepConfigInterface => {
             index: idx++,
             nextStep: StepID.SUMMARY,
             backLinkHref: getSøknadRoute(StepID.ARBEID)
+        },
+        [StepID.SUMMARY]: {
+            ...getStepConfigItemTextKeys(StepID.SUMMARY),
+            index: idx++,
+            backLinkHref: getSøknadRoute(StepID.MEDLEMSKAP),
+            nextButtonLabel: 'step.sendButtonLabel',
+            nextButtonAriaLabel: 'step.sendButtonAriaLabel'
         }
-    };
-
-    config[StepID.SUMMARY] = {
-        ...getStepConfigItemTextKeys(StepID.SUMMARY),
-        index: idx++,
-        backLinkHref: getSøknadRoute(StepID.MEDLEMSKAP),
-        nextButtonLabel: 'step.sendButtonLabel',
-        nextButtonAriaLabel: 'step.sendButtonAriaLabel'
     };
 
     return config;

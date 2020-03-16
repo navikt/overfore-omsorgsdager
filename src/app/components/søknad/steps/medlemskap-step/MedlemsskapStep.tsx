@@ -15,8 +15,8 @@ import {
 import { StepConfigProps, StepID } from '../../../../config/stepConfig';
 import getLenker from '../../../../lenker';
 import { SøknadFormData, SøknadFormField } from '../../../../types/SøknadFormData';
-import TypedForm from '../../../TypedForm/TypedForm';
 import FormikStep from '../../formik-step/FormikStep';
+import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
 
 const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubmit }) => {
     const { values } = useFormikContext<SøknadFormData>();
@@ -32,7 +32,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                 .
             </CounsellorPanel>
             <FormBlock margin="xxl">
-                <TypedForm.YesOrNoQuestion
+                <TypedFormComponents.YesOrNoQuestion
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.spm')}
                     name={SøknadFormField.harBoddUtenforNorgeSiste12Mnd}
                     validate={validateYesOrNoIsAnswered}
@@ -54,7 +54,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                 </FormBlock>
             )}
             <FormBlock>
-                <TypedForm.YesOrNoQuestion
+                <TypedFormComponents.YesOrNoQuestion
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.spm')}
                     name={SøknadFormField.skalBoUtenforNorgeNeste12Mnd}
                     validate={validateYesOrNoIsAnswered}

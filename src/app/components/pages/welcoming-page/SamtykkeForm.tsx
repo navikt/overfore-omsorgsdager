@@ -1,6 +1,6 @@
 import React from 'react';
-import { FormattedHTMLMessage, FormattedMessage, useIntl } from 'react-intl';
-import { getTypedFormComponents, YesOrNo } from '@navikt/sif-common-formik/lib';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { YesOrNo } from '@navikt/sif-common-formik/lib';
 import { useFormikContext } from 'formik';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import Lenke from 'nav-frontend-lenker';
@@ -10,16 +10,14 @@ import bemHelper from 'common/utils/bemUtils';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
 import intlHelper from 'common/utils/intlUtils';
 import { validateYesOrNoIsAnswered } from 'common/validation/fieldValidations';
-import getLenker from '../../../lenker';
 import { SøknadFormData, SøknadFormField } from '../../../types/SøknadFormData';
+import TypedFormComponents from '../../søknad/typed-form-components/TypedFormComponents';
 
 interface Props {
     onConfirm: () => void;
     onOpenDinePlikterModal: () => void;
     openBehandlingAvPersonopplysningerModal: () => void;
 }
-
-const AppForm = getTypedFormComponents<SøknadFormField, SøknadFormData>();
 
 const bem = bemHelper('welcomingPage');
 
@@ -31,41 +29,41 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
     const { values: formValues } = useFormikContext<SøknadFormData>();
     const intl = useIntl();
     return (
-        <AppForm.Form
+        <TypedFormComponents.Form
             onValidSubmit={onConfirm}
             includeButtons={false}
             fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
             <FormBlock>
-                <AppForm.YesOrNoQuestion
-                    name={SøknadFormField.kroniskEllerFunksjonshemming}
-                    legend={intlHelper(intl, 'introPage.spm.kroniskEllerFunksjonshemmende')}
+                <TypedFormComponents.YesOrNoQuestion
+                    name={SøknadFormField.harSamfunnskritiskJobb}
+                    legend={'Har du en jobb som faller inn under samfunnskritiske funksjoner?'}
                     validate={validateYesOrNoIsAnswered}
+                    description={
+                        <>
+                            <Lenke
+                                target="_blank"
+                                href="https://www.ks.no/fagomrader/helse-og-omsorg/informasjon-om-koronaviruset/samfunnets-kritiske-funksjoner/">
+                                Se hele listen over jobbene som faller inn samfunnskritiske funksjoner her
+                            </Lenke>
+                            .
+                        </>
+                    }
                 />
             </FormBlock>
             <FormBlock>
-                {formValues.kroniskEllerFunksjonshemming === YesOrNo.NO && (
-                    <CounsellorPanel>
-                        <FormattedHTMLMessage
-                            id={`introPage.infoIkkeKroniskEllerFunksjonshemmende.html`}
-                            values={{ url: getLenker(intl.locale).papirskjemaPrivat }}
-                        />
-                    </CounsellorPanel>
+                {formValues.harSamfunnskritiskJobb === YesOrNo.NO && (
+                    <CounsellorPanel>Melding for dem som ikke skal bruke søknaden</CounsellorPanel>
                 )}
-                {formValues.kroniskEllerFunksjonshemming === YesOrNo.YES && (
+                {formValues.harSamfunnskritiskJobb === YesOrNo.YES && (
                     <>
-                        <CounsellorPanel>
-                            <FormattedHTMLMessage id={`introPage.legeerklæring.html`} />
-                        </CounsellorPanel>
                         <FormBlock>
-                            <AppForm.ConfirmationCheckbox
+                            <TypedFormComponents.ConfirmationCheckbox
                                 label={intlHelper(intl, 'welcomingPage.samtykke.tekst')}
                                 name={SøknadFormField.harForståttRettigheterOgPlikter}
                                 validate={(value) => {
-                                    let result;
-                                    if (value !== true) {
-                                        result = intlHelper(intl, 'welcomingPage.samtykke.harIkkeGodkjentVilkår');
-                                    }
-                                    return result;
+                                    return value !== true
+                                        ? intlHelper(intl, 'welcomingPage.samtykke.harIkkeGodkjentVilkår')
+                                        : undefined;
                                 }}>
                                 <FormattedMessage
                                     id="welcomingPage.samtykke.harForståttLabel"
@@ -77,7 +75,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                                         )
                                     }}
                                 />
-                            </AppForm.ConfirmationCheckbox>
+                            </TypedFormComponents.ConfirmationCheckbox>
                         </FormBlock>
                         <FormBlock>
                             <Hovedknapp className={bem.element('startApplicationButton')}>
@@ -94,7 +92,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                     </>
                 )}
             </FormBlock>
-        </AppForm.Form>
+        </TypedFormComponents.Form>
     );
 };
 export default SamtykkeForm;
