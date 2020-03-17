@@ -37,7 +37,7 @@ const startServer = () => {
         res.send(søkerMock);
     });
 
-    server.post('/soknad', (req, res) => {
+    server.post('/overfor_omsorgsdager', (req, res) => {
         res.sendStatus(200);
     });
 
