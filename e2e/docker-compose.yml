@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  api-mock:
+    build: ../server
+    environment:
+      - "PORT=8089"
+    ports:
+      - 8089:8089
+  web:
+    build:
+      context: ../
+      dockerfile: Dockerfile.web-cypress
+    ports:
+      - 8084:8084
+    depends_on:
+      - api-mock
+    environment:
+      - API_URL=http://api-mock:8089
+      - HOST=localhost
+  e2e:
+    build: .
+    depends_on:
+      - web
+    environment:
+      - CYPRESS_video=false
+      - CYPRESS_baseUrl=http://web:8084
+# Dersom debugging er nødvendig
+#    working_dir: /e2e
+#    volumes:
+#      - ./:/e2e
+

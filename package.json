@@ -16,7 +16,17 @@
         "start-api-mock": "PORT=8089 node ./api-mock.js",
         "test": "jest --maxWorkers=2 --config ./jest/jest.config.js",
         "snyk-protect": "snyk protect",
-        "prepare": "npm run snyk-protect"
+        "prepare": "npm run snyk-protect",
+        "cypress:install": "npm add -D cypress cypress-file-upload",
+        "cypress:open": "CYPRESS_baseUrl=http://localhost:8084 cypress open --project $PWD/e2e",
+        "cypress:run": "CYPRESS_baseUrl=http://localhost:8084 cypress run --project $PWD/e2e",
+        "cypress:ci": "CYPRESS_baseUrl=http://localhost:8084 cypress run --project $PWD/e2e --reporter junit --reporter-options \\\"mochaFile=results/my-test-output.xml\\\"",
+        "cypress:headless": "docker run -e CYPRESS_video=false -e CYPRESS_baseUrl=http://host.docker.internal:8080 -it -v $PWD/e2e:/e2e -w /e2e cypress/included:4.0.1",
+        "e2e": "API_URL=http://host.docker.internal:8089 npm-run-all -p dev -r cypress:headless",
+        "e2e-docker-compose": "docker-compose -f ./e2e/docker-compose.yml up --build --exit-code-from e2e",
+        "e2e-docker-rm": "docker rm $(docker ps -a -f status=exited -q) ",
+        "e2e-docker-rmi": "docker images -a | grep e2e | awk '{print $3}' | xargs docker rmi",
+        "server-test": "node ./server-test.js"
     },
     "jest": {
         "testEnvironment": "node"
@@ -105,6 +115,8 @@
         "babel-polyfill": "^6.26.0",
         "case-sensitive-paths-webpack-plugin": "^2.3.0",
         "css-loader": "^3.4.2",
+        "cypress": "^4.1.0",
+        "cypress-file-upload": "^3.5.3",
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.2",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
