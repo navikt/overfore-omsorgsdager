@@ -15,6 +15,7 @@ services:
     depends_on:
       - api-mock
     environment:
+      - PORT=8084
       - API_URL=http://api-mock:8089
       - HOST=localhost
   e2e:
