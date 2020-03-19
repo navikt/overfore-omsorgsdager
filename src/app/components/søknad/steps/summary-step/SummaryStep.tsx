@@ -22,6 +22,7 @@ import { mapFormDataToApiData } from '../../../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../../../utils/navigationUtils';
 import FormikStep from '../../formik-step/FormikStep';
 import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
+import ArbeidsforholdSummary from './ArbeidsforholdSummary';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import './summary.less';
 
@@ -60,7 +61,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
     } = søkerdata;
     const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
 
-    const { medlemskap } = apiValues;
+    const { arbeidssituasjon, medlemskap } = apiValues;
 
     return (
         <FormikStep
@@ -86,6 +87,8 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
                     </ContentWithHeader>
                 </Panel>
             </Box>
+
+            <ArbeidsforholdSummary arbeidssituasjoner={arbeidssituasjon} />
 
             <MedlemsskapSummary medlemskap={medlemskap} />
 
