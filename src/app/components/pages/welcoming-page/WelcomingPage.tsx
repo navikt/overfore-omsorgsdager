@@ -9,7 +9,8 @@ import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps } from '../../../config/stepConfig';
 import BehandlingAvPersonopplysningerModal from '../../information/behandling-av-personopplysninger-modal/BehandlingAvPersonopplysningerModal';
 import DinePlikterModal from '../../information/dine-plikter-modal/DinePlikterModal';
-import SamtykkeForm from './SamtykkeForm';
+import ForenkletSamtykkeForm from './ForenkletSamtykkeForm';
+
 import './welcomingPage.less';
 
 const bem = bemHelper('welcomingPage');
@@ -82,7 +83,7 @@ class WelcomingPage extends React.Component<Props, WelcomingPageState> {
                             <FormattedMessage id="welcomingPage.introtittel" />
                         </Sidetittel>
                     </Box>
-                    <SamtykkeForm
+                    <ForenkletSamtykkeForm
                         onOpenDinePlikterModal={this.openDinePlikterModal}
                         openBehandlingAvPersonopplysningerModal={this.openBehandlingAvPersonopplysningerModal}
                         onConfirm={onValidSubmit}
