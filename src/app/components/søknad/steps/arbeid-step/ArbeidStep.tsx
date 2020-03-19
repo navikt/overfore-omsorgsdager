@@ -1,21 +1,29 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
-import { FormikCheckboxPanelGroup } from '@navikt/sif-common-formik/lib';
+import { YesOrNo, FormikCheckboxPanelGroup } from '@navikt/sif-common-formik/lib';
 import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps, StepID } from '../../../../config/stepConfig';
-import { Arbeidssituasjon, SøknadFormField } from '../../../../types/SøknadFormData';
+import { Arbeidssituasjon, SøknadFormData, SøknadFormField } from '../../../../types/SøknadFormData';
 import { validateArbeid } from '../../../../validation/fieldValidations';
 import FormikStep from '../../formik-step/FormikStep';
 import FormBlock from 'common/components/form-block/FormBlock';
 import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
 import { validateYesOrNoIsAnswered } from 'common/validation/fieldValidations';
 import Lenke from 'nav-frontend-lenker';
+import { useFormikContext } from 'formik';
+import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
 
 
 const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
+    const { values: formValues } = useFormikContext<SøknadFormData>();
     const intl = useIntl();
     return (
-        <FormikStep id={StepID.ARBEID} onValidFormSubmit={onValidSubmit}>
+        <FormikStep
+            id={StepID.ARBEID}
+            onValidFormSubmit={() => {
+                const harSamfunnskritiskJobb = formValues.harSamfunnskritiskJobb === YesOrNo.YES;
+                return harSamfunnskritiskJobb ? onValidSubmit() : false;
+            }}>
             <FormikCheckboxPanelGroup<SøknadFormField>
                 legend={intlHelper(intl, 'steg.arbeid.spm')}
                 name={SøknadFormField.arbeidssituasjon}
@@ -52,10 +60,14 @@ const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
                     }
                 />
             </FormBlock>
+            <FormBlock>
+                {formValues.harSamfunnskritiskJobb === YesOrNo.NO && (
+                    <CounsellorPanel>Melding for dem som ikke skal bruke søknaden</CounsellorPanel>
+                )}
+            </FormBlock>
         </FormikStep>
     );
 };
 
-// Todo - kommer ikke videre ved første valg
 
 export default ArbeidStep;
