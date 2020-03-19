@@ -28,13 +28,7 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
             onValidSubmit={onConfirm}
             includeButtons={false}
             fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
-            <FormBlock>
-                <Lenke
-                    target="_blank"
-                    href="https://www.ks.no/fagomrader/helse-og-omsorg/informasjon-om-koronaviruset/samfunnets-kritiske-funksjoner/">
-                    Se hele listen over jobbene som faller inn samfunnskritiske funksjoner her
-                </Lenke>
-            </FormBlock>
+
             <FormBlock>
                 <TypedFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'welcomingPage.samtykke.tekst')}
