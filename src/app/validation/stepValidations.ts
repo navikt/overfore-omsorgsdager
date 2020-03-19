@@ -1,13 +1,19 @@
 import { YesOrNo } from 'common/types/YesOrNo';
 import { SøknadFormData } from '../types/SøknadFormData';
 
-export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter, harSamfunnskritiskJobb }: SøknadFormData) =>
-    harSamfunnskritiskJobb === YesOrNo.YES && harForståttRettigheterOgPlikter === true;
+export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter, harSamfunnskritiskJobb }: SøknadFormData) => {
+    return harSamfunnskritiskJobb === YesOrNo.YES && harForståttRettigheterOgPlikter === true;
+};
 
-export const opplysningerOmOverføringIsValid = (values: SøknadFormData) => values !== undefined; // TODO
 
-export const arbeidStepIsValid = ({ arbeidssituasjon }: SøknadFormData) =>
-    arbeidssituasjon !== undefined && arbeidssituasjon.length > 0;
+export const opplysningerOmOverføringIsValid = (values: SøknadFormData) => {
+    return  values !== undefined; // TODO
+};
+
+export const arbeidStepIsValid = ({ harForståttRettigheterOgPlikter, arbeidssituasjon }: SøknadFormData) => {
+    const harValgtArbeidsSituasjon = (arbeidssituasjon !== undefined && arbeidssituasjon.length > 0);
+    return harForståttRettigheterOgPlikter && harValgtArbeidsSituasjon;
+};
 
 export const medlemskapStepIsValid = ({
     harBoddUtenforNorgeSiste12Mnd,

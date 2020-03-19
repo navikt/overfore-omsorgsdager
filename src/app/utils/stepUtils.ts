@@ -17,6 +17,7 @@ export const getStepTexts = (intl: IntlShape, stepId: StepID, stepConfig: StepCo
     };
 };
 
+/*
 export const overføringStepIsAvailable = (formData: SøknadFormData) => welcomingPageIsValid(formData);
 
 export const arbeidStepIsAvailable = (formData: SøknadFormData) => opplysningerOmOverføringIsValid(formData);
@@ -24,3 +25,20 @@ export const arbeidStepIsAvailable = (formData: SøknadFormData) => opplysninger
 export const medlemskapStepAvailable = (formData: SøknadFormData) => arbeidStepIsValid(formData);
 
 export const summaryStepAvailable = (formData: SøknadFormData) => medlemskapStepIsValid(formData);
+*/
+
+export const arbeidStepIsAvailable = (formData: SøknadFormData) =>  {
+    return welcomingPageIsValid(formData);
+};
+
+export const overføringStepIsAvailable = (formData: SøknadFormData) => {
+    return arbeidStepIsValid(formData);
+};
+
+export const medlemskapStepAvailable = (formData: SøknadFormData) => {
+    return opplysningerOmOverføringIsValid(formData);
+};
+
+export const summaryStepAvailable = (formData: SøknadFormData) => {
+    return medlemskapStepIsValid(formData)
+};
