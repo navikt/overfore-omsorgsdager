@@ -13,7 +13,6 @@ import Lenke from 'nav-frontend-lenker';
 import { useFormikContext } from 'formik';
 import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
 
-
 const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
     const { values: formValues } = useFormikContext<SøknadFormData>();
     const intl = useIntl();
