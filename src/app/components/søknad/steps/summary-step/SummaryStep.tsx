@@ -89,7 +89,18 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
             </Box>
 
             <ArbeidsforholdSummary arbeidssituasjoner={arbeidssituasjon} />
-
+            <Box margin="xl">
+                <strong>Hvor mange barn?</strong><br />
+                {values[SøknadFormField.antallBarn]}
+            </Box>
+            <Box margin="xl">
+                <strong>Fødselsnummeret til den som får overførte dager</strong><br />
+                {fødselsnummer}
+            </Box>
+            <Box margin="xl">
+                <strong>Anall dager som skal overføres</strong><br />
+                {values[SøknadFormField.antallDager]}
+            </Box>
             <MedlemsskapSummary medlemskap={medlemskap} />
 
             <Box margin="l">
