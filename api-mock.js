@@ -1,5 +1,5 @@
 const express = require('express');
-const Busboy = require('busboy');
+// const Busboy = require('busboy');
 
 const server = express();
 
@@ -37,12 +37,16 @@ const startServer = () => {
         res.send(søkerMock);
     });
 
-    server.post('/overfor_omsorgsdager', (req, res) => {
+    server.post('/soknad/overfore-omsorgsdager', (req, res) => {
+        const body = req.body;
+        console.log('[POST] body', body);
         res.sendStatus(200);
     });
 
     server.listen(port, () => {
-        console.log(`App listening on port: ${port}`);
+        console.log(`Express mock server listening on port: ${port}`);
+        console.log('[GET] /soker');
+        console.log('[POST] /soknad/overfore-omsorgsdager');
     });
 };
 
