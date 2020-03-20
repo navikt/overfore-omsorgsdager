@@ -1,7 +1,7 @@
 import * as React from 'react';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import {
-    validateFødselsnummer, validateRequiredField, validateRequiredSelect
+    validateFødselsnummer, validateRequiredField
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { StepConfigProps, StepID } from '../../../../config/stepConfig';
 import { AntallBarnValg, SøknadFormField } from '../../../../types/SøknadFormData';
@@ -56,6 +56,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                 />
             </FormBlock>
             <FormBlock>
+                {/*
                 <TypedFormComponents.Select
                     bredde="s"
                     name={SøknadFormField.antallDager}
@@ -73,6 +74,13 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     <option value={9}>9 dager</option>
                     <option value={10}>10 dager</option>
                 </TypedFormComponents.Select>
+                */}
+                <TypedFormComponents.Input
+                    style={{ maxWidth: '11rem' }}
+                    name={SøknadFormField.antallDager}
+                    label={'Hvor mange dager ønsker du å overføre?'}
+                    validate={validateRequiredField}
+                />
             </FormBlock>
         </FormikStep>
     );
