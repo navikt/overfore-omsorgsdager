@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { YesOrNo, FormikCheckboxPanelGroup } from '@navikt/sif-common-formik/lib';
 import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps, StepID } from '../../../../config/stepConfig';
@@ -62,7 +62,14 @@ const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
                 </FormBlock>
                 <FormBlock>
                     {formValues.harSamfunnskritiskJobb === YesOrNo.NO && (
-                        <CounsellorPanel>Melding for dem som ikke skal bruke søknaden</CounsellorPanel>
+                        <CounsellorPanel>
+                            <FormattedMessage id="introPage.counsellor" /><br/>
+                            <Lenke target="_blank"
+                                   href="https://www.ks.no/fagomrader/helse-og-omsorg/informasjon-om-koronaviruset/samfunnets-kritiske-funksjoner/">
+                            FIXME: Les om andre muligheter for å dele omsorgsdagene dine
+                        </Lenke>
+                        </CounsellorPanel>
+
                     )}
                 </FormBlock>
         </FormikStep>
