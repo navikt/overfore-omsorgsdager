@@ -12,6 +12,7 @@ import DinePlikterModal from '../../information/dine-plikter-modal/DinePlikterMo
 import ForenkletSamtykkeForm from './ForenkletSamtykkeForm';
 
 import './welcomingPage.less';
+import AlertStripeInfo from 'nav-frontend-alertstriper/lib/info-alertstripe';
 
 const bem = bemHelper('welcomingPage');
 
@@ -21,6 +22,7 @@ interface WelcomingPageState {
 }
 
 type Props = Omit<StepConfigProps, 'formValues'> & WrappedComponentProps;
+const getText = (part: string) => <FormattedMessage id={`introPage.${part}`} />
 
 class WelcomingPage extends React.Component<Props, WelcomingPageState> {
     constructor(props: Props) {
@@ -82,6 +84,16 @@ class WelcomingPage extends React.Component<Props, WelcomingPageState> {
                         <Sidetittel className={bem.element('title')}>
                             <FormattedMessage id="welcomingPage.introtittel" />
                         </Sidetittel>
+                    </Box>
+                    <Box margin="xl">
+                        <AlertStripeInfo>
+                            <FormattedMessage id="introPage.informationposter" />
+                            <ul>
+                                <li>{getText('informationposter.li.1')}</li>
+                                <li>{getText('informationposter.li.2')}</li>
+                                <li>{getText('informationposter.li.3')}</li>
+                            </ul>
+                        </AlertStripeInfo>
                     </Box>
                     <ForenkletSamtykkeForm
                         onOpenDinePlikterModal={this.openDinePlikterModal}

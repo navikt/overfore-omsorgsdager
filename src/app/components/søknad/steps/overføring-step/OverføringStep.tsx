@@ -7,6 +7,11 @@ import { StepConfigProps, StepID } from '../../../../config/stepConfig';
 import { AntallBarnValg, SøknadFormField } from '../../../../types/SøknadFormData';
 import FormikStep from '../../formik-step/FormikStep';
 import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
+import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
+import { FormattedMessage } from 'react-intl';
+import Box from 'common/components/box/Box';
+
+const getText = (part: string) => <FormattedMessage id={`introPage.${part}`} />;
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
@@ -14,7 +19,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             <FormBlock>
                 <TypedFormComponents.RadioPanelGroup
                     name={SøknadFormField.antallBarn}
-                    legend="Antall barn"
+                    legend="Hvor mange barn, inkludert fosterbarn, har du i husstanden?"
                     radios={[
                         {
                             label: 'Ett barn',
@@ -32,6 +37,16 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     validate={validateRequiredField}
                 />
             </FormBlock>
+            <Box margin="l">
+                <CounsellorPanel>
+                    <strong><FormattedMessage id="introPage.informationposter" /></strong>
+                    <ul>
+                        <li>{getText('informationposter.li.1')}</li>
+                        <li>{getText('informationposter.li.2')}</li>
+                        <li>{getText('informationposter.li.3')}</li>
+                    </ul>
+                </CounsellorPanel>
+            </Box>
             <FormBlock>
                 <TypedFormComponents.Input
                     style={{ maxWidth: '11rem' }}
@@ -46,6 +61,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     name={SøknadFormField.antallDager}
                     label={'Hvor mange dager ønsker du å overføre?'}
                     validate={validateRequiredSelect}>
+                    <option value={0}>Velg i listen</option>
                     <option value={1}>1 dag</option>
                     <option value={2}>2 dager</option>
                     <option value={3}>3 dager</option>

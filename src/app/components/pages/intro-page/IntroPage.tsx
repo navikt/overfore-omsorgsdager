@@ -4,10 +4,10 @@ import {
     commonFieldErrorRenderer
 } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import { getTypedFormComponents, YesOrNo } from '@navikt/sif-common-formik/lib';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import Box from 'common/components/box/Box';
 import InformationPoster from 'common/components/information-poster/InformationPoster';
+import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
 import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
@@ -25,6 +25,7 @@ interface PageFormValues {
 }
 
 const PageForm = getTypedFormComponents<PageFormField, PageFormValues>();
+const getText = (part: string) => <FormattedMessage id={`introPage.${part}`} />;
 
 const IntroPage: React.StatelessComponent = () => {
     const intl = useIntl();
@@ -38,7 +39,14 @@ const IntroPage: React.StatelessComponent = () => {
                 <CoronaWarning />
             </Box>
             <Box margin="xxxl" padBottom="xxl">
-                <InformationPoster>Informasjon om hvem som kan bruke denne søknaden</InformationPoster>
+                <InformationPoster>
+                    <FormattedMessage id="introPage.informationposter" />
+                    <ul>
+                        <li>{getText('informationposter.li.1')}</li>
+                        <li>{getText('informationposter.li.2')}</li>
+                        <li>{getText('informationposter.li.3')}</li>
+                    </ul>
+                </InformationPoster>
             </Box>
 
             <PageForm.FormikWrapper
@@ -64,7 +72,14 @@ const IntroPage: React.StatelessComponent = () => {
                         />
                         {harSamfunnskritiskJobb === YesOrNo.NO && (
                             <Box margin="l">
-                                <AlertStripeInfo>Info for brukere som ikke skal bruke søknad</AlertStripeInfo>
+                                <CounsellorPanel>
+                                    <FormattedMessage id="introPage.counsellor" /><br/>
+                                    <Lenke
+                                        target="_blank"
+                                        href="https://www.ks.no/fagomrader/helse-og-omsorg/informasjon-om-koronaviruset/samfunnets-kritiske-funksjoner/">
+                                        FIXME: Les om andre muligheter for å dele omsorgsdagene dine
+                                    </Lenke>
+                                </CounsellorPanel>
                             </Box>
                         )}
 

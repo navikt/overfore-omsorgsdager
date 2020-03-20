@@ -54,8 +54,9 @@
     "step.sendButtonAriaLabel": "Send inn søknaden",
 
     "step.overføring.pageTitle": "Overføre omsorgsdager",
-    "step.overføring.stepTitle": "Overføre omsorgsdager",
+    "step.overføring.stepTitle": "Om overføring",
     "step.overføring.stepIndicatorLabel": "Overføre omsorgsdager",
+    "step.overføring.label.antallbarn": "Hvor mange barn, inkludert fosterbarn, har du i husstanden?",
 
     "step.arbeid.pageTitle": "Omsorgspengesøknad - arbeidssituasjon",
     "step.arbeid.stepTitle": "Arbeidssituasjon",
@@ -79,6 +80,11 @@
 
     "introPage.tittel": "Søknad om overføring av omsorgsdager",
     "introPage.stegTittel": "Kan jeg bruke den digitale søknaden?",
+    "introPage.informationposter": "Den du overfører omsorgspenger til må være minst en av disse punktene",
+    "introPage.informationposter.li.1": "arbeidstager",
+    "introPage.informationposter.li.2": "selvstending næringsdrivende",
+    "introPage.informationposter.li.3": "Frilanser",
+    "introPage.counsellor": "Denne søknaden gjelder kun for deg som har samfunnkritisk jobb og som derfor må overføre omsorgsdager til en annen omsorgsperson",
 
     "welcomingPage.sidetittel": "Søknad om overføring av omsorgsdager",
     "welcomingPage.banner.tittel": "Hei,",
