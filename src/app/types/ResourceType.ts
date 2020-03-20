@@ -1,4 +1,4 @@
 export enum ResourceType {
-    SEND_SØKNAD = 'overfor_omsorgsdager',
+    SEND_SØKNAD = 'overfor-omsorgsdager',
     SØKER = 'soker'
 }
