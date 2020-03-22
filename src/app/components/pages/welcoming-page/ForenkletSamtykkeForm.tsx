@@ -6,8 +6,8 @@ import FormBlock from 'common/components/form-block/FormBlock';
 import bemHelper from 'common/utils/bemUtils';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
 import intlHelper from 'common/utils/intlUtils';
+import SøknadFormComponents from '../../../søknad/SøknadFormComponents';
 import { SøknadFormField } from '../../../types/SøknadFormData';
-import TypedFormComponents from '../../søknad/typed-form-components/TypedFormComponents';
 
 interface Props {
     onConfirm: () => void;
@@ -24,13 +24,12 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
 }) => {
     const intl = useIntl();
     return (
-        <TypedFormComponents.Form
+        <SøknadFormComponents.Form
             onValidSubmit={onConfirm}
             includeButtons={false}
             fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
-
             <FormBlock>
-                <TypedFormComponents.ConfirmationCheckbox
+                <SøknadFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'welcomingPage.samtykke.tekst')}
                     name={SøknadFormField.harForståttRettigheterOgPlikter}
                     validate={(value) => {
@@ -48,7 +47,7 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
                             )
                         }}
                     />
-                </TypedFormComponents.ConfirmationCheckbox>
+                </SøknadFormComponents.ConfirmationCheckbox>
             </FormBlock>
 
             <FormBlock>
@@ -63,7 +62,7 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
                     </Lenke>
                 </div>
             </FormBlock>
-        </TypedFormComponents.Form>
+        </SøknadFormComponents.Form>
     );
 };
 

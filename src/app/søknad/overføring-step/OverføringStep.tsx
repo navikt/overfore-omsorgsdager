@@ -1,23 +1,23 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import {
     validateFødselsnummer, validateRequiredField
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
-import { StepConfigProps, StepID } from '../../../../config/stepConfig';
-import { AntallBarnValg, SøknadFormField } from '../../../../types/SøknadFormData';
-import FormikStep from '../../formik-step/FormikStep';
-import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
-import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
-import { FormattedMessage } from 'react-intl';
 import Box from 'common/components/box/Box';
+import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
+import { StepConfigProps, StepID } from '../../config/stepConfig';
+import { AntallBarnValg, SøknadFormField } from '../../types/SøknadFormData';
+import SøknadFormComponents from '../SøknadFormComponents';
+import SøknadStep from '../SøknadStep';
 
 const getText = (part: string) => <FormattedMessage id={`introPage.${part}`} />;
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
-        <FormikStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
+        <SøknadStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
             <FormBlock>
-                <TypedFormComponents.RadioPanelGroup
+                <SøknadFormComponents.RadioPanelGroup
                     name={SøknadFormField.antallBarn}
                     legend="Hvor mange barn, inkludert fosterbarn, har du i husstanden?"
                     radios={[
@@ -39,7 +39,9 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             </FormBlock>
             <Box margin="l">
                 <CounsellorPanel>
-                    <strong><FormattedMessage id="introPage.informationposter" /></strong>
+                    <strong>
+                        <FormattedMessage id="introPage.informationposter" />
+                    </strong>
                     <ul>
                         <li>{getText('informationposter.li.1')}</li>
                         <li>{getText('informationposter.li.2')}</li>
@@ -48,7 +50,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                 </CounsellorPanel>
             </Box>
             <FormBlock>
-                <TypedFormComponents.Input
+                <SøknadFormComponents.Input
                     style={{ maxWidth: '11rem' }}
                     name={SøknadFormField.fnrMottaker}
                     label={'Hva er fødselsnummeret til den som skal motta omsorgsdagene?'}
@@ -57,7 +59,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             </FormBlock>
             <FormBlock>
                 {/*
-                <TypedFormComponents.Select
+                <SøknadFormComponents.Select
                     bredde="s"
                     name={SøknadFormField.antallDager}
                     label={'Hvor mange dager ønsker du å overføre?'}
@@ -73,16 +75,16 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     <option value={8}>8 dager</option>
                     <option value={9}>9 dager</option>
                     <option value={10}>10 dager</option>
-                </TypedFormComponents.Select>
+                </SøknadFormComponents.Select>
                 */}
-                <TypedFormComponents.Input
+                <SøknadFormComponents.Input
                     style={{ maxWidth: '11rem' }}
                     name={SøknadFormField.antallDager}
                     label={'Hvor mange dager ønsker du å overføre?'}
                     validate={validateRequiredField}
                 />
             </FormBlock>
-        </FormikStep>
+        </SøknadStep>
     );
 };
 

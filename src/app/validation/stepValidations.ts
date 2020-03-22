@@ -1,17 +1,16 @@
-import { YesOrNo } from 'common/types/YesOrNo';
+import { YesOrNo } from '@navikt/sif-common-formik/lib';
 import { SøknadFormData } from '../types/SøknadFormData';
 
 export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter, harSamfunnskritiskJobb }: SøknadFormData) => {
     return harSamfunnskritiskJobb === YesOrNo.YES && harForståttRettigheterOgPlikter === true;
 };
 
-
 export const opplysningerOmOverføringIsValid = (values: SøknadFormData) => {
-    return  values !== undefined; // TODO
+    return values !== undefined; // TODO
 };
 
 export const arbeidStepIsValid = ({ harForståttRettigheterOgPlikter, arbeidssituasjon }: SøknadFormData) => {
-    const harValgtArbeidsSituasjon = (arbeidssituasjon !== undefined && arbeidssituasjon.length > 0);
+    const harValgtArbeidsSituasjon = arbeidssituasjon !== undefined && arbeidssituasjon.length > 0;
     return harForståttRettigheterOgPlikter && harValgtArbeidsSituasjon;
 };
 

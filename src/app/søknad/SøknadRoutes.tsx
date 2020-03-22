@@ -2,20 +2,20 @@ import * as React from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
-import RouteConfig from '../../config/routeConfig';
-import { StepID } from '../../config/stepConfig';
-import { Søkerdata } from '../../types/Søkerdata';
-import { SøknadApiData } from '../../types/SøknadApiData';
-import { SøknadFormData } from '../../types/SøknadFormData';
-import { navigateTo } from '../../utils/navigationUtils';
-import { getNextStepRoute, getSøknadRoute, isAvailable } from '../../utils/routeUtils';
-import ConfirmationPage from '../pages/confirmation-page/ConfirmationPage';
-import GeneralErrorPage from '../pages/general-error-page/GeneralErrorPage';
-import WelcomingPage from '../pages/welcoming-page/WelcomingPage';
-import ArbeidStep from './steps/arbeid-step/ArbeidStep';
-import MedlemsskapStep from './steps/medlemskap-step/MedlemsskapStep';
-import OverføringStep from './steps/overføring-step/OverføringStep';
-import SummaryStep from './steps/summary-step/SummaryStep';
+import ConfirmationPage from '../components/pages/confirmation-page/ConfirmationPage';
+import GeneralErrorPage from '../components/pages/general-error-page/GeneralErrorPage';
+import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
+import RouteConfig from '../config/routeConfig';
+import { StepID } from '../config/stepConfig';
+import { Søkerdata } from '../types/Søkerdata';
+import { SøknadApiData } from '../types/SøknadApiData';
+import { SøknadFormData } from '../types/SøknadFormData';
+import { navigateTo } from '../utils/navigationUtils';
+import { getNextStepRoute, getSøknadRoute, isAvailable } from '../utils/routeUtils';
+import ArbeidStep from './arbeid-step/ArbeidStep';
+import MedlemsskapStep from './medlemskap-step/MedlemsskapStep';
+import OverføringStep from './overføring-step/OverføringStep';
+import SummaryStep from './summary-step/SummaryStep';
 
 export interface KvitteringInfo {
     søkernavn: string;
@@ -28,7 +28,7 @@ const getKvitteringInfoFromApiData = (søkerdata: Søkerdata): KvitteringInfo | 
     };
 };
 
-const SøknadContent: React.FunctionComponent = () => {
+const SøknadRoutes: React.FunctionComponent = () => {
     const [søknadHasBeenSent, setSøknadHasBeenSent] = React.useState(false);
     const [kvitteringInfo, setKvitteringInfo] = React.useState<KvitteringInfo | undefined>(undefined);
     const { values, resetForm } = useFormikContext<SøknadFormData>();
@@ -108,4 +108,4 @@ const SøknadContent: React.FunctionComponent = () => {
     );
 };
 
-export default SøknadContent;
+export default SøknadRoutes;
