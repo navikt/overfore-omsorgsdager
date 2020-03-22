@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import ContentWithHeader from '@navikt/sif-common-core/lib/components/content-with-header/ContentWithHeader';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
+import SummaryList from '@navikt/sif-common-core/lib/components/summary-list/SummaryList';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
@@ -22,9 +23,9 @@ import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
 import SøknadFormComponents from '../SøknadFormComponents';
 import SøknadStep from '../SøknadStep';
-import ArbeidsforholdSummary from './ArbeidsforholdSummary';
 import MedlemsskapSummary from './MedlemsskapSummary';
-import './summary.less';
+import SummaryBlock from './SummaryBlock';
+import './oppsummering.less';
 
 interface Props {
     onApplicationSent: (apiValues: SøknadApiData, søkerdata: Søkerdata) => void;
@@ -32,7 +33,7 @@ interface Props {
 
 const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
     const intl = useIntl();
-    const { values } = useFormikContext<SøknadFormData>();
+    const formik = useFormikContext<SøknadFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
     const history = useHistory();
 
@@ -59,9 +60,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
     const {
         person: { fornavn, mellomnavn, etternavn, fødselsnummer }
     } = søkerdata;
-    const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
-
-    const { arbeidssituasjon, medlemskap } = apiValues;
+    const apiValues = mapFormDataToApiData(formik.values, intl.locale as Locale);
 
     return (
         <SøknadStep
@@ -88,23 +87,24 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
                 </Panel>
             </Box>
 
-            <ArbeidsforholdSummary arbeidssituasjoner={arbeidssituasjon} />
-            <Box margin="xl">
-                <strong>Hvor mange barn?</strong>
-                <br />
-                {values[SøknadFormField.antallBarn]}
-            </Box>
-            <Box margin="xl">
-                <strong>Fødselsnummeret til den som får overførte dager</strong>
-                <br />
-                {fødselsnummer}
-            </Box>
-            <Box margin="xl">
-                <strong>Anall dager som skal overføres</strong>
-                <br />
-                {values[SøknadFormField.antallDager]}
-            </Box>
-            <MedlemsskapSummary medlemskap={medlemskap} />
+            <SummaryBlock header="Hva er din arbeidssituasjon?">
+                <SummaryList
+                    items={apiValues.arbeidssituasjon}
+                    itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
+                />
+            </SummaryBlock>
+
+            <SummaryBlock header="Hvor mange barn, inkludert fosterbarn, har du i husstanden?">
+                {apiValues.antallBarn}
+            </SummaryBlock>
+
+            <SummaryBlock header="Hva er fødselsnummeret til den som skal motta omsorgsdagene?">
+                {apiValues.fnrMottaker}
+            </SummaryBlock>
+
+            <SummaryBlock header="Hvor mange dager ønsker du å overføre?">{apiValues.antallDager}</SummaryBlock>
+
+            <MedlemsskapSummary medlemskap={apiValues.medlemskap} />
 
             <Box margin="l">
                 <SøknadFormComponents.ConfirmationCheckbox

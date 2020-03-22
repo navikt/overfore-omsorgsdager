@@ -16,7 +16,7 @@ const MedlemsskapSummary: React.FunctionComponent<Props> = ({ medlemskap }) => {
     return (
         <>
             <Box margin="l">
-                <ContentWithHeader header={intlHelper(intl, 'steg.oppsummering.utlandetSiste12.header')}>
+                <ContentWithHeader header={intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.spm')}>
                     {medlemskap.harBoddIUtlandetSiste12Mnd === true && intlHelper(intl, 'Ja')}
                     {medlemskap.harBoddIUtlandetSiste12Mnd === false && intlHelper(intl, 'Nei')}
                 </ContentWithHeader>
@@ -33,7 +33,7 @@ const MedlemsskapSummary: React.FunctionComponent<Props> = ({ medlemskap }) => {
             )}
 
             <Box margin="l">
-                <ContentWithHeader header={intlHelper(intl, 'steg.oppsummering.utlandetNeste12.header')}>
+                <ContentWithHeader header={intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.spm')}>
                     {medlemskap.skalBoIUtlandetNeste12Mnd === true && intlHelper(intl, 'Ja')}
                     {medlemskap.skalBoIUtlandetNeste12Mnd === false && intlHelper(intl, 'Nei')}
                 </ContentWithHeader>

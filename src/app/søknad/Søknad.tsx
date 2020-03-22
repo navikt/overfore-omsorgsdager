@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { TypedFormikWrapper } from '@navikt/sif-common-formik/lib';
 import IkkeMyndigPage from '../components/pages/ikke-myndig-page/IkkeMyndigPage';
-import { initialSøknadValues, SøknadFormData } from '../types/SøknadFormData';
+import { initialSøknadValues } from '../types/SøknadFormData';
 import SøknadEssentialsLoader from './SøknadEssentialsLoader';
+import SøknadFormComponents from './SøknadFormComponents';
 import SøknadRoutes from './SøknadRoutes';
 
 const Søknad = () => (
@@ -15,7 +15,7 @@ const Søknad = () => (
                 }
             }
             return (
-                <TypedFormikWrapper<SøknadFormData>
+                <SøknadFormComponents.FormikWrapper
                     initialValues={initialSøknadValues}
                     onSubmit={() => null}
                     renderForm={() => <SøknadRoutes />}

@@ -1,6 +1,7 @@
 import {
     createFieldValidationError
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
+import { FormikValidateFunction } from '@navikt/sif-common-formik/lib';
 import { Utenlandsopphold } from 'common/forms/utenlandsopphold/types';
 import {
     date1YearAgo, date1YearFromNow, dateRangesCollide, dateRangesExceedsRange
@@ -15,12 +16,31 @@ export enum AppFieldValidationErrors {
     'fødselsnummer_ugyldig' = 'fieldvalidation.fødselsnummer.ugyldig',
     'utenlandsopphold_ikke_registrert' = 'fieldvalidation.utenlandsopphold_ikke_registrert',
     'utenlandsopphold_overlapper' = 'fieldvalidation.utenlandsopphold_overlapper',
-    'utenlandsopphold_utenfor_periode' = 'fieldvalidation.utenlandsopphold_utenfor_periode'
+    'utenlandsopphold_utenfor_periode' = 'fieldvalidation.utenlandsopphold_utenfor_periode',
+    'dager_er_ikke_tall' = 'fieldvalidation.dager_er_ikke_tall',
+    'dager_feil_antall' = 'fieldvalidation.dager_feil_antall'
 }
 
 export const hasValue = (v: any) => v !== '' && v !== undefined && v !== null;
 
+export type FieldValidationArray = (validations: FormikValidateFunction[]) => (value: any) => FieldValidationResult;
+
 const fieldIsRequiredError = () => createAppFieldValidationError(AppFieldValidationErrors.påkrevd);
+
+export const validateAll: FieldValidationArray = (validations: FormikValidateFunction[]) => (
+    value: any
+): FieldValidationResult => {
+    let result: FieldValidationResult;
+    validations.some((validate) => {
+        const r = validate(value);
+        if (r) {
+            result = r;
+            return true;
+        }
+        return false;
+    });
+    return result;
+};
 
 export const createAppFieldValidationError = (
     error: AppFieldValidationErrors | AppFieldValidationErrors,
@@ -39,13 +59,6 @@ export const validateFødselsnummer = (v: string): FieldValidationResult => {
         }
     }
 };
-
-// export const validateYesOrNoIsAnswered = (answer: YesOrNo): FieldValidationResult => {
-//     if (answer === YesOrNo.UNANSWERED || answer === undefined) {
-//         return fieldIsRequiredError();
-//     }
-//     return undefined;
-// };
 
 export const validateUtenlandsoppholdSiste12Mnd = (utenlandsopphold: Utenlandsopphold[]): FieldValidationResult => {
     if (utenlandsopphold.length === 0) {
@@ -76,13 +89,6 @@ export const validateUtenlandsoppholdNeste12Mnd = (utenlandsopphold: Utenlandsop
     return undefined;
 };
 
-// export const validateRequiredField = (value: any): FieldValidationResult => {
-//     if (!hasValue(value)) {
-//         return fieldIsRequiredError();
-//     }
-//     return undefined;
-// };
-
 export const validateArbeid = (value: Arbeidssituasjon[]): FieldValidationResult => {
     if (value === undefined || value.length === 0) {
         return fieldIsRequiredError();
@@ -90,14 +96,15 @@ export const validateArbeid = (value: Arbeidssituasjon[]): FieldValidationResult
     return undefined;
 };
 
-// export const fieldValidationError = (
-//     key: AppFieldValidationErrors | undefined,
-//     values?: any
-// ): FieldValidationResult => {
-//     return key
-//         ? {
-//               key,
-//               values
-//           }
-//         : undefined;
-// };
+export const validateNumeriValue = ({ min, max }: { min?: number; max?: number }) => (
+    value: any
+): FieldValidationResult => {
+    const num = parseFloat(value);
+    if (isNaN(num)) {
+        return createFieldValidationError(AppFieldValidationErrors.dager_er_ikke_tall);
+    }
+    if ((min !== undefined && num < min) || (max !== undefined && value > max)) {
+        return createFieldValidationError(AppFieldValidationErrors.dager_feil_antall);
+    }
+    return undefined;
+};
