@@ -14,7 +14,7 @@ import { navigateTo } from '../utils/navigationUtils';
 import { getNextStepRoute, getSøknadRoute, isAvailable } from '../utils/routeUtils';
 import ArbeidStep from './arbeid-step/ArbeidStep';
 import MedlemsskapStep from './medlemskap-step/MedlemsskapStep';
-import SummaryStep from './oppsummering-step/OppsummeringStep';
+import OppsummeringStep from './oppsummering-step/OppsummeringStep';
 import OverføringStep from './overføring-step/OverføringStep';
 
 export interface KvitteringInfo {
@@ -44,6 +44,7 @@ const SøknadRoutes: React.FunctionComponent = () => {
         });
     };
 
+    console.log('routes');
     return (
         <Switch>
             <Route
@@ -82,13 +83,16 @@ const SøknadRoutes: React.FunctionComponent = () => {
                 <Route
                     path={getSøknadRoute(StepID.SUMMARY)}
                     render={() => (
-                        <SummaryStep
+                        <OppsummeringStep
                             onApplicationSent={(apiData: SøknadApiData, søkerdata: Søkerdata) => {
                                 const info = getKvitteringInfoFromApiData(søkerdata);
                                 setKvitteringInfo(info);
                                 setSøknadHasBeenSent(true);
                                 resetForm();
-                                navigateTo(RouteConfig.SØKNAD_SENDT_ROUTE, history);
+                                console.log(søknadHasBeenSent);
+                                setTimeout(() => {
+                                    navigateTo(RouteConfig.SØKNAD_SENDT_ROUTE, history);
+                                });
                             }}
                         />
                     )}

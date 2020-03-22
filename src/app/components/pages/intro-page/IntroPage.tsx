@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import {
     commonFieldErrorRenderer
 } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { getTypedFormComponents, YesOrNo } from '@navikt/sif-common-formik/lib';
 import Lenke from 'nav-frontend-lenker';
 import Box from 'common/components/box/Box';
@@ -33,8 +34,8 @@ const IntroPage: React.StatelessComponent = () => {
     return (
         <Page
             className={bem.block}
-            title="Overføring av omsorgsdager"
-            topContentRenderer={() => <StepBanner text="Kan jeg bruke den digitale søknaden?" />}>
+            title={intlHelper(intl, 'introPage.tittel')}
+            topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
             <Box margin="xl" padBottom="l">
                 <CoronaWarning />
             </Box>
@@ -58,7 +59,7 @@ const IntroPage: React.StatelessComponent = () => {
                         includeButtons={false}>
                         <PageForm.YesOrNoQuestion
                             name={PageFormField.mottakerErGyldig}
-                            legend="Er den du skal overføre omsorgsdager til arbeidstaker, selvstendig næringsdrivende eller frilanser?"
+                            legend={intlHelper(intl, 'introPage.mottaker.spm')}
                         />
                         {mottakerErGyldig === YesOrNo.NO && (
                             <Box margin="l">
