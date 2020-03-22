@@ -43,8 +43,6 @@ const SøknadRoutes: React.FunctionComponent = () => {
             }
         });
     };
-
-    console.log('routes');
     return (
         <Switch>
             <Route
@@ -89,17 +87,14 @@ const SøknadRoutes: React.FunctionComponent = () => {
                                 setKvitteringInfo(info);
                                 setSøknadHasBeenSent(true);
                                 resetForm();
-                                console.log(søknadHasBeenSent);
-                                setTimeout(() => {
-                                    navigateTo(RouteConfig.SØKNAD_SENDT_ROUTE, history);
-                                });
+                                navigateTo(RouteConfig.SØKNAD_SENDT_ROUTE, history);
                             }}
                         />
                     )}
                 />
             )}
 
-            {isAvailable(RouteConfig.SØKNAD_SENDT_ROUTE, values) && søknadHasBeenSent === true && (
+            {isAvailable(RouteConfig.SØKNAD_SENDT_ROUTE, values, søknadHasBeenSent) && (
                 <Route
                     path={RouteConfig.SØKNAD_SENDT_ROUTE}
                     render={() => <ConfirmationPage kvitteringInfo={kvitteringInfo} />}
