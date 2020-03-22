@@ -9,8 +9,10 @@ import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps } from '../../../config/stepConfig';
 import BehandlingAvPersonopplysningerModal from '../../information/behandling-av-personopplysninger-modal/BehandlingAvPersonopplysningerModal';
 import DinePlikterModal from '../../information/dine-plikter-modal/DinePlikterModal';
-import SamtykkeForm from './SamtykkeForm';
+import ForenkletSamtykkeForm from './ForenkletSamtykkeForm';
+
 import './welcomingPage.less';
+import AlertStripeInfo from 'nav-frontend-alertstriper/lib/info-alertstripe';
 
 const bem = bemHelper('welcomingPage');
 
@@ -20,6 +22,7 @@ interface WelcomingPageState {
 }
 
 type Props = Omit<StepConfigProps, 'formValues'> & WrappedComponentProps;
+const getText = (part: string) => <FormattedMessage id={`introPage.${part}`} />
 
 class WelcomingPage extends React.Component<Props, WelcomingPageState> {
     constructor(props: Props) {
@@ -82,7 +85,17 @@ class WelcomingPage extends React.Component<Props, WelcomingPageState> {
                             <FormattedMessage id="welcomingPage.introtittel" />
                         </Sidetittel>
                     </Box>
-                    <SamtykkeForm
+                    <Box margin="xl">
+                        <AlertStripeInfo>
+                            <FormattedMessage id="introPage.informationposter" />
+                            <ul>
+                                <li>{getText('informationposter.li.1')}</li>
+                                <li>{getText('informationposter.li.2')}</li>
+                                <li>{getText('informationposter.li.3')}</li>
+                            </ul>
+                        </AlertStripeInfo>
+                    </Box>
+                    <ForenkletSamtykkeForm
                         onOpenDinePlikterModal={this.openDinePlikterModal}
                         openBehandlingAvPersonopplysningerModal={this.openBehandlingAvPersonopplysningerModal}
                         onConfirm={onValidSubmit}

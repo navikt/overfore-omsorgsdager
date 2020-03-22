@@ -54,8 +54,9 @@
     "step.sendButtonAriaLabel": "Send inn søknaden",
 
     "step.overføring.pageTitle": "Overføre omsorgsdager",
-    "step.overføring.stepTitle": "Overføre omsorgsdager",
+    "step.overføring.stepTitle": "Om overføring",
     "step.overføring.stepIndicatorLabel": "Overføre omsorgsdager",
+    "step.overføring.label.antallbarn": "Hvor mange barn, inkludert fosterbarn, har du i husstanden?",
 
     "step.arbeid.pageTitle": "Omsorgspengesøknad - arbeidssituasjon",
     "step.arbeid.stepTitle": "Arbeidssituasjon",
@@ -79,11 +80,16 @@
 
     "introPage.tittel": "Søknad om overføring av omsorgsdager",
     "introPage.stegTittel": "Kan jeg bruke den digitale søknaden?",
+    "introPage.informationposter": "Den du overfører omsorgspenger til må være minst en av disse punktene",
+    "introPage.informationposter.li.1": "arbeidstager",
+    "introPage.informationposter.li.2": "selvstending næringsdrivende",
+    "introPage.informationposter.li.3": "Frilanser",
+    "introPage.counsellor": "Denne søknaden gjelder kun for deg som har samfunnkritisk jobb og som derfor må overføre omsorgsdager til en annen omsorgsperson",
 
     "welcomingPage.sidetittel": "Søknad om overføring av omsorgsdager",
     "welcomingPage.banner.tittel": "Hei,",
     "welcomingPage.banner.tekst": "jeg vil hjelpe deg med å fylle ut søknaden!",
-    "welcomingPage.introtittel": "Søknad om overføring av omsorgsdager",
+    "welcomingPage.introtittel": "Søknad om overføring av omsorgsdager på grunn av samfunnskritisk jobb",
     "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
     "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
     "welcomingPage.samtykke.harForståttLabel": "For å gå videre med søknaden må du bekrefte at du har lest og forstått {plikterLink}.",

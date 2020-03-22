@@ -22,6 +22,7 @@ import { mapFormDataToApiData } from '../../../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../../../utils/navigationUtils';
 import FormikStep from '../../formik-step/FormikStep';
 import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
+import ArbeidsforholdSummary from './ArbeidsforholdSummary';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import './summary.less';
 
@@ -60,7 +61,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
     } = søkerdata;
     const apiValues = mapFormDataToApiData(values, intl.locale as Locale);
 
-    const { medlemskap } = apiValues;
+    const { arbeidssituasjon, medlemskap } = apiValues;
 
     return (
         <FormikStep
@@ -87,6 +88,19 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
                 </Panel>
             </Box>
 
+            <ArbeidsforholdSummary arbeidssituasjoner={arbeidssituasjon} />
+            <Box margin="xl">
+                <strong>Hvor mange barn?</strong><br />
+                {values[SøknadFormField.antallBarn]}
+            </Box>
+            <Box margin="xl">
+                <strong>Fødselsnummeret til den som får overførte dager</strong><br />
+                {fødselsnummer}
+            </Box>
+            <Box margin="xl">
+                <strong>Anall dager som skal overføres</strong><br />
+                {values[SøknadFormField.antallDager]}
+            </Box>
             <MedlemsskapSummary medlemskap={medlemskap} />
 
             <Box margin="l">

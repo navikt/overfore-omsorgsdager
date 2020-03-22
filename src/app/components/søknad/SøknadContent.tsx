@@ -52,19 +52,12 @@ const SøknadContent: React.FunctionComponent = () => {
                     <WelcomingPage
                         onValidSubmit={() =>
                             setTimeout(() => {
-                                navigateTo(`${RouteConfig.SØKNAD_ROUTE_PREFIX}/${StepID.OVERFØRING}`, history);
+                                navigateTo(`${RouteConfig.SØKNAD_ROUTE_PREFIX}/${StepID.ARBEID}`, history);
                             })
                         }
                     />
                 )}
             />
-
-            {isAvailable(StepID.OVERFØRING, values) && (
-                <Route
-                    path={getSøknadRoute(StepID.OVERFØRING)}
-                    render={() => <OverføringStep onValidSubmit={() => navigateToNextStep(StepID.OVERFØRING)} />}
-                />
-            )}
 
             {isAvailable(StepID.ARBEID, values) && (
                 <Route
@@ -72,7 +65,12 @@ const SøknadContent: React.FunctionComponent = () => {
                     render={() => <ArbeidStep onValidSubmit={() => navigateToNextStep(StepID.ARBEID)} />}
                 />
             )}
-
+            {isAvailable(StepID.OVERFØRING, values) && (
+                <Route
+                    path={getSøknadRoute(StepID.OVERFØRING)}
+                    render={() => <OverføringStep onValidSubmit={() => navigateToNextStep(StepID.OVERFØRING)} />}
+                />
+            )}
             {isAvailable(StepID.MEDLEMSKAP, values) && (
                 <Route
                     path={getSøknadRoute(StepID.MEDLEMSKAP)}

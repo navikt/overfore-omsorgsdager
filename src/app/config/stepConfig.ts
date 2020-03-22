@@ -38,23 +38,23 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
 export const getStepConfig = (): StepConfigInterface => {
     let idx = 0;
     const config = {
-        [StepID.OVERFØRING]: {
-            ...getStepConfigItemTextKeys(StepID.OVERFØRING),
-            index: idx++,
-            nextStep: StepID.ARBEID,
-            backLinkHref: routeConfig.WELCOMING_PAGE_ROUTE
-        },
         [StepID.ARBEID]: {
             ...getStepConfigItemTextKeys(StepID.ARBEID),
             index: idx++,
+            nextStep: StepID.OVERFØRING,
+            backLinkHref: routeConfig.WELCOMING_PAGE_ROUTE
+        },
+        [StepID.OVERFØRING]: {
+            ...getStepConfigItemTextKeys(StepID.OVERFØRING),
+            index: idx++,
             nextStep: StepID.MEDLEMSKAP,
-            backLinkHref: getSøknadRoute(StepID.OVERFØRING)
+            backLinkHref: getSøknadRoute(StepID.ARBEID)
         },
         [StepID.MEDLEMSKAP]: {
             ...getStepConfigItemTextKeys(StepID.MEDLEMSKAP),
             index: idx++,
             nextStep: StepID.SUMMARY,
-            backLinkHref: getSøknadRoute(StepID.ARBEID)
+            backLinkHref: getSøknadRoute(StepID.OVERFØRING)
         },
         [StepID.SUMMARY]: {
             ...getStepConfigItemTextKeys(StepID.SUMMARY),

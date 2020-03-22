@@ -20,9 +20,9 @@ export const getNextStepRoute = (stepId: StepID, formData?: SøknadFormData): st
 export const isAvailable = (path: StepID | RouteConfig, values: SøknadFormData) => {
     if (!appIsRunningInDevEnvironment()) {
         switch (path) {
-            case StepID.OVERFØRING:
-                return welcomingPageIsValid(values);
             case StepID.ARBEID:
+                return welcomingPageIsValid(values);
+            case StepID.OVERFØRING:
                 return arbeidStepIsAvailable(values);
             case StepID.MEDLEMSKAP:
                 return medlemskapStepAvailable(values);
