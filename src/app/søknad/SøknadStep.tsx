@@ -29,6 +29,8 @@ const SøknadStep: React.FunctionComponent<Props> = (props) => {
             <SøknadFormComponents.Form
                 onValidSubmit={onValidFormSubmit}
                 includeButtons={false}
+                includeValidationSummary={true}
+                runDelayedFormValidation={true}
                 fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
                 {children}
                 <FormBlock>

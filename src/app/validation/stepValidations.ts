@@ -1,8 +1,8 @@
 import { YesOrNo } from '@navikt/sif-common-formik/lib';
 import { SøknadFormData } from '../types/SøknadFormData';
 
-export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter, harSamfunnskritiskJobb }: SøknadFormData) => {
-    return harSamfunnskritiskJobb === YesOrNo.YES && harForståttRettigheterOgPlikter === true;
+export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter }: SøknadFormData) => {
+    return harForståttRettigheterOgPlikter === true;
 };
 
 export const opplysningerOmOverføringIsValid = (values: SøknadFormData) => {

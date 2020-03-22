@@ -1,17 +1,13 @@
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import {
     validateFødselsnummer, validateRequiredField
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
-import Box from 'common/components/box/Box';
-import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { AntallBarnValg, SøknadFormField } from '../../types/SøknadFormData';
+import { validateAll, validateNumeriValue } from '../../validation/fieldValidations';
 import SøknadFormComponents from '../SøknadFormComponents';
 import SøknadStep from '../SøknadStep';
-
-const getText = (part: string) => <FormattedMessage id={`introPage.${part}`} />;
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
@@ -37,20 +33,9 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     validate={validateRequiredField}
                 />
             </FormBlock>
-            <Box margin="l">
-                <CounsellorPanel>
-                    <strong>
-                        <FormattedMessage id="introPage.informationposter" />
-                    </strong>
-                    <ul>
-                        <li>{getText('informationposter.li.1')}</li>
-                        <li>{getText('informationposter.li.2')}</li>
-                        <li>{getText('informationposter.li.3')}</li>
-                    </ul>
-                </CounsellorPanel>
-            </Box>
             <FormBlock>
                 <SøknadFormComponents.Input
+                    bredde="M"
                     style={{ maxWidth: '11rem' }}
                     name={SøknadFormField.fnrMottaker}
                     label={'Hva er fødselsnummeret til den som skal motta omsorgsdagene?'}
@@ -58,30 +43,14 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                 />
             </FormBlock>
             <FormBlock>
-                {/*
-                <SøknadFormComponents.Select
-                    bredde="s"
-                    name={SøknadFormField.antallDager}
-                    label={'Hvor mange dager ønsker du å overføre?'}
-                    validate={validateRequiredSelect}>
-                    <option value={0}>Velg i listen</option>
-                    <option value={1}>1 dag</option>
-                    <option value={2}>2 dager</option>
-                    <option value={3}>3 dager</option>
-                    <option value={4}>4 dager</option>
-                    <option value={5}>5 dager</option>
-                    <option value={6}>6 dager</option>
-                    <option value={7}>7 dager</option>
-                    <option value={8}>8 dager</option>
-                    <option value={9}>9 dager</option>
-                    <option value={10}>10 dager</option>
-                </SøknadFormComponents.Select>
-                */}
                 <SøknadFormComponents.Input
-                    style={{ maxWidth: '11rem' }}
+                    bredde="XS"
                     name={SøknadFormField.antallDager}
                     label={'Hvor mange dager ønsker du å overføre?'}
-                    validate={validateRequiredField}
+                    validate={validateAll([validateRequiredField, validateNumeriValue({ min: 1, max: 99 })])}
+                    inputMode="numeric"
+                    max={2}
+                    maxLength={2}
                 />
             </FormBlock>
         </SøknadStep>

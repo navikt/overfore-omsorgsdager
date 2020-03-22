@@ -16,7 +16,6 @@ export enum AntallBarnValg {
 export enum SøknadFormField {
     harForståttRettigheterOgPlikter = 'harForståttRettigheterOgPlikter',
     harBekreftetOpplysninger = 'harBekreftetOpplysninger',
-    harSamfunnskritiskJobb = 'harSamfunnskritiskJobb',
     antallBarn = 'antallBarn',
     fnrMottaker = 'fnrMottaker',
     antallDager = 'antallDager',
@@ -31,10 +30,9 @@ export enum SøknadFormField {
 export interface SøknadFormData {
     [SøknadFormField.harForståttRettigheterOgPlikter]: boolean;
     [SøknadFormField.harBekreftetOpplysninger]: boolean;
-    [SøknadFormField.harSamfunnskritiskJobb]: YesOrNo;
-    [SøknadFormField.antallBarn]?: AntallBarnValg;
-    [SøknadFormField.fnrMottaker]?: string;
-    [SøknadFormField.antallDager]?: number;
+    [SøknadFormField.antallBarn]: AntallBarnValg;
+    [SøknadFormField.fnrMottaker]: string;
+    [SøknadFormField.antallDager]: number;
     [SøknadFormField.arbeidssituasjon]: Arbeidssituasjon[];
     [SøknadFormField.harBoddUtenforNorgeSiste12Mnd]: YesOrNo;
     [SøknadFormField.utenlandsoppholdSiste12Mnd]: Utenlandsopphold[];
@@ -42,10 +40,9 @@ export interface SøknadFormData {
     [SøknadFormField.utenlandsoppholdNeste12Mnd]: Utenlandsopphold[];
 }
 
-export const initialSøknadValues: SøknadFormData = {
+export const initialSøknadValues: Partial<SøknadFormData> = {
     [SøknadFormField.harForståttRettigheterOgPlikter]: false,
     [SøknadFormField.harBekreftetOpplysninger]: false,
-    [SøknadFormField.harSamfunnskritiskJobb]: YesOrNo.UNANSWERED,
     [SøknadFormField.fnrMottaker]: '',
     [SøknadFormField.arbeidssituasjon]: [],
     [SøknadFormField.harBoddUtenforNorgeSiste12Mnd]: YesOrNo.UNANSWERED,

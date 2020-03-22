@@ -14,8 +14,8 @@ import { navigateTo } from '../utils/navigationUtils';
 import { getNextStepRoute, getSøknadRoute, isAvailable } from '../utils/routeUtils';
 import ArbeidStep from './arbeid-step/ArbeidStep';
 import MedlemsskapStep from './medlemskap-step/MedlemsskapStep';
+import SummaryStep from './oppsummering-step/OppsummeringStep';
 import OverføringStep from './overføring-step/OverføringStep';
-import SummaryStep from './summary-step/SummaryStep';
 
 export interface KvitteringInfo {
     søkernavn: string;

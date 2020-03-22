@@ -53,9 +53,9 @@
     "step.sendButtonLabel": "Send inn søknaden",
     "step.sendButtonAriaLabel": "Send inn søknaden",
 
-    "step.overføring.pageTitle": "Overføre omsorgsdager",
+    "step.overføring.pageTitle": "Om overføring",
     "step.overføring.stepTitle": "Om overføring",
-    "step.overføring.stepIndicatorLabel": "Overføre omsorgsdager",
+    "step.overføring.stepIndicatorLabel": "Om overføring",
     "step.overføring.label.antallbarn": "Hvor mange barn, inkludert fosterbarn, har du i husstanden?",
 
     "step.arbeid.pageTitle": "Omsorgspengesøknad - arbeidssituasjon",
@@ -84,12 +84,12 @@
     "introPage.informationposter.li.1": "arbeidstager",
     "introPage.informationposter.li.2": "selvstending næringsdrivende",
     "introPage.informationposter.li.3": "Frilanser",
-    "introPage.counsellor": "Denne søknaden gjelder kun for deg som har samfunnkritisk jobb og som derfor må overføre omsorgsdager til en annen omsorgsperson",
+    "introPage.counsellor": "Denne søknaden gjelder kun for deg som skal overføre omsorgsdager til en annen omsorgsperson",
 
     "welcomingPage.sidetittel": "Søknad om overføring av omsorgsdager",
     "welcomingPage.banner.tittel": "Hei,",
     "welcomingPage.banner.tekst": "jeg vil hjelpe deg med å fylle ut søknaden!",
-    "welcomingPage.introtittel": "Søknad om overføring av omsorgsdager på grunn av samfunnskritisk jobb",
+    "welcomingPage.introtittel": "Søknad om overføring av omsorgsdager",
     "welcomingPage.samtykke.tekst": "Jeg bekrefter at jeg har lest og forstått",
     "welcomingPage.samtykke.harIkkeGodkjentVilkår": "Du må godkjenne vilkårene",
     "welcomingPage.samtykke.harForståttLabel": "For å gå videre med søknaden må du bekrefte at du har lest og forstått {plikterLink}.",
@@ -144,8 +144,6 @@
 
     "steg.oppsummering.arbeidssituasjon.header": "Din arbeidssituasjon",
 
-    "steg.oppsummering.utlandetSiste12.header": "Bodd i utlandet siste 12 måneder",
-    "steg.oppsummering.utlandetNeste12.header": "Skal bo i utlandet neste 12 måneder",
     "steg.oppsummering.utlandetSiste12.liste.header": "Utenlandsopphold siste 12 måneder",
     "steg.oppsummering.utlandetNeste12.liste.header": "Utenlandsopphold neste 12 måneder",
     "steg.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til omsorgspenger.",
