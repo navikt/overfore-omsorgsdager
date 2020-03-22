@@ -10,8 +10,8 @@ import bemHelper from 'common/utils/bemUtils';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
 import intlHelper from 'common/utils/intlUtils';
 import { validateYesOrNoIsAnswered } from 'common/validation/fieldValidations';
+import SøknadFormComponents from '../../../søknad/SøknadFormComponents';
 import { SøknadFormData, SøknadFormField } from '../../../types/SøknadFormData';
-import TypedFormComponents from '../../søknad/typed-form-components/TypedFormComponents';
 
 interface Props {
     onConfirm: () => void;
@@ -29,12 +29,12 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
     const { values: formValues } = useFormikContext<SøknadFormData>();
     const intl = useIntl();
     return (
-        <TypedFormComponents.Form
+        <SøknadFormComponents.Form
             onValidSubmit={onConfirm}
             includeButtons={false}
             fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
             <FormBlock>
-                <TypedFormComponents.YesOrNoQuestion
+                <SøknadFormComponents.YesOrNoQuestion
                     name={SøknadFormField.harSamfunnskritiskJobb}
                     legend={'Har du en jobb som faller inn under samfunnskritiske funksjoner?'}
                     validate={validateYesOrNoIsAnswered}
@@ -57,7 +57,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                 {formValues.harSamfunnskritiskJobb === YesOrNo.YES && (
                     <>
                         <FormBlock>
-                            <TypedFormComponents.ConfirmationCheckbox
+                            <SøknadFormComponents.ConfirmationCheckbox
                                 label={intlHelper(intl, 'welcomingPage.samtykke.tekst')}
                                 name={SøknadFormField.harForståttRettigheterOgPlikter}
                                 validate={(value) => {
@@ -75,7 +75,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                                         )
                                     }}
                                 />
-                            </TypedFormComponents.ConfirmationCheckbox>
+                            </SøknadFormComponents.ConfirmationCheckbox>
                         </FormBlock>
                         <FormBlock>
                             <Hovedknapp className={bem.element('startApplicationButton')}>
@@ -92,7 +92,7 @@ const SamtykkeForm: React.FunctionComponent<Props> = ({
                     </>
                 )}
             </FormBlock>
-        </TypedFormComponents.Form>
+        </SøknadFormComponents.Form>
     );
 };
 export default SamtykkeForm;

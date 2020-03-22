@@ -3,10 +3,10 @@ import { useIntl } from 'react-intl';
 import { Knapp } from 'nav-frontend-knapper';
 import FormBlock from 'common/components/form-block/FormBlock';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
-import { getStepConfig } from '../../../config/stepConfig';
-import { getStepTexts } from '../../../utils/stepUtils';
-import Step, { StepProps } from '../../step/Step';
-import TypedFormComponents from '../typed-form-components/TypedFormComponents';
+import Step, { StepProps } from '../components/step/Step';
+import { getStepConfig } from '../config/stepConfig';
+import { getStepTexts } from '../utils/stepUtils';
+import SøknadFormComponents from './SøknadFormComponents';
 
 export interface FormikStepProps {
     children: React.ReactNode;
@@ -19,14 +19,14 @@ export interface FormikStepProps {
 
 type Props = FormikStepProps & StepProps;
 
-const FormikStep: React.FunctionComponent<Props> = (props) => {
+const SøknadStep: React.FunctionComponent<Props> = (props) => {
     const intl = useIntl();
     const { children, onValidFormSubmit, showButtonSpinner, buttonDisabled, id } = props;
     const stepConfig = getStepConfig();
     const texts = getStepTexts(intl, id, stepConfig);
     return (
         <Step stepConfig={stepConfig} {...props}>
-            <TypedFormComponents.Form
+            <SøknadFormComponents.Form
                 onValidSubmit={onValidFormSubmit}
                 includeButtons={false}
                 fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
@@ -42,9 +42,9 @@ const FormikStep: React.FunctionComponent<Props> = (props) => {
                         {texts.nextButtonLabel}
                     </Knapp>
                 </FormBlock>
-            </TypedFormComponents.Form>
+            </SøknadFormComponents.Form>
         </Step>
     );
 };
 
-export default FormikStep;
+export default SøknadStep;

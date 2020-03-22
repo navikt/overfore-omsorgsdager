@@ -10,18 +10,18 @@ import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { sendApplication } from '../../../../api/api';
-import RouteConfig from '../../../../config/routeConfig';
-import { StepID } from '../../../../config/stepConfig';
-import { SøkerdataContext } from '../../../../context/SøkerdataContext';
-import { Søkerdata } from '../../../../types/Søkerdata';
-import { SøknadApiData } from '../../../../types/SøknadApiData';
-import { SøknadFormData, SøknadFormField } from '../../../../types/SøknadFormData';
-import * as apiUtils from '../../../../utils/apiUtils';
-import { mapFormDataToApiData } from '../../../../utils/mapFormDataToApiData';
-import { navigateTo, navigateToLoginPage } from '../../../../utils/navigationUtils';
-import FormikStep from '../../formik-step/FormikStep';
-import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
+import { sendApplication } from '../../api/api';
+import RouteConfig from '../../config/routeConfig';
+import { StepID } from '../../config/stepConfig';
+import { SøkerdataContext } from '../../context/SøkerdataContext';
+import { Søkerdata } from '../../types/Søkerdata';
+import { SøknadApiData } from '../../types/SøknadApiData';
+import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import * as apiUtils from '../../utils/apiUtils';
+import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
+import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
+import SøknadFormComponents from '../SøknadFormComponents';
+import SøknadStep from '../SøknadStep';
 import ArbeidsforholdSummary from './ArbeidsforholdSummary';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import './summary.less';
@@ -64,7 +64,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
     const { arbeidssituasjon, medlemskap } = apiValues;
 
     return (
-        <FormikStep
+        <SøknadStep
             id={StepID.SUMMARY}
             onValidFormSubmit={() => {
                 setTimeout(() => {
@@ -90,21 +90,24 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
 
             <ArbeidsforholdSummary arbeidssituasjoner={arbeidssituasjon} />
             <Box margin="xl">
-                <strong>Hvor mange barn?</strong><br />
+                <strong>Hvor mange barn?</strong>
+                <br />
                 {values[SøknadFormField.antallBarn]}
             </Box>
             <Box margin="xl">
-                <strong>Fødselsnummeret til den som får overførte dager</strong><br />
+                <strong>Fødselsnummeret til den som får overførte dager</strong>
+                <br />
                 {fødselsnummer}
             </Box>
             <Box margin="xl">
-                <strong>Anall dager som skal overføres</strong><br />
+                <strong>Anall dager som skal overføres</strong>
+                <br />
                 {values[SøknadFormField.antallDager]}
             </Box>
             <MedlemsskapSummary medlemskap={medlemskap} />
 
             <Box margin="l">
-                <TypedFormComponents.ConfirmationCheckbox
+                <SøknadFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'steg.oppsummering.bekrefterOpplysninger')}
                     name={SøknadFormField.harBekreftetOpplysninger}
                     validate={(value) => {
@@ -116,7 +119,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
                     }}
                 />
             </Box>
-        </FormikStep>
+        </SøknadStep>
     );
 };
 

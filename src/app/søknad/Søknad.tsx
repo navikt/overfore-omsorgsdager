@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { TypedFormikWrapper } from '@navikt/sif-common-formik/lib';
-import { initialSøknadValues, SøknadFormData } from '../../types/SøknadFormData';
-import IkkeMyndigPage from '../pages/ikke-myndig-page/IkkeMyndigPage';
-import SøknadContent from './SøknadContent';
-import AppEssentialsLoader from './SøknadEssentialsLoader';
+import IkkeMyndigPage from '../components/pages/ikke-myndig-page/IkkeMyndigPage';
+import { initialSøknadValues, SøknadFormData } from '../types/SøknadFormData';
+import SøknadEssentialsLoader from './SøknadEssentialsLoader';
+import SøknadRoutes from './SøknadRoutes';
 
 const Søknad = () => (
-    <AppEssentialsLoader
+    <SøknadEssentialsLoader
         contentLoadedRenderer={(søkerdata) => {
             if (søkerdata) {
                 const { person } = søkerdata;
@@ -18,7 +18,7 @@ const Søknad = () => (
                 <TypedFormikWrapper<SøknadFormData>
                     initialValues={initialSøknadValues}
                     onSubmit={() => null}
-                    renderForm={() => <SøknadContent />}
+                    renderForm={() => <SøknadRoutes />}
                 />
             );
         }}

@@ -1,8 +1,8 @@
 import React from 'react';
 // import { useIntl } from 'react-intl';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import { Arbeidssituasjon } from '../../../../types/SøknadFormData';
 import SummaryList from 'common/components/summary-list/SummaryList';
+import { Arbeidssituasjon } from '../../types/SøknadFormData';
 
 interface Props {
     arbeidssituasjoner: Arbeidssituasjon[];
@@ -13,14 +13,16 @@ const ArbeidssituasjonRender = (situasjon: Arbeidssituasjon): React.ReactNode =>
     </div>
 );
 const ArbeidsforholdSummary: React.FunctionComponent<Props> = ({ arbeidssituasjoner }) => {
-    if (arbeidssituasjoner && arbeidssituasjoner.length === 0) { return null; }
+    if (arbeidssituasjoner && arbeidssituasjoner.length === 0) {
+        return null;
+    }
     return (
-      <>
-          <Box margin="l">
-              Arbeidssituasjon
-              <SummaryList items={arbeidssituasjoner} itemRenderer={ArbeidssituasjonRender} />
-          </Box>
-      </>
+        <>
+            <Box margin="l">
+                Arbeidssituasjon
+                <SummaryList items={arbeidssituasjoner} itemRenderer={ArbeidssituasjonRender} />
+            </Box>
+        </>
     );
 };
 

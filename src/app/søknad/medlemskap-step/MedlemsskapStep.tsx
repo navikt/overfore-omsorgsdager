@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useIntl } from 'react-intl';
+import { validateYesOrNoIsAnswered } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { useFormikContext } from 'formik';
 import Lenke from 'nav-frontend-lenker';
 import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
@@ -9,20 +10,19 @@ import { YesOrNo } from 'common/types/YesOrNo';
 import { date1YearAgo, date1YearFromNow, dateToday } from 'common/utils/dateUtils';
 import intlHelper from 'common/utils/intlUtils';
 import {
-    validateUtenlandsoppholdNeste12Mnd, validateUtenlandsoppholdSiste12Mnd,
-    validateYesOrNoIsAnswered
+    validateUtenlandsoppholdNeste12Mnd, validateUtenlandsoppholdSiste12Mnd
 } from 'app/validation/fieldValidations';
-import { StepConfigProps, StepID } from '../../../../config/stepConfig';
-import getLenker from '../../../../lenker';
-import { SøknadFormData, SøknadFormField } from '../../../../types/SøknadFormData';
-import FormikStep from '../../formik-step/FormikStep';
-import TypedFormComponents from '../../typed-form-components/TypedFormComponents';
+import { StepConfigProps, StepID } from '../../config/stepConfig';
+import getLenker from '../../lenker';
+import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import SøknadFormComponents from '../SøknadFormComponents';
+import SøknadStep from '../SøknadStep';
 
 const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubmit }) => {
     const { values } = useFormikContext<SøknadFormData>();
     const intl = useIntl();
     return (
-        <FormikStep id={StepID.MEDLEMSKAP} onValidFormSubmit={onValidSubmit}>
+        <SøknadStep id={StepID.MEDLEMSKAP} onValidFormSubmit={onValidSubmit}>
             <CounsellorPanel>
                 Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du
                 vanligvis medlem. Du kan lese mer om medlemskap på{' '}
@@ -32,7 +32,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                 .
             </CounsellorPanel>
             <FormBlock margin="xxl">
-                <TypedFormComponents.YesOrNoQuestion
+                <SøknadFormComponents.YesOrNoQuestion
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.spm')}
                     name={SøknadFormField.harBoddUtenforNorgeSiste12Mnd}
                     validate={validateYesOrNoIsAnswered}
@@ -54,7 +54,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                 </FormBlock>
             )}
             <FormBlock>
-                <TypedFormComponents.YesOrNoQuestion
+                <SøknadFormComponents.YesOrNoQuestion
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.spm')}
                     name={SøknadFormField.skalBoUtenforNorgeNeste12Mnd}
                     validate={validateYesOrNoIsAnswered}
@@ -75,7 +75,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                     />
                 </FormBlock>
             )}
-        </FormikStep>
+        </SøknadStep>
     );
 };
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { AxiosError, AxiosResponse } from 'axios';
-import { getSøker } from '../../api/api';
-import routeConfig, { getRouteUrl } from '../../config/routeConfig';
-import { SøkerdataContextProvider } from '../../context/SøkerdataContext';
-import { Søkerdata } from '../../types/Søkerdata';
-import * as apiUtils from '../../utils/apiUtils';
-import { navigateToLoginPage, userIsCurrentlyOnErrorPage } from '../../utils/navigationUtils';
-import LoadingPage from '../pages/loading-page/LoadingPage';
+import { getSøker } from '../api/api';
+import LoadingPage from '../components/pages/loading-page/LoadingPage';
+import routeConfig, { getRouteUrl } from '../config/routeConfig';
+import { SøkerdataContextProvider } from '../context/SøkerdataContext';
+import { Søkerdata } from '../types/Søkerdata';
+import * as apiUtils from '../utils/apiUtils';
+import { navigateToLoginPage, userIsCurrentlyOnErrorPage } from '../utils/navigationUtils';
 
 interface Props {
     contentLoadedRenderer: (søkerdata?: Søkerdata) => React.ReactNode;
@@ -17,7 +17,7 @@ interface State {
     søkerdata?: Søkerdata;
 }
 
-class AppEssentialsLoader extends React.Component<Props, State> {
+class SøknadEssentialsLoader extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = { isLoading: true };
@@ -99,4 +99,4 @@ class AppEssentialsLoader extends React.Component<Props, State> {
     }
 }
 
-export default AppEssentialsLoader;
+export default SøknadEssentialsLoader;
