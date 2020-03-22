@@ -31,7 +31,7 @@ interface Props {
     onApplicationSent: (apiValues: SøknadApiData, søkerdata: Søkerdata) => void;
 }
 
-const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
+const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
     const intl = useIntl();
     const formik = useFormikContext<SøknadFormData>();
     const søkerdata = React.useContext(SøkerdataContext);
@@ -39,7 +39,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
 
     const [sendingInProgress, setSendingInProgress] = useState(false);
 
-    async function navigate(data: SøknadApiData, søker: Søkerdata) {
+    async function send(data: SøknadApiData, søker: Søkerdata) {
         setSendingInProgress(true);
         try {
             await sendApplication(data);
@@ -67,7 +67,7 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
             id={StepID.SUMMARY}
             onValidFormSubmit={() => {
                 setTimeout(() => {
-                    navigate(apiValues, søkerdata); // La view oppdatere seg først
+                    send(apiValues, søkerdata); // La view oppdatere seg først
                 });
             }}
             useValidationErrorSummary={false}
@@ -123,4 +123,4 @@ const SummaryStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => 
     );
 };
 
-export default SummaryStep;
+export default OppsummeringStep;
