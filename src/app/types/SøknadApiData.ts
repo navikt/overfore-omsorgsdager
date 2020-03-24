@@ -18,11 +18,17 @@ export interface UtenlandsoppholdApiData {
     landnavn: string;
 }
 
+export interface FosterbarnApi {
+    fødselsnummer: string;
+    fornavn: string;
+    etternavn: string;
+}
+
 export interface SøknadApiData {
     språk: Locale;
     arbeidssituasjon: Arbeidssituasjon[];
-    antallBarn: number;
     fnrMottaker: string;
+    fosterbarn?: FosterbarnApi[];
     antallDager: number;
     medlemskap: MedlemskapApiData;
     harForståttRettigheterOgPlikter: boolean;

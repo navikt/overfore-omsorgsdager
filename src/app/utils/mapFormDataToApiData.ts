@@ -4,7 +4,7 @@ import { Locale } from 'common/types/Locale';
 import { YesOrNo } from 'common/types/YesOrNo';
 import { formatDateToApiFormat } from 'common/utils/dateUtils';
 import { SøknadApiData, UtenlandsoppholdApiData } from '../types/SøknadApiData';
-import { AntallBarnValg, SøknadFormData } from '../types/SøknadFormData';
+import { SøknadFormData } from '../types/SøknadFormData';
 
 export const mapFormDataToApiData = (
     {
@@ -12,7 +12,8 @@ export const mapFormDataToApiData = (
         harForståttRettigheterOgPlikter,
         harBoddUtenforNorgeSiste12Mnd,
         arbeidssituasjon,
-        antallBarn,
+        harFosterbarn,
+        fosterbarn,
         antallDager,
         fnrMottaker,
         skalBoUtenforNorgeNeste12Mnd,
@@ -24,7 +25,6 @@ export const mapFormDataToApiData = (
     const apiData: SøknadApiData = {
         språk: (sprak as any) === 'en' ? 'nn' : sprak,
         arbeidssituasjon,
-        antallBarn: getAntallBarnApiValue(antallBarn),
         fnrMottaker,
         antallDager,
         medlemskap: {
@@ -43,6 +43,12 @@ export const mapFormDataToApiData = (
         harForståttRettigheterOgPlikter
     };
 
+    if (harFosterbarn === YesOrNo.YES && fosterbarn.length > 0) {
+        apiData.fosterbarn = fosterbarn.map((barn) => {
+            const { id, ...rest } = barn;
+            return rest;
+        });
+    }
     return apiData;
 };
 
@@ -52,14 +58,3 @@ const mapUtenlandsoppholdTilApiData = (opphold: Utenlandsopphold, locale: string
     fraOgMed: formatDateToApiFormat(opphold.fom),
     tilOgMed: formatDateToApiFormat(opphold.tom)
 });
-
-const getAntallBarnApiValue = (antall: AntallBarnValg): number => {
-    switch (antall) {
-        case AntallBarnValg.ett:
-            return 1;
-        case AntallBarnValg.to:
-            return 2;
-        case AntallBarnValg.treEllerFlere:
-            return 3;
-    }
-};
