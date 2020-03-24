@@ -4,7 +4,7 @@ import {
     validateFødselsnummer, validateRequiredField
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
-import { AntallBarnValg, SøknadFormField } from '../../types/SøknadFormData';
+import { SøknadFormField } from '../../types/SøknadFormData';
 import { validateAll, validateNumeriValue } from '../../validation/fieldValidations';
 import SøknadFormComponents from '../SøknadFormComponents';
 import SøknadStep from '../SøknadStep';
@@ -12,27 +12,6 @@ import SøknadStep from '../SøknadStep';
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
         <SøknadStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
-            <FormBlock>
-                <SøknadFormComponents.RadioPanelGroup
-                    name={SøknadFormField.antallBarn}
-                    legend="Hvor mange barn, inkludert fosterbarn, har du i husstanden?"
-                    radios={[
-                        {
-                            label: 'Ett barn',
-                            value: AntallBarnValg.ett
-                        },
-                        {
-                            label: 'To barn',
-                            value: AntallBarnValg.to
-                        },
-                        {
-                            label: 'Tre eller flere barn',
-                            value: AntallBarnValg.treEllerFlere
-                        }
-                    ]}
-                    validate={validateRequiredField}
-                />
-            </FormBlock>
             <FormBlock>
                 <SøknadFormComponents.Input
                     bredde="M"

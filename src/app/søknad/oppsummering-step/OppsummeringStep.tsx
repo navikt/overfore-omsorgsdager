@@ -8,6 +8,7 @@ import SummaryList from '@navikt/sif-common-core/lib/components/summary-list/Sum
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
+import { Fosterbarn } from '@navikt/sif-common-forms/lib/fosterbarn/types';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
@@ -61,7 +62,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
         person: { fornavn, mellomnavn, etternavn, fødselsnummer }
     } = søkerdata;
     const apiValues = mapFormDataToApiData(formik.values, intl.locale as Locale);
-
+    const fosterbarn = apiValues.fosterbarn || [];
     return (
         <SøknadStep
             id={StepID.SUMMARY}
@@ -93,10 +94,20 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                     itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
                 />
             </SummaryBlock>
-
-            <SummaryBlock header="Hvor mange barn, inkludert fosterbarn, har du i husstanden?">
-                {apiValues.antallBarn}
-            </SummaryBlock>
+            {fosterbarn.length > 0 && (
+                <>
+                    <SummaryBlock header="Fosterbarn">
+                        <SummaryList
+                            items={fosterbarn}
+                            itemRenderer={(barn: Fosterbarn) => (
+                                <>
+                                    {barn.fødselsnummer} - {formatName(barn.fornavn, barn.etternavn)}
+                                </>
+                            )}
+                        />
+                    </SummaryBlock>
+                </>
+            )}
 
             <SummaryBlock header="Hva er fødselsnummeret til den som skal motta omsorgsdagene?">
                 {apiValues.fnrMottaker}
