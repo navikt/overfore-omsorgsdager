@@ -8,7 +8,6 @@ import SummaryList from '@navikt/sif-common-core/lib/components/summary-list/Sum
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
-import { Fosterbarn } from '@navikt/sif-common-forms/lib/fosterbarn/types';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
@@ -17,7 +16,7 @@ import RouteConfig from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
 import { SøkerdataContext } from '../../context/SøkerdataContext';
 import { Søkerdata } from '../../types/Søkerdata';
-import { SøknadApiData } from '../../types/SøknadApiData';
+import { FosterbarnApi, SøknadApiData } from '../../types/SøknadApiData';
 import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
 import * as apiUtils from '../../utils/apiUtils';
 import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
@@ -99,7 +98,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                     <SummaryBlock header="Fosterbarn">
                         <SummaryList
                             items={fosterbarn}
-                            itemRenderer={(barn: Fosterbarn) => (
+                            itemRenderer={(barn: FosterbarnApi) => (
                                 <>
                                     {barn.fødselsnummer} - {formatName(barn.fornavn, barn.etternavn)}
                                 </>
