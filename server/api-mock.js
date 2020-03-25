@@ -3,8 +3,14 @@ const express = require('express');
 
 const server = express();
 
+server.use(express.json());
 server.use((req, res, next) => {
-    const allowedOrigins = ['https://omsorgspengesoknad-mock.nais.oera.no', 'http://localhost:8084'];
+    const allowedOrigins = [
+        'http://host.docker.internal:8084',
+        'https://overfore-omsorgsdager-mock.nais.oera.no',
+        'http://localhost:8084',
+        'http://web:8084'
+    ];
     const requestOrigin = req.headers.origin;
     if (allowedOrigins.indexOf(requestOrigin) >= 0) {
         res.set('Access-Control-Allow-Origin', requestOrigin);
@@ -15,6 +21,7 @@ server.use((req, res, next) => {
     res.set('X-XSS-Protection', '1; mode=block');
     res.set('X-Content-Type-Options', 'nosniff');
     res.set('Access-Control-Allow-Headers', 'content-type');
+    res.set('Access-Control-Allow-Methods', ['GET','POST','DELETE']);
     res.set('Access-Control-Allow-Credentials', true);
     next();
 });
@@ -27,7 +34,7 @@ const søkerMock = {
     myndig: true
 };
 
-const startServer = () => {
+const startExpressServer = () => {
     const port = process.env.PORT || 8089;
 
     server.get('/health/isAlive', (req, res) => res.sendStatus(200));
@@ -44,10 +51,9 @@ const startServer = () => {
     });
 
     server.listen(port, () => {
-        console.log(`Express mock server listening on port: ${port}`);
-        console.log('[GET] /soker');
-        console.log('[POST] /soknad/overfore-omsorgsdager');
+        console.log(`Express mock-api server listening on port: ${port}`);
     });
 };
 
-startServer();
+startExpressServer();
+
