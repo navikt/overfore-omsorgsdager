@@ -28,5 +28,6 @@ module.exports = {
             }
         }
     },
-    rootDir: '../'
+    rootDir: '../',
+    modulePathIgnorePatterns: ["./cypress"]
 };
