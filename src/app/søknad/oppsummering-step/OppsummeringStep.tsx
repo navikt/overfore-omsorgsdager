@@ -84,37 +84,35 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
                         </Normaltekst>
                     </ContentWithHeader>
-                </Panel>
-            </Box>
-
-            <SummaryBlock header="Hva er din arbeidssituasjon?">
-                <SummaryList
-                    items={apiValues.arbeidssituasjon}
-                    itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
-                />
-            </SummaryBlock>
-            {fosterbarn.length > 0 && (
-                <>
-                    <SummaryBlock header="Fosterbarn">
+                    <SummaryBlock header="Hva er din arbeidssituasjon?">
                         <SummaryList
-                            items={fosterbarn}
-                            itemRenderer={(barn: FosterbarnApi) => (
-                                <>
-                                    {barn.fødselsnummer} - {formatName(barn.fornavn, barn.etternavn)}
-                                </>
-                            )}
+                            items={apiValues.arbeidssituasjon}
+                            itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
                         />
                     </SummaryBlock>
-                </>
-            )}
+                    {fosterbarn.length > 0 && (
+                        <>
+                            <SummaryBlock header="Fosterbarn">
+                                <SummaryList
+                                    items={fosterbarn}
+                                    itemRenderer={(barn: FosterbarnApi) => (
+                                        <>
+                                            {barn.fødselsnummer} - {formatName(barn.fornavn, barn.etternavn)}
+                                        </>
+                                    )}
+                                />
+                            </SummaryBlock>
+                        </>
+                    )}
+                    <SummaryBlock header="Hva er fødselsnummeret til den som skal motta omsorgsdagene?">
+                        {apiValues.fnrMottaker}
+                    </SummaryBlock>
 
-            <SummaryBlock header="Hva er fødselsnummeret til den som skal motta omsorgsdagene?">
-                {apiValues.fnrMottaker}
-            </SummaryBlock>
+                    <SummaryBlock header="Hvor mange dager ønsker du å overføre?">{apiValues.antallDager}</SummaryBlock>
 
-            <SummaryBlock header="Hvor mange dager ønsker du å overføre?">{apiValues.antallDager}</SummaryBlock>
-
-            <MedlemsskapSummary medlemskap={apiValues.medlemskap} />
+                    <MedlemsskapSummary medlemskap={apiValues.medlemskap} />
+                </Panel>
+            </Box>
 
             <Box margin="l">
                 <SøknadFormComponents.ConfirmationCheckbox
