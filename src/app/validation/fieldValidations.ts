@@ -116,3 +116,8 @@ export const validateFødselsnummerIsDifferentThan = (applicantFnr: string) => (
     }
     return undefined;
 };
+
+export const isValidFnr = (fnr: string): boolean => {
+    const [valid] = fødselsnummerIsValid(fnr);
+    return valid;
+};

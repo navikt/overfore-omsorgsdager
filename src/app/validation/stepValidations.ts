@@ -1,17 +1,24 @@
 import { YesOrNo } from '@navikt/sif-common-formik/lib';
 import { ApplicationFormData } from '../types/ApplicationFormData';
+import { hasValue, isValidFnr } from './fieldValidations';
 
 export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter }: ApplicationFormData) => {
     return harForståttRettigheterOgPlikter === true;
 };
 
-export const opplysningerOmOverføringIsValid = (values: ApplicationFormData) => {
-    return values !== undefined; // TODO
+export const situasjonStepIsValid = ({
+    harForståttRettigheterOgPlikter,
+    arbeidssituasjon,
+    harFosterbarn,
+    fosterbarn
+}: ApplicationFormData) => {
+    const harValgtArbeidsSituasjon = arbeidssituasjon !== undefined && arbeidssituasjon.length > 0;
+    const harValidFosterbarn = harFosterbarn === YesOrNo.NO || fosterbarn.length > 0;
+    return harForståttRettigheterOgPlikter && harValgtArbeidsSituasjon && harValidFosterbarn;
 };
 
-export const arbeidStepIsValid = ({ harForståttRettigheterOgPlikter, arbeidssituasjon }: ApplicationFormData) => {
-    const harValgtArbeidsSituasjon = arbeidssituasjon !== undefined && arbeidssituasjon.length > 0;
-    return harForståttRettigheterOgPlikter && harValgtArbeidsSituasjon;
+export const opplysningerOmOverføringIsValid = ({ fnrMottaker, antallDager }: ApplicationFormData) => {
+    return hasValue(fnrMottaker) && hasValue(antallDager) && isValidFnr(fnrMottaker);
 };
 
 export const medlemskapStepIsValid = ({
