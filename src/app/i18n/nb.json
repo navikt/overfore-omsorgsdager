@@ -79,13 +79,13 @@
 
     "introPage.tittel": "Melding om overføring av omsorgsdager",
     "introPage.stegTittel": "Kan jeg bruke den digitale tjenesten?",
-    "introPage.informationposter": "Den du overfører omsorgspenger til må være minst en av disse punktene",
+    "introPage.informationposter": "Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være én eller flere av punktene under:",
     "introPage.informationposter.li.1": "arbeidstager",
     "introPage.informationposter.li.2": "selvstending næringsdrivende",
     "introPage.informationposter.li.3": "Frilanser",
     "introPage.counsellor": "Denne tjenesten gjelder kun for deg som skal overføre omsorgsdager til en annen omsorgsperson",
 
-    "introPage.mottaker.spm": "Er den du skal overføre omsorgsdager til arbeidstaker, selvstendig næringsdrivende eller frilanser?",
+    "introPage.mottaker.spm": "Er den du skal overføre omsorgsdager til yrkesaktiv?",
 
     "welcomingPage.sidetittel": "Melding om overføring av omsorgsdager",
     "welcomingPage.banner.tittel": "Hei,",

@@ -37,7 +37,7 @@ const ApplicationRoutes: React.FunctionComponent = () => {
 
     const navigateToNextStep = (stepId: StepID) => {
         setTimeout(() => {
-            const nextStepRoute = getNextStepRoute(stepId, values);
+            const nextStepRoute = getNextStepRoute(stepId);
             if (nextStepRoute) {
                 navigateTo(nextStepRoute, history);
             }

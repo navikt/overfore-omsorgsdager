@@ -12,7 +12,7 @@ export const getApplicationRoute = (stepId: StepID | undefined) => {
     return undefined;
 };
 
-export const getNextStepRoute = (stepId: StepID, formData?: ApplicationFormData): string | undefined => {
+export const getNextStepRoute = (stepId: StepID): string | undefined => {
     const stepConfig = getStepConfig();
     return stepConfig[stepId] ? getApplicationRoute(stepConfig[stepId].nextStep) : undefined;
 };
