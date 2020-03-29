@@ -181,5 +181,6 @@
     "fieldvalidation.utenlandsopphold_ikke_registrert": "Du har ikke registrert noen utenlandsopphold for perioden",
     "fieldvalidation.utenlandsopphold_overlapper": "Ett eller flere av utenlandsoppholdene har datoer som overlapper",
     "fieldvalidation.utenlandsopphold_utenfor_periode": "Ett eller flere av utenlandsoppholdene er utenfor tillatt tidsrom",
-    "fieldvalidation.fnr_lik_applicantFnr": "Du har oppgitt ditt eget fødselsnummer"
+    "fieldvalidation.fnr_lik_applicantFnr": "Du har oppgitt ditt eget fødselsnummer",
+    "fieldvalidation.dager_feil_antall": "Ugyldig antall dager"
 }
