@@ -37,6 +37,11 @@ const IntroPage: React.StatelessComponent = () => {
             topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
             <Box margin="xxxl" padBottom="xxl">
                 <InformationPoster>
+                    <p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p>
+                    <ul>
+                        <li>den andre forelderen</li>
+                        <li>nåværende samboer eller ektefelle</li>
+                    </ul>
                     <FormattedMessage id="introPage.informationposter" />
                     <ul>
                         <li>{getText('informationposter.li.1')}</li>
