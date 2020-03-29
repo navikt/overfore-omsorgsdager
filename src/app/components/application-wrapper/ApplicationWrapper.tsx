@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { Locale } from 'common/types/Locale';
-import { Søkerdata } from '../../types/Søkerdata';
+import { ApplicantData } from '../../types/ApplicantData';
 import { getEnvironmentVariable } from '../../utils/envUtils';
 import IntlProvider from '../intl-provider/IntlProvider';
 
 interface ApplicationWrapperProps {
-    søkerdata?: Søkerdata;
+    søkerdata?: ApplicantData;
     locale: Locale;
     onChangeLocale: (locale: Locale) => void;
 }

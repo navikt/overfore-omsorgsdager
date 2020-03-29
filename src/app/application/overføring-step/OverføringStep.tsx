@@ -1,30 +1,30 @@
-import * as React from 'react';
+import React from 'react';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import {
     validateFødselsnummer, validateRequiredField
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
-import { SøknadFormField } from '../../types/SøknadFormData';
+import { ApplicationFormField } from '../../types/ApplicationFormData';
 import { validateAll, validateNumeriValue } from '../../validation/fieldValidations';
-import SøknadFormComponents from '../SøknadFormComponents';
-import SøknadStep from '../SøknadStep';
+import ApplicationFormComponents from '../ApplicationFormComponents';
+import ApplicationStep from '../ApplicationStep';
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
-        <SøknadStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
+        <ApplicationStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
             <FormBlock>
-                <SøknadFormComponents.Input
+                <ApplicationFormComponents.Input
                     bredde="M"
                     style={{ maxWidth: '11rem' }}
-                    name={SøknadFormField.fnrMottaker}
+                    name={ApplicationFormField.fnrMottaker}
                     label={'Hva er fødselsnummeret til den som skal motta omsorgsdagene?'}
                     validate={validateFødselsnummer}
                 />
             </FormBlock>
             <FormBlock>
-                <SøknadFormComponents.Input
+                <ApplicationFormComponents.Input
                     bredde="XS"
-                    name={SøknadFormField.antallDager}
+                    name={ApplicationFormField.antallDager}
                     label={'Hvor mange dager ønsker du å overføre?'}
                     validate={validateAll([validateRequiredField, validateNumeriValue({ min: 1, max: 99 })])}
                     inputMode="numeric"
@@ -32,7 +32,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     maxLength={2}
                 />
             </FormBlock>
-        </SøknadStep>
+        </ApplicationStep>
     );
 };
 

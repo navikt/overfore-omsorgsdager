@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import { FormikValidationErrorSummary } from '@navikt/sif-common-formik/lib';
 import { History } from 'history';

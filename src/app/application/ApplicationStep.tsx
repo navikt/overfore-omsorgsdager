@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import { Knapp } from 'nav-frontend-knapper';
 import FormBlock from 'common/components/form-block/FormBlock';
@@ -6,7 +6,7 @@ import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer'
 import Step, { StepProps } from '../components/step/Step';
 import { getStepConfig } from '../config/stepConfig';
 import { getStepTexts } from '../utils/stepUtils';
-import SøknadFormComponents from './SøknadFormComponents';
+import ApplicationFormComponents from './ApplicationFormComponents';
 
 export interface FormikStepProps {
     children: React.ReactNode;
@@ -19,14 +19,14 @@ export interface FormikStepProps {
 
 type Props = FormikStepProps & StepProps;
 
-const SøknadStep: React.FunctionComponent<Props> = (props) => {
+const ApplicationStep: React.FunctionComponent<Props> = (props) => {
     const intl = useIntl();
     const { children, onValidFormSubmit, showButtonSpinner, buttonDisabled, id } = props;
     const stepConfig = getStepConfig();
     const texts = getStepTexts(intl, id, stepConfig);
     return (
         <Step stepConfig={stepConfig} {...props}>
-            <SøknadFormComponents.Form
+            <ApplicationFormComponents.Form
                 onValidSubmit={onValidFormSubmit}
                 includeButtons={false}
                 includeValidationSummary={true}
@@ -44,9 +44,9 @@ const SøknadStep: React.FunctionComponent<Props> = (props) => {
                         {texts.nextButtonLabel}
                     </Knapp>
                 </FormBlock>
-            </SøknadFormComponents.Form>
+            </ApplicationFormComponents.Form>
         </Step>
     );
 };
 
-export default SøknadStep;
+export default ApplicationStep;

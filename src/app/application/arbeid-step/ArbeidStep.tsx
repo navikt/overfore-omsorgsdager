@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { YesOrNo } from '@navikt/sif-common-core/lib/types/YesOrNo';
@@ -10,22 +10,24 @@ import FosterbarnListAndDialog from '@navikt/sif-common-forms/lib/fosterbarn/Fos
 import { useFormikContext } from 'formik';
 import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
-import { Arbeidssituasjon, SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
+import {
+    ApplicationFormData, ApplicationFormField, Arbeidssituasjon
+} from '../../types/ApplicationFormData';
 import { validateArbeid } from '../../validation/fieldValidations';
-import SøknadFormComponents from '../SøknadFormComponents';
-import SøknadStep from '../SøknadStep';
+import ApplicationFormComponents from '../ApplicationFormComponents';
+import ApplicationStep from '../ApplicationStep';
 
 const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
     const {
         values: { harFosterbarn }
-    } = useFormikContext<SøknadFormData>();
+    } = useFormikContext<ApplicationFormData>();
 
     return (
-        <SøknadStep id={StepID.ARBEID} onValidFormSubmit={onValidSubmit}>
-            <FormikCheckboxPanelGroup<SøknadFormField>
+        <ApplicationStep id={StepID.ARBEID} onValidFormSubmit={onValidSubmit}>
+            <FormikCheckboxPanelGroup<ApplicationFormField>
                 legend={intlHelper(intl, 'steg.arbeid.spm')}
-                name={SøknadFormField.arbeidssituasjon}
+                name={ApplicationFormField.arbeidssituasjon}
                 checkboxes={[
                     {
                         label: intlHelper(intl, 'arbeidssituasjon.arbeidstaker'),
@@ -43,18 +45,18 @@ const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
                 validate={validateArbeid}
             />
             <FormBlock>
-                <SøknadFormComponents.YesOrNoQuestion
-                    name={SøknadFormField.harFosterbarn}
+                <ApplicationFormComponents.YesOrNoQuestion
+                    name={ApplicationFormField.harFosterbarn}
                     legend="Har du fosterbarn?"
                     validate={validateYesOrNoIsAnswered}
                 />
             </FormBlock>
             {harFosterbarn === YesOrNo.YES && (
                 <FormBlock margin="l">
-                    <FosterbarnListAndDialog name={SøknadFormField.fosterbarn} validate={validateRequiredList} />
+                    <FosterbarnListAndDialog name={ApplicationFormField.fosterbarn} validate={validateRequiredList} />
                 </FormBlock>
             )}
-        </SøknadStep>
+        </ApplicationStep>
     );
 };
 

@@ -1,23 +1,27 @@
 import RouteConfig from '../config/routeConfig';
 import { getStepConfig, StepID } from '../config/stepConfig';
-import { SøknadFormData } from '../types/SøknadFormData';
+import { ApplicationFormData } from '../types/ApplicationFormData';
 import { welcomingPageIsValid } from '../validation/stepValidations';
 import { appIsRunningInDevEnvironment } from './envUtils';
 import { arbeidStepIsAvailable, medlemskapStepAvailable, summaryStepAvailable } from './stepUtils';
 
-export const getSøknadRoute = (stepId: StepID | undefined) => {
+export const getApplicationRoute = (stepId: StepID | undefined) => {
     if (stepId !== undefined) {
-        return `${RouteConfig.SØKNAD_ROUTE_PREFIX}/${stepId}`;
+        return `${RouteConfig.APPLICATION_ROUTE_PREFIX}/${stepId}`;
     }
     return undefined;
 };
 
-export const getNextStepRoute = (stepId: StepID, formData?: SøknadFormData): string | undefined => {
+export const getNextStepRoute = (stepId: StepID, formData?: ApplicationFormData): string | undefined => {
     const stepConfig = getStepConfig();
-    return stepConfig[stepId] ? getSøknadRoute(stepConfig[stepId].nextStep) : undefined;
+    return stepConfig[stepId] ? getApplicationRoute(stepConfig[stepId].nextStep) : undefined;
 };
 
-export const isAvailable = (path: StepID | RouteConfig, values: SøknadFormData, søknadHasBeenSent?: boolean) => {
+export const isAvailable = (
+    path: StepID | RouteConfig,
+    values: ApplicationFormData,
+    applicationHasBeenSent?: boolean
+) => {
     if (!appIsRunningInDevEnvironment()) {
         switch (path) {
             case StepID.ARBEID:
@@ -28,8 +32,8 @@ export const isAvailable = (path: StepID | RouteConfig, values: SøknadFormData,
                 return medlemskapStepAvailable(values);
             case StepID.SUMMARY:
                 return summaryStepAvailable(values);
-            case RouteConfig.SØKNAD_SENDT_ROUTE:
-                return søknadHasBeenSent;
+            case RouteConfig.APPLICATION_SENDT_ROUTE:
+                return applicationHasBeenSent;
         }
     }
     return true;

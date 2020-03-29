@@ -1,5 +1,4 @@
 describe('Overføre Omsorgsdager', () => {
-
     before(() => {
         cy.visit('/');
     });
@@ -18,19 +17,22 @@ describe('Overføre Omsorgsdager', () => {
             });
         });
         describe('Er den du skal overføre omsorgsdager til arbeidstaker, selvstendig næringsdrivende eller frilanser?', () => {
-
             context('Ja, skal overføre omsorgsdager', () => {
                 it('Merker "Ja" radio', () => {
-                    cy.get('input[type=radio]').first().click({ force: true });
+                    cy.get('input[type=radio]')
+                        .first()
+                        .click({ force: true });
                 });
-                it('Viser linken "Gå til den digitale søknaden"', () => {
-                    cy.get('a[href*="/familie/sykdom-i-familien/soknad/overfore-omsorgsdager/soknad/velkommen"]')
+                it('Viser linken "Gå videre"', () => {
+                    cy.get('a[href*="/familie/sykdom-i-familien/soknad/overfore-omsorgsdager/melding/velkommen"]');
                 });
             });
 
             context('Nei, skal ikke overføre omsorgsdager', () => {
                 it('Merker "Nei" radio', () => {
-                    cy.get('input[type=radio]').last().click({ force: true });
+                    cy.get('input[type=radio]')
+                        .last()
+                        .click({ force: true });
                 });
                 it('Viser info panel"', () => {
                     cy.get('[class="alertstripe alertstripe--info"]');

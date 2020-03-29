@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { FormattedHTMLMessage, FormattedMessage, useIntl } from 'react-intl';
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi';
 import Box from 'common/components/box/Box';
@@ -6,8 +6,7 @@ import CheckmarkIcon from 'common/components/checkmark-icon/CheckmarkIcon';
 import Page from 'common/components/page/Page';
 import bemUtils from 'common/utils/bemUtils';
 import intlHelper from 'common/utils/intlUtils';
-import getLenker from 'app/lenker';
-import { KvitteringInfo } from '../../../søknad/SøknadRoutes';
+import { KvitteringInfo } from '../../../application/ApplicationRoutes';
 import './confirmationPage.less';
 
 const bem = bemUtils('confirmationPage');
@@ -37,14 +36,6 @@ const ConfirmationPage: React.FunctionComponent<Props> = ({ kvitteringInfo }) =>
                     </li>
                     <li>
                         <FormattedHTMLMessage id="page.confirmation.hvaSkjer2" />
-                    </li>
-                    <li>
-                        <FormattedHTMLMessage
-                            id="page.confirmation.hvaSkjer3"
-                            values={{
-                                lenke: getLenker(intl.locale).saksbehandlingstider
-                            }}
-                        />
                     </li>
                 </ul>
             </Box>

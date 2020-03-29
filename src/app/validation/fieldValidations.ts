@@ -7,7 +7,7 @@ import {
     date1YearAgo, date1YearFromNow, dateRangesCollide, dateRangesExceedsRange
 } from 'common/utils/dateUtils';
 import { FieldValidationResult } from 'common/validation/types';
-import { Arbeidssituasjon } from '../types/SøknadFormData';
+import { Arbeidssituasjon } from '../types/ApplicationFormData';
 import { fødselsnummerIsValid, FødselsnummerValidationErrorReason } from './fødselsnummerValidator';
 
 export enum AppFieldValidationErrors {

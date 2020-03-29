@@ -22,7 +22,7 @@ console.error('process.env.API_URL', process.env.API_URL);
 console.error('process.env.DEMO_MODE', process.env.DEMO_MODE);
 console.error('process.env.OVERFOR_OMSORGSDAGER', process.env.OVERFOR_OMSORGSDAGER);
 
-const PUBLIC_PATH = process.env.PUBLIC_PATH; // '/familie/sykdom-i-familien/soknad/omsorgspengerutbetaling';
+const PUBLIC_PATH = process.env.PUBLIC_PATH;
 
 server.use(`/dist`, express.static(path.resolve(__dirname, 'dist')));
 server.use(`${PUBLIC_PATH}/dist/js`, express.static(path.resolve(__dirname, 'dist/js')));
@@ -45,7 +45,6 @@ const renderApp = () =>
     });
 
 const startServer = (html) => {
-
     server.get(/^\/(?!.*dist).*$/, (req, res) => {
         res.send(html);
     });
@@ -68,8 +67,7 @@ const startExpressWebServer = async () => {
     try {
         const html = await renderApp();
         startServer(html);
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e);
     }
 };
