@@ -5,15 +5,14 @@ import {
 } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { getTypedFormComponents, YesOrNo } from '@navikt/sif-common-formik/lib';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import Lenke from 'nav-frontend-lenker';
 import Box from 'common/components/box/Box';
-import CounsellorPanel from 'common/components/counsellor-panel/CounsellorPanel';
 import InformationPoster from 'common/components/information-poster/InformationPoster';
 import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import RouteConfig, { getRouteUrl } from '../../../config/routeConfig';
-import CoronaWarning from '../../information/corona-warning/CoronaWarning';
 
 const bem = bemUtils('introPage');
 
@@ -36,11 +35,13 @@ const IntroPage: React.StatelessComponent = () => {
             className={bem.block}
             title={intlHelper(intl, 'introPage.tittel')}
             topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
-            <Box margin="xl" padBottom="l">
-                <CoronaWarning />
-            </Box>
             <Box margin="xxxl" padBottom="xxl">
                 <InformationPoster>
+                    <p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p>
+                    <ul>
+                        <li>den andre forelderen</li>
+                        <li>nåværende samboer eller ektefelle</li>
+                    </ul>
                     <FormattedMessage id="introPage.informationposter" />
                     <ul>
                         <li>{getText('informationposter.li.1')}</li>
@@ -63,16 +64,10 @@ const IntroPage: React.StatelessComponent = () => {
                         />
                         {mottakerErGyldig === YesOrNo.NO && (
                             <Box margin="l">
-                                <CounsellorPanel>
-                                    <strong>
-                                        <FormattedMessage id="introPage.informationposter" />
-                                    </strong>
-                                    <ul>
-                                        <li>{getText('informationposter.li.1')}</li>
-                                        <li>{getText('informationposter.li.2')}</li>
-                                        <li>{getText('informationposter.li.3')}</li>
-                                    </ul>
-                                </CounsellorPanel>
+                                <AlertStripeAdvarsel>
+                                    Hvis personen ikke er arbeidstaker, selvstendig næringsdrivende eller frilanser, er
+                                    det ikke mulig å overføre omsorgsdager.
+                                </AlertStripeAdvarsel>
                             </Box>
                         )}
 

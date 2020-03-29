@@ -1,4 +1,6 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import {
     validateFødselsnummer, validateRequiredField
@@ -12,6 +14,25 @@ import ApplicationStep from '../ApplicationStep';
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
         <ApplicationStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
+            <CounsellorPanel>
+                <p>
+                    <FormattedMessage id="steg.overføring.info" />
+                </p>
+                <ul>
+                    <li>
+                        <FormattedMessage id={`steg.overføring.info.li.1`} />
+                    </li>
+                    <li>
+                        <FormattedMessage id={`steg.overføring.info.li.2`} />
+                    </li>
+                    <li>
+                        <FormattedMessage id={`steg.overføring.info.li.3`} />
+                    </li>
+                </ul>
+                <p>
+                    <FormattedMessage id={`steg.overføring.info.valg`} />
+                </p>
+            </CounsellorPanel>
             <FormBlock>
                 <ApplicationFormComponents.Input
                     bredde="M"

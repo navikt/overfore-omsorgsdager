@@ -4,7 +4,7 @@ import routeConfig from './routeConfig';
 export enum StepID {
     'OVERFØRING' = 'overføring',
     'MEDLEMSKAP' = 'medlemskap',
-    'ARBEID' = 'arbeid',
+    'SITUASJON' = 'situasjon',
     'SUMMARY' = 'oppsummering'
 }
 
@@ -38,8 +38,8 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
 export const getStepConfig = (): StepConfigInterface => {
     let idx = 0;
     const config = {
-        [StepID.ARBEID]: {
-            ...getStepConfigItemTextKeys(StepID.ARBEID),
+        [StepID.SITUASJON]: {
+            ...getStepConfigItemTextKeys(StepID.SITUASJON),
             index: idx++,
             nextStep: StepID.OVERFØRING,
             backLinkHref: routeConfig.WELCOMING_PAGE_ROUTE
@@ -48,7 +48,7 @@ export const getStepConfig = (): StepConfigInterface => {
             ...getStepConfigItemTextKeys(StepID.OVERFØRING),
             index: idx++,
             nextStep: StepID.MEDLEMSKAP,
-            backLinkHref: getApplicationRoute(StepID.ARBEID)
+            backLinkHref: getApplicationRoute(StepID.SITUASJON)
         },
         [StepID.MEDLEMSKAP]: {
             ...getStepConfigItemTextKeys(StepID.MEDLEMSKAP),

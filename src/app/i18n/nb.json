@@ -50,16 +50,16 @@
 
     "step.nextButtonLabel": "Fortsett",
     "step.nextButtonAriaLabel": "Gå til neste steg",
-    "step.sendButtonLabel": "Send inn melding",
-    "step.sendButtonAriaLabel": "Send inn melding",
+    "step.sendButtonLabel": "Send inn",
+    "step.sendButtonAriaLabel": "Send inn",
 
     "step.overføring.pageTitle": "Om overføring",
     "step.overføring.stepTitle": "Om overføring",
     "step.overføring.stepIndicatorLabel": "Om overføring",
 
-    "step.arbeid.pageTitle": "Arbeidssituasjon",
-    "step.arbeid.stepTitle": "Arbeidssituasjon",
-    "step.arbeid.stepIndicatorLabel": "Arbeidssituasjon",
+    "step.situasjon.pageTitle": "Din situasjon",
+    "step.situasjon.stepTitle": "Din situasjon",
+    "step.situasjon.stepIndicatorLabel": "Din situasjon",
 
     "step.medlemskap.pageTitle": "Medlemskap",
     "step.medlemskap.stepTitle": "Medlemskap",
@@ -78,14 +78,13 @@
     "step.oppsummering.stepIndicatorLabel": "Oppsummering",
 
     "introPage.tittel": "Melding om overføring av omsorgsdager",
-    "introPage.stegTittel": "Kan jeg bruke den digitale tjenesten?",
-    "introPage.informationposter": "Den du overfører omsorgspenger til må være minst en av disse punktene",
+    "introPage.stegTittel": "Kan jeg overføre omsorgsdager?",
+    "introPage.informationposter": "Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være én eller flere av punktene under:",
     "introPage.informationposter.li.1": "arbeidstager",
     "introPage.informationposter.li.2": "selvstending næringsdrivende",
-    "introPage.informationposter.li.3": "Frilanser",
+    "introPage.informationposter.li.3": "frilanser",
     "introPage.counsellor": "Denne tjenesten gjelder kun for deg som skal overføre omsorgsdager til en annen omsorgsperson",
-
-    "introPage.mottaker.spm": "Er den du skal overføre omsorgsdager til arbeidstaker, selvstendig næringsdrivende eller frilanser?",
+    "introPage.mottaker.spm": "Er den du skal overføre omsorgsdager til yrkesaktiv?",
 
     "welcomingPage.sidetittel": "Melding om overføring av omsorgsdager",
     "welcomingPage.banner.tittel": "Hei,",
@@ -130,7 +129,13 @@
     "modal.minePlikter.part2a": "Jeg har lest og forstått det som står på",
     "modal.minePlikter.part2b": "nav.no/rettogplikt",
 
-    "steg.arbeid.spm": "Hva er din arbeidssituasjon? Du kan velge flere.",
+    "steg.situasjon.spm": "Hva er din arbeidssituasjon? Du kan velge flere.",
+
+    "steg.overføring.info": "Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være én eller flere av punktene under:",
+    "steg.overføring.info.li.1": "arbeidstager",
+    "steg.overføring.info.li.2": "selvstending næringsdrivende",
+    "steg.overføring.info.li.3": "frilanser",
+    "steg.overføring.info.valg": "Du velger selv hvor mange omsorgsdager du vil overføre. Du kan kun overføre de dagene du har fått ekstra på grunn av at barnehagen eller skolen er stengt som følge av koronaviruset.",
 
     "steg.medlemsskap.annetLandSiste12.spm": "Har du bodd i andre land enn Norge i hele eller deler av de siste 12 månedene?",
     "steg.medlemsskap.annetLandSiste12.hjelp": "Du svarer ja bare hvis du har oppholdt deg fast i et annet land enn Norge. Korte utlandsturer i forbindelse med for eksempel ferie regnes ikke med.",
@@ -139,8 +144,8 @@
     "steg.medlemsskap.annetLandNeste12.hjelp": "Du svarer ja bare hvis du planlegger å oppholde deg fast i et annet land enn Norge. Korte utlandsturer i forbindelse med for eksempel ferie regnes ikke med.",
     "steg.medlemsskap.annetLandNeste12.listeTittel": "Utenlandsopphold neste 12 måneder",
 
-    "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn meldingen. Hvis du vil gjøre endringer, kan du gå tilbake.",
-    "steg.oppsummering.søker.header": "Navn på søker",
+    "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn. Hvis du vil gjøre endringer, kan du gå tilbake.",
+    "steg.oppsummering.søker.header": "Ditt navn",
     "steg.oppsummering.søker.fnr": "Fødselsnummer: {fødselsnummer}",
 
     "steg.oppsummering.arbeidssituasjon.header": "Din arbeidssituasjon",

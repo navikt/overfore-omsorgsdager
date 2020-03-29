@@ -12,10 +12,10 @@ import { ApplicationApiData } from '../types/ApplicationApiData';
 import { ApplicationFormData } from '../types/ApplicationFormData';
 import { navigateTo } from '../utils/navigationUtils';
 import { getApplicationRoute, getNextStepRoute, isAvailable } from '../utils/routeUtils';
-import ArbeidStep from './arbeid-step/ArbeidStep';
 import MedlemsskapStep from './medlemskap-step/MedlemsskapStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
 import OverføringStep from './overføring-step/OverføringStep';
+import SituasjonStep from './situasjon-step/SituasjonStep';
 
 export interface KvitteringInfo {
     søkernavn: string;
@@ -37,7 +37,7 @@ const ApplicationRoutes: React.FunctionComponent = () => {
 
     const navigateToNextStep = (stepId: StepID) => {
         setTimeout(() => {
-            const nextStepRoute = getNextStepRoute(stepId, values);
+            const nextStepRoute = getNextStepRoute(stepId);
             if (nextStepRoute) {
                 navigateTo(nextStepRoute, history);
             }
@@ -51,17 +51,17 @@ const ApplicationRoutes: React.FunctionComponent = () => {
                     <WelcomingPage
                         onValidSubmit={() =>
                             setTimeout(() => {
-                                navigateTo(`${RouteConfig.APPLICATION_ROUTE_PREFIX}/${StepID.ARBEID}`, history);
+                                navigateTo(`${RouteConfig.APPLICATION_ROUTE_PREFIX}/${StepID.SITUASJON}`, history);
                             })
                         }
                     />
                 )}
             />
 
-            {isAvailable(StepID.ARBEID, values) && (
+            {isAvailable(StepID.SITUASJON, values) && (
                 <Route
-                    path={getApplicationRoute(StepID.ARBEID)}
-                    render={() => <ArbeidStep onValidSubmit={() => navigateToNextStep(StepID.ARBEID)} />}
+                    path={getApplicationRoute(StepID.SITUASJON)}
+                    render={() => <SituasjonStep onValidSubmit={() => navigateToNextStep(StepID.SITUASJON)} />}
                 />
             )}
             {isAvailable(StepID.OVERFØRING, values) && (
