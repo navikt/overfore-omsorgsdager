@@ -1,102 +1,67 @@
-import * as React from 'react';
-import { AxiosError, AxiosResponse } from 'axios';
-import { getSøker } from '../api/api';
-import LoadingPage from '../components/pages/loading-page/LoadingPage';
-import routeConfig, { getRouteUrl } from '../config/routeConfig';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { getApplicantData } from '../api/api';
+import LoadWrapper from '../components/load-wrapper/LoadWrapper';
 import { ApplicantDataContextProvider } from '../context/ApplicantDataContext';
 import { ApplicantData } from '../types/ApplicantData';
 import * as apiUtils from '../utils/apiUtils';
-import { navigateToLoginPage, userIsCurrentlyOnErrorPage } from '../utils/navigationUtils';
+import {
+    navigateToErrorPage, navigateToLoginPage, navigateToWelcomePage, userIsCurrentlyOnErrorPage
+} from '../utils/navigationUtils';
 
 interface Props {
     contentLoadedRenderer: (søkerdata?: ApplicantData) => React.ReactNode;
 }
 
-interface State {
+interface LoadState {
     isLoading: boolean;
-    søkerdata?: ApplicantData;
+    error?: boolean;
 }
 
-class ApplicationEssentialsLoader extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = { isLoading: true };
+const ApplicationEssentialsLoader = ({ contentLoadedRenderer }: Props) => {
+    const [loadState, setLoadState] = useState<LoadState>({ isLoading: true });
+    const [applicantData, setApplicantData] = useState<ApplicantData | undefined>();
+    const history = useHistory();
 
-        this.updateSøkerdata = this.updateSøkerdata.bind(this);
-        this.stopLoading = this.stopLoading.bind(this);
-        this.handleSøkerdataFetchSuccess = this.handleSøkerdataFetchSuccess.bind(this);
-        this.handleSøkerdataFetchError = this.handleSøkerdataFetchError.bind(this);
-
-        this.loadAppEssentials();
-    }
-
-    async loadAppEssentials() {
-        try {
-            const [søkerResponse] = await Promise.all([getSøker()]);
-            this.handleSøkerdataFetchSuccess(søkerResponse);
-        } catch (response) {
-            this.handleSøkerdataFetchError(response);
-        }
-    }
-
-    handleSøkerdataFetchSuccess(søkerResponse: AxiosResponse) {
-        this.updateSøkerdata(
-            {
-                person: søkerResponse.data
-            },
-            () => {
-                this.stopLoading();
+    async function loadApplicationEssentials() {
+        if (applicantData === undefined && loadState.error === undefined) {
+            try {
+                const { data: person } = await getApplicantData();
+                setApplicantData({ person });
+                setLoadState({ isLoading: false, error: undefined });
                 if (userIsCurrentlyOnErrorPage()) {
-                    window.location.assign(getRouteUrl(routeConfig.WELCOMING_PAGE_ROUTE));
+                    navigateToWelcomePage();
                 }
+            } catch (response) {
+                if (apiUtils.isForbidden(response) || apiUtils.isUnauthorized(response)) {
+                    navigateToLoginPage();
+                } else if (!userIsCurrentlyOnErrorPage()) {
+                    navigateToErrorPage(history);
+                }
+                // this timeout is set because if isLoading is updated in the state too soon,
+                // the contentLoadedRenderer() will be called while the user is still on the wrong route,
+                // because the redirect to routeConfig.ERROR_PAGE_ROUTE will not have happened yet.
+                setTimeout(() => setLoadState({ isLoading: false, error: true }), 200);
             }
-        );
-    }
-
-    updateSøkerdata(søkerdata: ApplicantData, callback?: () => void) {
-        this.setState(
-            {
-                isLoading: false,
-                søkerdata: søkerdata ? søkerdata : this.state.søkerdata
-            },
-            callback
-        );
-    }
-
-    stopLoading() {
-        this.setState({
-            isLoading: false
-        });
-    }
-
-    handleSøkerdataFetchError(response: AxiosError) {
-        if (apiUtils.isForbidden(response) || apiUtils.isUnauthorized(response)) {
-            navigateToLoginPage();
-        } else if (!userIsCurrentlyOnErrorPage()) {
-            window.location.assign(getRouteUrl(routeConfig.ERROR_PAGE_ROUTE));
         }
-        // this timeout is set because if isLoading is updated in the state too soon,
-        // the contentLoadedRenderer() will be called while the user is still on the wrong route,
-        // because the redirect to routeConfig.ERROR_PAGE_ROUTE will not have happened yet.
-        setTimeout(this.stopLoading, 200);
     }
 
-    render() {
-        const { contentLoadedRenderer } = this.props;
-        const { isLoading, søkerdata } = this.state;
+    useEffect(() => {
+        loadApplicationEssentials();
+    }, [applicantData, loadState]);
 
-        if (isLoading) {
-            return <LoadingPage />;
-        }
+    const { isLoading, error } = loadState;
 
-        return (
-            <>
-                <ApplicantDataContextProvider value={søkerdata}>
-                    {contentLoadedRenderer(søkerdata)}
+    return (
+        <LoadWrapper
+            isLoading={isLoading && error === undefined}
+            contentRenderer={() => (
+                <ApplicantDataContextProvider value={applicantData}>
+                    {contentLoadedRenderer(applicantData)}
                 </ApplicantDataContextProvider>
-            </>
-        );
-    }
-}
+            )}
+        />
+    );
+};
 
 export default ApplicationEssentialsLoader;
