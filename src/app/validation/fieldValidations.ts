@@ -18,7 +18,8 @@ export enum AppFieldValidationErrors {
     'utenlandsopphold_overlapper' = 'fieldvalidation.utenlandsopphold_overlapper',
     'utenlandsopphold_utenfor_periode' = 'fieldvalidation.utenlandsopphold_utenfor_periode',
     'dager_er_ikke_tall' = 'fieldvalidation.dager_er_ikke_tall',
-    'dager_feil_antall' = 'fieldvalidation.dager_feil_antall'
+    'dager_feil_antall' = 'fieldvalidation.dager_feil_antall',
+    'fnr_lik_applicantFnr' = 'fieldvalidation.fnr_lik_applicantFnr'
 }
 
 export const hasValue = (v: any) => v !== '' && v !== undefined && v !== null;
@@ -96,7 +97,7 @@ export const validateArbeid = (value: Arbeidssituasjon[]): FieldValidationResult
     return undefined;
 };
 
-export const validateNumeriValue = ({ min, max }: { min?: number; max?: number }) => (
+export const validateNumericValue = ({ min, max }: { min?: number; max?: number }) => (
     value: any
 ): FieldValidationResult => {
     const num = parseFloat(value);
@@ -105,6 +106,13 @@ export const validateNumeriValue = ({ min, max }: { min?: number; max?: number }
     }
     if ((min !== undefined && num < min) || (max !== undefined && value > max)) {
         return createFieldValidationError(AppFieldValidationErrors.dager_feil_antall);
+    }
+    return undefined;
+};
+
+export const validateFødselsnummerIsDifferentThan = (applicantFnr: string) => (fnr: string) => {
+    if (hasValue(fnr) && applicantFnr === fnr.trim()) {
+        return createFieldValidationError(AppFieldValidationErrors.fnr_lik_applicantFnr);
     }
     return undefined;
 };
