@@ -35,7 +35,7 @@ describe('Overføre Omsorgsdager', () => {
                         .click({ force: true });
                 });
                 it('Viser info panel"', () => {
-                    cy.get('[class="alertstripe alertstripe--info"]');
+                    cy.get('[class="alertstripe alertstripe--advarsel"]');
                 });
             });
         });

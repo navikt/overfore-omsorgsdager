@@ -50,8 +50,8 @@
 
     "step.nextButtonLabel": "Fortsett",
     "step.nextButtonAriaLabel": "Gå til neste steg",
-    "step.sendButtonLabel": "Send inn melding",
-    "step.sendButtonAriaLabel": "Send inn melding",
+    "step.sendButtonLabel": "Send inn",
+    "step.sendButtonAriaLabel": "Send inn",
 
     "step.overføring.pageTitle": "Om overføring",
     "step.overføring.stepTitle": "Om overføring",
@@ -78,7 +78,7 @@
     "step.oppsummering.stepIndicatorLabel": "Oppsummering",
 
     "introPage.tittel": "Melding om overføring av omsorgsdager",
-    "introPage.stegTittel": "Kan jeg bruke den digitale tjenesten?",
+    "introPage.stegTittel": "Kan jeg overføre omsorgsdager?",
     "introPage.informationposter": "Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være én eller flere av punktene under:",
     "introPage.informationposter.li.1": "arbeidstager",
     "introPage.informationposter.li.2": "selvstending næringsdrivende",
@@ -144,8 +144,8 @@
     "steg.medlemsskap.annetLandNeste12.hjelp": "Du svarer ja bare hvis du planlegger å oppholde deg fast i et annet land enn Norge. Korte utlandsturer i forbindelse med for eksempel ferie regnes ikke med.",
     "steg.medlemsskap.annetLandNeste12.listeTittel": "Utenlandsopphold neste 12 måneder",
 
-    "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn meldingen. Hvis du vil gjøre endringer, kan du gå tilbake.",
-    "steg.oppsummering.søker.header": "Navn på den som sender melding",
+    "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn. Hvis du vil gjøre endringer, kan du gå tilbake.",
+    "steg.oppsummering.søker.header": "Ditt navn",
     "steg.oppsummering.søker.fnr": "Fødselsnummer: {fødselsnummer}",
 
     "steg.oppsummering.arbeidssituasjon.header": "Din arbeidssituasjon",
