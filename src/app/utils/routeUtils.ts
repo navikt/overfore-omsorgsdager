@@ -24,7 +24,7 @@ export const isAvailable = (
 ) => {
     if (!appIsRunningInDevEnvironment()) {
         switch (path) {
-            case StepID.ARBEID:
+            case StepID.SITUASJON:
                 return welcomingPageIsValid(values);
             case StepID.OVERFØRING:
                 return arbeidStepIsAvailable(values);

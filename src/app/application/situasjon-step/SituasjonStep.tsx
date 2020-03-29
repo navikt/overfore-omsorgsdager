@@ -17,16 +17,16 @@ import { validateArbeid } from '../../validation/fieldValidations';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 
-const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
+const SituasjonStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
     const {
         values: { harFosterbarn }
     } = useFormikContext<ApplicationFormData>();
 
     return (
-        <ApplicationStep id={StepID.ARBEID} onValidFormSubmit={onValidSubmit}>
+        <ApplicationStep id={StepID.SITUASJON} onValidFormSubmit={onValidSubmit}>
             <FormikCheckboxPanelGroup<ApplicationFormField>
-                legend={intlHelper(intl, 'steg.arbeid.spm')}
+                legend={intlHelper(intl, 'steg.situasjon.spm')}
                 name={ApplicationFormField.arbeidssituasjon}
                 checkboxes={[
                     {
@@ -60,4 +60,4 @@ const ArbeidStep = ({ onValidSubmit }: StepConfigProps) => {
     );
 };
 
-export default ArbeidStep;
+export default SituasjonStep;
