@@ -24,7 +24,7 @@ describe('Overføre Omsorgsdager', () => {
                         .click({ force: true });
                 });
                 it('Viser linken "Gå videre"', () => {
-                    cy.get('a[href*="/familie/sykdom-i-familien/soknad/overfore-omsorgsdager/melding/velkommen"]');
+                    cy.get('a[href*="/familie/sykdom-i-familien/soknad/overfore-omsorgsdager/soknad/velkommen"]');
                 });
             });
 
