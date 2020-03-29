@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import Box from 'common/components/box/Box';
 import Page from 'common/components/page/Page';

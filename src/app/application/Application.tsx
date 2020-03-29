@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import IkkeMyndigPage from '../components/pages/ikke-myndig-page/IkkeMyndigPage';
 import { initialApplicationValues } from '../types/ApplicationFormData';
 import ApplicationEssentialsLoader from './ApplicationEssentialsLoader';

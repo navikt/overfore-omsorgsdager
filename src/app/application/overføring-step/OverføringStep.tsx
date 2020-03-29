@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import {
     validateFødselsnummer, validateRequiredField
