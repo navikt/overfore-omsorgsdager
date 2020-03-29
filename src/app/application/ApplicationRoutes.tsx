@@ -7,11 +7,11 @@ import GeneralErrorPage from '../components/pages/general-error-page/GeneralErro
 import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
 import RouteConfig from '../config/routeConfig';
 import { StepID } from '../config/stepConfig';
-import { Søkerdata } from '../types/Søkerdata';
-import { SøknadApiData } from '../types/SøknadApiData';
-import { SøknadFormData } from '../types/SøknadFormData';
+import { ApplicantData } from '../types/ApplicantData';
+import { ApplicationApiData } from '../types/ApplicationApiData';
+import { ApplicationFormData } from '../types/ApplicationFormData';
 import { navigateTo } from '../utils/navigationUtils';
-import { getNextStepRoute, getSøknadRoute, isAvailable } from '../utils/routeUtils';
+import { getApplicationRoute, getNextStepRoute, isAvailable } from '../utils/routeUtils';
 import ArbeidStep from './arbeid-step/ArbeidStep';
 import MedlemsskapStep from './medlemskap-step/MedlemsskapStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
@@ -21,17 +21,17 @@ export interface KvitteringInfo {
     søkernavn: string;
 }
 
-const getKvitteringInfoFromApiData = (søkerdata: Søkerdata): KvitteringInfo | undefined => {
+const getKvitteringInfoFromApiData = (søkerdata: ApplicantData): KvitteringInfo | undefined => {
     const { fornavn, mellomnavn, etternavn } = søkerdata.person;
     return {
         søkernavn: formatName(fornavn, etternavn, mellomnavn)
     };
 };
 
-const SøknadRoutes: React.FunctionComponent = () => {
-    const [søknadHasBeenSent, setSøknadHasBeenSent] = React.useState(false);
+const ApplicationRoutes: React.FunctionComponent = () => {
+    const [applicationHasBeenSent, setApplicationHasBeenSent] = React.useState(false);
     const [kvitteringInfo, setKvitteringInfo] = React.useState<KvitteringInfo | undefined>(undefined);
-    const { values, resetForm } = useFormikContext<SøknadFormData>();
+    const { values, resetForm } = useFormikContext<ApplicationFormData>();
 
     const history = useHistory();
 
@@ -51,7 +51,7 @@ const SøknadRoutes: React.FunctionComponent = () => {
                     <WelcomingPage
                         onValidSubmit={() =>
                             setTimeout(() => {
-                                navigateTo(`${RouteConfig.SØKNAD_ROUTE_PREFIX}/${StepID.ARBEID}`, history);
+                                navigateTo(`${RouteConfig.APPLICATION_ROUTE_PREFIX}/${StepID.ARBEID}`, history);
                             })
                         }
                     />
@@ -60,43 +60,43 @@ const SøknadRoutes: React.FunctionComponent = () => {
 
             {isAvailable(StepID.ARBEID, values) && (
                 <Route
-                    path={getSøknadRoute(StepID.ARBEID)}
+                    path={getApplicationRoute(StepID.ARBEID)}
                     render={() => <ArbeidStep onValidSubmit={() => navigateToNextStep(StepID.ARBEID)} />}
                 />
             )}
             {isAvailable(StepID.OVERFØRING, values) && (
                 <Route
-                    path={getSøknadRoute(StepID.OVERFØRING)}
+                    path={getApplicationRoute(StepID.OVERFØRING)}
                     render={() => <OverføringStep onValidSubmit={() => navigateToNextStep(StepID.OVERFØRING)} />}
                 />
             )}
             {isAvailable(StepID.MEDLEMSKAP, values) && (
                 <Route
-                    path={getSøknadRoute(StepID.MEDLEMSKAP)}
+                    path={getApplicationRoute(StepID.MEDLEMSKAP)}
                     render={() => <MedlemsskapStep onValidSubmit={() => navigateToNextStep(StepID.MEDLEMSKAP)} />}
                 />
             )}
 
             {isAvailable(StepID.SUMMARY, values) && (
                 <Route
-                    path={getSøknadRoute(StepID.SUMMARY)}
+                    path={getApplicationRoute(StepID.SUMMARY)}
                     render={() => (
                         <OppsummeringStep
-                            onApplicationSent={(apiData: SøknadApiData, søkerdata: Søkerdata) => {
+                            onApplicationSent={(apiData: ApplicationApiData, søkerdata: ApplicantData) => {
                                 const info = getKvitteringInfoFromApiData(søkerdata);
                                 setKvitteringInfo(info);
-                                setSøknadHasBeenSent(true);
+                                setApplicationHasBeenSent(true);
                                 resetForm();
-                                navigateTo(RouteConfig.SØKNAD_SENDT_ROUTE, history);
+                                navigateTo(RouteConfig.APPLICATION_SENDT_ROUTE, history);
                             }}
                         />
                     )}
                 />
             )}
 
-            {isAvailable(RouteConfig.SØKNAD_SENDT_ROUTE, values, søknadHasBeenSent) && (
+            {isAvailable(RouteConfig.APPLICATION_SENDT_ROUTE, values, applicationHasBeenSent) && (
                 <Route
-                    path={RouteConfig.SØKNAD_SENDT_ROUTE}
+                    path={RouteConfig.APPLICATION_SENDT_ROUTE}
                     render={() => <ConfirmationPage kvitteringInfo={kvitteringInfo} />}
                 />
             )}
@@ -107,4 +107,4 @@ const SøknadRoutes: React.FunctionComponent = () => {
     );
 };
 
-export default SøknadRoutes;
+export default ApplicationRoutes;

@@ -3,8 +3,8 @@ import { Utenlandsopphold } from 'common/forms/utenlandsopphold/types';
 import { Locale } from 'common/types/Locale';
 import { YesOrNo } from 'common/types/YesOrNo';
 import { formatDateToApiFormat } from 'common/utils/dateUtils';
-import { SøknadApiData, UtenlandsoppholdApiData } from '../types/SøknadApiData';
-import { SøknadFormData } from '../types/SøknadFormData';
+import { ApplicationApiData, UtenlandsoppholdApiData } from '../types/ApplicationApiData';
+import { ApplicationFormData } from '../types/ApplicationFormData';
 
 export const mapFormDataToApiData = (
     {
@@ -19,10 +19,10 @@ export const mapFormDataToApiData = (
         skalBoUtenforNorgeNeste12Mnd,
         utenlandsoppholdNeste12Mnd,
         utenlandsoppholdSiste12Mnd
-    }: SøknadFormData,
+    }: ApplicationFormData,
     sprak: Locale
-): SøknadApiData => {
-    const apiData: SøknadApiData = {
+): ApplicationApiData => {
+    const apiData: ApplicationApiData = {
         språk: (sprak as any) === 'en' ? 'nn' : sprak,
         arbeidssituasjon,
         fnrMottaker,

@@ -1,4 +1,4 @@
-import { getSøknadRoute } from '../utils/routeUtils';
+import { getApplicationRoute } from '../utils/routeUtils';
 import routeConfig from './routeConfig';
 
 export enum StepID {
@@ -48,18 +48,18 @@ export const getStepConfig = (): StepConfigInterface => {
             ...getStepConfigItemTextKeys(StepID.OVERFØRING),
             index: idx++,
             nextStep: StepID.MEDLEMSKAP,
-            backLinkHref: getSøknadRoute(StepID.ARBEID)
+            backLinkHref: getApplicationRoute(StepID.ARBEID)
         },
         [StepID.MEDLEMSKAP]: {
             ...getStepConfigItemTextKeys(StepID.MEDLEMSKAP),
             index: idx++,
             nextStep: StepID.SUMMARY,
-            backLinkHref: getSøknadRoute(StepID.OVERFØRING)
+            backLinkHref: getApplicationRoute(StepID.OVERFØRING)
         },
         [StepID.SUMMARY]: {
             ...getStepConfigItemTextKeys(StepID.SUMMARY),
             index: idx++,
-            backLinkHref: getSøknadRoute(StepID.MEDLEMSKAP),
+            backLinkHref: getApplicationRoute(StepID.MEDLEMSKAP),
             nextButtonLabel: 'step.sendButtonLabel',
             nextButtonAriaLabel: 'step.sendButtonAriaLabel'
         }

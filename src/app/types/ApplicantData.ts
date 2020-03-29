@@ -7,6 +7,6 @@ export interface Person {
     myndig: boolean;
 }
 
-export interface Søkerdata {
+export interface ApplicantData {
     person: Person;
 }

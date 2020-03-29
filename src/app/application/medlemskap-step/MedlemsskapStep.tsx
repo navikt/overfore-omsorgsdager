@@ -14,15 +14,15 @@ import {
 } from 'app/validation/fieldValidations';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import getLenker from '../../lenker';
-import { SøknadFormData, SøknadFormField } from '../../types/SøknadFormData';
-import SøknadFormComponents from '../SøknadFormComponents';
-import SøknadStep from '../SøknadStep';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
+import ApplicationFormComponents from '../ApplicationFormComponents';
+import ApplicationStep from '../ApplicationStep';
 
 const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubmit }) => {
-    const { values } = useFormikContext<SøknadFormData>();
+    const { values } = useFormikContext<ApplicationFormData>();
     const intl = useIntl();
     return (
-        <SøknadStep id={StepID.MEDLEMSKAP} onValidFormSubmit={onValidSubmit}>
+        <ApplicationStep id={StepID.MEDLEMSKAP} onValidFormSubmit={onValidSubmit}>
             <CounsellorPanel>
                 Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du
                 vanligvis medlem. Du kan lese mer om medlemskap på{' '}
@@ -32,17 +32,17 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                 .
             </CounsellorPanel>
             <FormBlock margin="xxl">
-                <SøknadFormComponents.YesOrNoQuestion
+                <ApplicationFormComponents.YesOrNoQuestion
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.spm')}
-                    name={SøknadFormField.harBoddUtenforNorgeSiste12Mnd}
+                    name={ApplicationFormField.harBoddUtenforNorgeSiste12Mnd}
                     validate={validateYesOrNoIsAnswered}
                     info={intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.hjelp')}
                 />
             </FormBlock>
             {values.harBoddUtenforNorgeSiste12Mnd === YesOrNo.YES && (
                 <FormBlock margin="l">
-                    <BostedUtlandListAndDialog<SøknadFormField>
-                        name={SøknadFormField.utenlandsoppholdSiste12Mnd}
+                    <BostedUtlandListAndDialog<ApplicationFormField>
+                        name={ApplicationFormField.utenlandsoppholdSiste12Mnd}
                         minDate={date1YearAgo}
                         maxDate={dateToday}
                         validate={validateUtenlandsoppholdSiste12Mnd}
@@ -54,19 +54,19 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                 </FormBlock>
             )}
             <FormBlock>
-                <SøknadFormComponents.YesOrNoQuestion
+                <ApplicationFormComponents.YesOrNoQuestion
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.spm')}
-                    name={SøknadFormField.skalBoUtenforNorgeNeste12Mnd}
+                    name={ApplicationFormField.skalBoUtenforNorgeNeste12Mnd}
                     validate={validateYesOrNoIsAnswered}
                     info={intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.hjelp')}
                 />
             </FormBlock>
             {values.skalBoUtenforNorgeNeste12Mnd === YesOrNo.YES && (
                 <FormBlock margin="l">
-                    <BostedUtlandListAndDialog<SøknadFormField>
+                    <BostedUtlandListAndDialog<ApplicationFormField>
                         minDate={dateToday}
                         maxDate={date1YearFromNow}
-                        name={SøknadFormField.utenlandsoppholdNeste12Mnd}
+                        name={ApplicationFormField.utenlandsoppholdNeste12Mnd}
                         validate={validateUtenlandsoppholdNeste12Mnd}
                         labels={{
                             addLabel: 'Legg til nytt utenlandsopphold',
@@ -75,7 +75,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                     />
                 </FormBlock>
             )}
-        </SøknadStep>
+        </ApplicationStep>
     );
 };
 

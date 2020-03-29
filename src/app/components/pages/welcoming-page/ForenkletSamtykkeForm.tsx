@@ -6,8 +6,8 @@ import FormBlock from 'common/components/form-block/FormBlock';
 import bemHelper from 'common/utils/bemUtils';
 import { commonFieldErrorRenderer } from 'common/utils/commonFieldErrorRenderer';
 import intlHelper from 'common/utils/intlUtils';
-import SøknadFormComponents from '../../../søknad/SøknadFormComponents';
-import { SøknadFormField } from '../../../types/SøknadFormData';
+import ApplicationFormComponents from '../../../application/ApplicationFormComponents';
+import { ApplicationFormField } from '../../../types/ApplicationFormData';
 
 interface Props {
     onConfirm: () => void;
@@ -24,14 +24,14 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
 }) => {
     const intl = useIntl();
     return (
-        <SøknadFormComponents.Form
+        <ApplicationFormComponents.Form
             onValidSubmit={onConfirm}
             includeButtons={false}
             fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
             <FormBlock>
-                <SøknadFormComponents.ConfirmationCheckbox
+                <ApplicationFormComponents.ConfirmationCheckbox
                     label={intlHelper(intl, 'welcomingPage.samtykke.tekst')}
-                    name={SøknadFormField.harForståttRettigheterOgPlikter}
+                    name={ApplicationFormField.harForståttRettigheterOgPlikter}
                     validate={(value) => {
                         return value !== true
                             ? intlHelper(intl, 'welcomingPage.samtykke.harIkkeGodkjentVilkår')
@@ -47,12 +47,12 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
                             )
                         }}
                     />
-                </SøknadFormComponents.ConfirmationCheckbox>
+                </ApplicationFormComponents.ConfirmationCheckbox>
             </FormBlock>
 
             <FormBlock>
                 <Hovedknapp className={bem.element('startApplicationButton')}>
-                    {intlHelper(intl, 'welcomingPage.begynnsøknad')}
+                    {intlHelper(intl, 'welcomingPage.start')}
                 </Hovedknapp>
             </FormBlock>
             <FormBlock>
@@ -62,7 +62,7 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
                     </Lenke>
                 </div>
             </FormBlock>
-        </SøknadFormComponents.Form>
+        </ApplicationFormComponents.Form>
     );
 };
 

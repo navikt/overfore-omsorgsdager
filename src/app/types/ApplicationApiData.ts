@@ -1,6 +1,6 @@
 import { ApiStringDate } from 'common/types/ApiStringDate';
 import { Locale } from 'common/types/Locale';
-import { Arbeidssituasjon } from './SøknadFormData';
+import { Arbeidssituasjon } from './ApplicationFormData';
 
 export type ISO8601Duration = string;
 
@@ -24,7 +24,7 @@ export interface FosterbarnApi {
     etternavn: string;
 }
 
-export interface SøknadApiData {
+export interface ApplicationApiData {
     språk: Locale;
     arbeidssituasjon: Arbeidssituasjon[];
     fnrMottaker: string;

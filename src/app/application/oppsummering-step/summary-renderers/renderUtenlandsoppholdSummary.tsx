@@ -1,7 +1,7 @@
 import React from 'react';
 import bemUtils from 'common/utils/bemUtils';
 import { apiStringDateToDate, prettifyDateExtended } from 'common/utils/dateUtils';
-import { UtenlandsoppholdApiData } from 'app/types/SøknadApiData';
+import { UtenlandsoppholdApiData } from 'app/types/ApplicationApiData';
 import './utenlandsoppholdSummaryItem.less';
 
 const bem = bemUtils('utenlandsoppholdSummaryItem');

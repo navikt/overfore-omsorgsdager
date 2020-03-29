@@ -3,21 +3,21 @@ import { AxiosError, AxiosResponse } from 'axios';
 import { getSøker } from '../api/api';
 import LoadingPage from '../components/pages/loading-page/LoadingPage';
 import routeConfig, { getRouteUrl } from '../config/routeConfig';
-import { SøkerdataContextProvider } from '../context/SøkerdataContext';
-import { Søkerdata } from '../types/Søkerdata';
+import { ApplicantDataContextProvider } from '../context/ApplicantDataContext';
+import { ApplicantData } from '../types/ApplicantData';
 import * as apiUtils from '../utils/apiUtils';
 import { navigateToLoginPage, userIsCurrentlyOnErrorPage } from '../utils/navigationUtils';
 
 interface Props {
-    contentLoadedRenderer: (søkerdata?: Søkerdata) => React.ReactNode;
+    contentLoadedRenderer: (søkerdata?: ApplicantData) => React.ReactNode;
 }
 
 interface State {
     isLoading: boolean;
-    søkerdata?: Søkerdata;
+    søkerdata?: ApplicantData;
 }
 
-class SøknadEssentialsLoader extends React.Component<Props, State> {
+class ApplicationEssentialsLoader extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = { isLoading: true };
@@ -53,7 +53,7 @@ class SøknadEssentialsLoader extends React.Component<Props, State> {
         );
     }
 
-    updateSøkerdata(søkerdata: Søkerdata, callback?: () => void) {
+    updateSøkerdata(søkerdata: ApplicantData, callback?: () => void) {
         this.setState(
             {
                 isLoading: false,
@@ -91,12 +91,12 @@ class SøknadEssentialsLoader extends React.Component<Props, State> {
 
         return (
             <>
-                <SøkerdataContextProvider value={søkerdata}>
+                <ApplicantDataContextProvider value={søkerdata}>
                     {contentLoadedRenderer(søkerdata)}
-                </SøkerdataContextProvider>
+                </ApplicantDataContextProvider>
             </>
         );
     }
 }
 
-export default SøknadEssentialsLoader;
+export default ApplicationEssentialsLoader;

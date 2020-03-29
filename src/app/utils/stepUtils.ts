@@ -1,7 +1,7 @@
 import { IntlShape } from 'react-intl';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { StepConfigInterface, StepConfigItemTexts, StepID } from 'app/config/stepConfig';
-import { SøknadFormData } from '../types/SøknadFormData';
+import { ApplicationFormData } from '../types/ApplicationFormData';
 import {
     arbeidStepIsValid, medlemskapStepIsValid, opplysningerOmOverføringIsValid, welcomingPageIsValid
 } from '../validation/stepValidations';
@@ -17,28 +17,18 @@ export const getStepTexts = (intl: IntlShape, stepId: StepID, stepConfig: StepCo
     };
 };
 
-/*
-export const overføringStepIsAvailable = (formData: SøknadFormData) => welcomingPageIsValid(formData);
-
-export const arbeidStepIsAvailable = (formData: SøknadFormData) => opplysningerOmOverføringIsValid(formData);
-
-export const medlemskapStepAvailable = (formData: SøknadFormData) => arbeidStepIsValid(formData);
-
-export const summaryStepAvailable = (formData: SøknadFormData) => medlemskapStepIsValid(formData);
-*/
-
-export const arbeidStepIsAvailable = (formData: SøknadFormData) =>  {
+export const arbeidStepIsAvailable = (formData: ApplicationFormData) => {
     return welcomingPageIsValid(formData);
 };
 
-export const overføringStepIsAvailable = (formData: SøknadFormData) => {
+export const overføringStepIsAvailable = (formData: ApplicationFormData) => {
     return arbeidStepIsValid(formData);
 };
 
-export const medlemskapStepAvailable = (formData: SøknadFormData) => {
+export const medlemskapStepAvailable = (formData: ApplicationFormData) => {
     return opplysningerOmOverføringIsValid(formData);
 };
 
-export const summaryStepAvailable = (formData: SøknadFormData) => {
-    return medlemskapStepIsValid(formData)
+export const summaryStepAvailable = (formData: ApplicationFormData) => {
+    return medlemskapStepIsValid(formData);
 };

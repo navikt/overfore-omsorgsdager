@@ -1,4 +1,4 @@
-# Søknad om overføring av omsorgsdager
+# Melding om overføring av omsorgsdager
 
 Kildekoden til frontend-appen for ny selvbetjeningsløsning for
 overføring av omsorgsdager.
