@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
-import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import ConfirmationPage from '../components/pages/confirmation-page/ConfirmationPage';
 import GeneralErrorPage from '../components/pages/general-error-page/GeneralErrorPage';
@@ -21,17 +20,8 @@ export interface KvitteringInfo {
     søkernavn: string;
 }
 
-const getKvitteringInfoFromApiData = (søkerdata: ApplicantData): KvitteringInfo | undefined => {
-    const { fornavn, mellomnavn, etternavn } = søkerdata.person;
-    return {
-        søkernavn: formatName(fornavn, etternavn, mellomnavn)
-    };
-};
-
 const ApplicationRoutes: React.FunctionComponent = () => {
-    const [applicationHasBeenSent, setApplicationHasBeenSent] = React.useState(false);
-    const [kvitteringInfo, setKvitteringInfo] = React.useState<KvitteringInfo | undefined>(undefined);
-    const { values, resetForm } = useFormikContext<ApplicationFormData>();
+    const { values } = useFormikContext<ApplicationFormData>();
 
     const history = useHistory();
 
@@ -83,25 +73,17 @@ const ApplicationRoutes: React.FunctionComponent = () => {
                     render={() => (
                         <OppsummeringStep
                             onApplicationSent={(apiData: ApplicationApiData, søkerdata: ApplicantData) => {
-                                const info = getKvitteringInfoFromApiData(søkerdata);
-                                setKvitteringInfo(info);
-                                setApplicationHasBeenSent(true);
-                                resetForm();
-                                navigateTo(RouteConfig.APPLICATION_SENDT_ROUTE, history);
+                                window.location.href = RouteConfig.APPLICATION_SENDT_ROUTE; // Ensures history is lost
                             }}
                         />
                     )}
                 />
             )}
 
-            {isAvailable(RouteConfig.APPLICATION_SENDT_ROUTE, values, applicationHasBeenSent) && (
-                <Route
-                    path={RouteConfig.APPLICATION_SENDT_ROUTE}
-                    render={() => <ConfirmationPage kvitteringInfo={kvitteringInfo} />}
-                />
-            )}
+            <Route path={RouteConfig.APPLICATION_SENDT_ROUTE} render={() => <ConfirmationPage />} />
 
             <Route path={RouteConfig.ERROR_PAGE_ROUTE} component={GeneralErrorPage} />
+
             <Redirect to={RouteConfig.WELCOMING_PAGE_ROUTE} />
         </Switch>
     );
