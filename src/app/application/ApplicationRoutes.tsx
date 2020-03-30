@@ -6,8 +6,6 @@ import GeneralErrorPage from '../components/pages/general-error-page/GeneralErro
 import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
 import RouteConfig from '../config/routeConfig';
 import { StepID } from '../config/stepConfig';
-import { ApplicantData } from '../types/ApplicantData';
-import { ApplicationApiData } from '../types/ApplicationApiData';
 import { ApplicationFormData } from '../types/ApplicationFormData';
 import { navigateTo } from '../utils/navigationUtils';
 import { getApplicationRoute, getNextStepRoute, isAvailable } from '../utils/routeUtils';
@@ -72,7 +70,7 @@ const ApplicationRoutes: React.FunctionComponent = () => {
                     path={getApplicationRoute(StepID.SUMMARY)}
                     render={() => (
                         <OppsummeringStep
-                            onApplicationSent={(apiData: ApplicationApiData, søkerdata: ApplicantData) => {
+                            onApplicationSent={() => {
                                 window.location.href = RouteConfig.APPLICATION_SENDT_ROUTE; // Ensures history is lost
                             }}
                         />

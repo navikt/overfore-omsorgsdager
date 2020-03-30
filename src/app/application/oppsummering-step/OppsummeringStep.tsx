@@ -28,7 +28,7 @@ import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
 
 interface Props {
-    onApplicationSent: (apiValues: ApplicationApiData, søkerdata: ApplicantData) => void;
+    onApplicationSent: () => void;
 }
 
 const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
@@ -43,7 +43,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
         setSendingInProgress(true);
         try {
             await sendApplication(data);
-            onApplicationSent(apiValues, søker);
+            onApplicationSent();
         } catch (error) {
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
                 navigateToLoginPage();
