@@ -22,8 +22,14 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
         <ApplicationStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
             <CounsellorPanel>
+                <p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p>
+                <ul>
+                    <li>den andre forelderen</li>
+                    <li>nåværende samboer eller ektefelle</li>
+                </ul>
                 <p>
-                    <FormattedMessage id="steg.overføring.info" />
+                    Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene
+                    under:
                 </p>
                 <ul>
                     <li>
@@ -36,9 +42,6 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                         <FormattedMessage id={`steg.overføring.info.li.3`} />
                     </li>
                 </ul>
-                <p>
-                    <FormattedMessage id={`steg.overføring.info.valg`} />
-                </p>
             </CounsellorPanel>
             <FormBlock>
                 <ApplicationFormComponents.Input
@@ -61,6 +64,8 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     inputMode="numeric"
                     max={2}
                     maxLength={2}
+                    description="Du velger selv hvor mange omsorgsdager du vil overføre. Du kan kun overføre de dagene du har fått
+                    ekstra på grunn av at barnehagen eller skolen er stengt som følge av koronaviruset."
                 />
             </FormBlock>
         </ApplicationStep>

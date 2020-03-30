@@ -25,7 +25,6 @@ interface PageFormValues {
 }
 
 const PageForm = getTypedFormComponents<PageFormField, PageFormValues>();
-const getText = (part: string) => <FormattedMessage id={`introPage.${part}`} />;
 
 const IntroPage: React.StatelessComponent = () => {
     const intl = useIntl();
@@ -42,11 +41,20 @@ const IntroPage: React.StatelessComponent = () => {
                         <li>den andre forelderen</li>
                         <li>nåværende samboer eller ektefelle</li>
                     </ul>
-                    <FormattedMessage id="introPage.informationposter" />
+                    <p>
+                        Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene
+                        under:
+                    </p>
                     <ul>
-                        <li>{getText('informationposter.li.1')}</li>
-                        <li>{getText('informationposter.li.2')}</li>
-                        <li>{getText('informationposter.li.3')}</li>
+                        <li>
+                            <FormattedMessage id={`steg.overføring.info.li.1`} />
+                        </li>
+                        <li>
+                            <FormattedMessage id={`steg.overføring.info.li.2`} />
+                        </li>
+                        <li>
+                            <FormattedMessage id={`steg.overføring.info.li.3`} />
+                        </li>
                     </ul>
                 </InformationPoster>
             </Box>
