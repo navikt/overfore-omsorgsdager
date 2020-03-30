@@ -84,7 +84,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
                         </Normaltekst>
                     </ContentWithHeader>
-                    <SummaryBlock header="Hva er din situasjon?">
+                    <SummaryBlock header="Hva er din arbeidssituasjon?">
                         <SummaryList
                             items={apiValues.arbeidssituasjon}
                             itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
