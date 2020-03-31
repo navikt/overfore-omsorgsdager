@@ -1,5 +1,5 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { validateYesOrNoIsAnswered } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { useFormikContext } from 'formik';
 import Lenke from 'nav-frontend-lenker';
@@ -24,10 +24,9 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
     return (
         <ApplicationStep id={StepID.MEDLEMSKAP} onValidFormSubmit={onValidSubmit}>
             <CounsellorPanel>
-                Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du
-                vanligvis medlem. Du kan lese mer om medlemskap på{' '}
+                <FormattedMessage id="steg.medlemsskap.veilder.textFørLenke" />{' '}
                 <Lenke href={getLenker().medlemskap} target="_blank">
-                    nav.no
+                    <FormattedMessage id="steg.medlemsskap.veilder.lenketekst.nav.no" />
                 </Lenke>
                 .
             </CounsellorPanel>

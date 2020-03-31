@@ -77,14 +77,12 @@
     "step.oppsummering.stepTitle": "Oppsummering",
     "step.oppsummering.stepIndicatorLabel": "Oppsummering",
 
+    "info.overføring.html": "<p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p><ul><li>den andre forelderen</li><li>nåværende samboer eller ektefelle</li></ul><p>Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene under:</p><ul><li>arbeidstager</li><li>selvstending næringsdrivende</li><li>frilanser</li></ul>",
+
     "introPage.tittel": "Melding om overføring av omsorgsdager",
     "introPage.stegTittel": "Kan jeg overføre omsorgsdager?",
-    "introPage.informationposter": "Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være én eller flere av punktene under:",
-    "introPage.informationposter.li.1": "arbeidstager",
-    "introPage.informationposter.li.2": "selvstending næringsdrivende",
-    "introPage.informationposter.li.3": "frilanser",
-    "introPage.counsellor": "Denne tjenesten gjelder kun for deg som skal overføre omsorgsdager til en annen omsorgsperson",
     "introPage.mottaker.spm": "Er den du skal overføre omsorgsdager til yrkesaktiv?",
+    "introPage.melding.stopp": "Hvis personen ikke er arbeidstaker, selvstendig næringsdrivende eller frilanser, er det ikke mulig å overføre omsorgsdager.",
 
     "welcomingPage.sidetittel": "Melding om overføring av omsorgsdager",
     "welcomingPage.banner.tittel": "Hei,",
@@ -129,14 +127,15 @@
     "modal.minePlikter.part2a": "Jeg har lest og forstått det som står på",
     "modal.minePlikter.part2b": "nav.no/rettogplikt",
 
-    "steg.situasjon.spm": "Hva er din arbeidssituasjon? Du kan velge flere.",
+    "steg.situasjon.arbeidssituasjon.spm": "Hva er din arbeidssituasjon? Du kan velge flere.",
+    "steg.situasjon.fosterbarn.spm": "Har du fosterbarn?",
 
-    "steg.overføring.info": "Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være én eller flere av punktene under:",
-    "steg.overføring.info.li.1": "arbeidstager",
-    "steg.overføring.info.li.2": "selvstending næringsdrivende",
-    "steg.overføring.info.li.3": "frilanser",
-    "steg.overføring.info.valg": "Du velger selv hvor mange omsorgsdager du vil overføre. Du kan kun overføre de dagene du har fått ekstra på grunn av at barnehagen eller skolen er stengt som følge av koronaviruset.",
+    "steg.overføring.fnr.spm": "Hva er fødselsnummeret til den som skal motta omsorgsdagene?",
+    "steg.overføring.antallDager.spm": "Hvor mange dager ønsker du å overføre?",
+    "steg.overføring.antallDager.info": "Du velger selv hvor mange omsorgsdager du vil overføre. Du kan kun overføre de dagene du har fått ekstra på grunn av at barnehagen eller skolen er stengt som følge av koronaviruset.",
 
+    "steg.medlemsskap.veilder.textFørLenke": "Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du vanligvis medlem. Du kan lese mer om medlemskap på",
+    "steg.medlemsskap.veilder.lenketekst.nav.no": "nav.no",
     "steg.medlemsskap.annetLandSiste12.spm": "Har du bodd i andre land enn Norge i hele eller deler av de siste 12 månedene?",
     "steg.medlemsskap.annetLandSiste12.hjelp": "Du svarer ja bare hvis du har oppholdt deg fast i et annet land enn Norge. Korte utlandsturer i forbindelse med for eksempel ferie regnes ikke med.",
     "steg.medlemsskap.annetLandNeste12.spm": "Planlegger du å bo i andre land enn Norge i hele eller deler av de neste 12 månedene?",
@@ -147,9 +146,10 @@
     "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn. Hvis du vil gjøre endringer, kan du gå tilbake.",
     "steg.oppsummering.søker.header": "Ditt navn",
     "steg.oppsummering.søker.fnr": "Fødselsnummer: {fødselsnummer}",
-
-    "steg.oppsummering.arbeidssituasjon.header": "Din arbeidssituasjon",
-
+    "steg.oppsummering.arbeidssituasjon.header": "Hva er din arbeidssituasjon?",
+    "steg.oppsummering.fosterbarn.header": "Fosterbarn",
+    "steg.oppsummering.overførerTilFnr.header": "Hva er fødselsnummeret til den som skal motta omsorgsdagene?",
+    "steg.oppsummering.antallDager.header": "Hvor mange dager ønsker du å overføre?",
     "steg.oppsummering.utlandetSiste12.liste.header": "Utenlandsopphold siste 12 måneder",
     "steg.oppsummering.utlandetNeste12.liste.header": "Utenlandsopphold neste 12 måneder",
     "steg.oppsummering.bekrefterOpplysninger": "Jeg bekrefter at opplysningene jeg har gitt er riktige, og at jeg ikke har holdt tilbake opplysninger som har betydning for min rett til omsorgspenger.",
