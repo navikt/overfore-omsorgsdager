@@ -1,7 +1,7 @@
 import {
     createFieldValidationError
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
-import { FormikValidateFunction } from '@navikt/sif-common-formik/lib';
+import { FormikValidateFunction, YesOrNo } from '@navikt/sif-common-formik/lib';
 import { Utenlandsopphold } from 'common/forms/utenlandsopphold/types';
 import {
     date1YearAgo, date1YearFromNow, dateRangesCollide, dateRangesExceedsRange
@@ -23,6 +23,9 @@ export enum AppFieldValidationErrors {
 }
 
 export const hasValue = (v: any) => v !== '' && v !== undefined && v !== null;
+
+export const yesOrNoIsAnswered = (answer: YesOrNo | undefined): boolean =>
+    answer !== undefined && answer !== YesOrNo.UNANSWERED;
 
 export type FieldValidationArray = (validations: FormikValidateFunction[]) => (value: any) => FieldValidationResult;
 

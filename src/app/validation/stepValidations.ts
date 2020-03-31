@@ -1,6 +1,6 @@
 import { YesOrNo } from '@navikt/sif-common-formik/lib';
 import { ApplicationFormData } from '../types/ApplicationFormData';
-import { hasValue, isValidFnr } from './fieldValidations';
+import { hasValue, isValidFnr, yesOrNoIsAnswered } from './fieldValidations';
 
 export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter }: ApplicationFormData) => {
     return harForståttRettigheterOgPlikter === true;
@@ -25,5 +25,4 @@ export const medlemskapStepIsValid = ({
     harBoddUtenforNorgeSiste12Mnd,
     skalBoUtenforNorgeNeste12Mnd
 }: ApplicationFormData) =>
-    (harBoddUtenforNorgeSiste12Mnd === YesOrNo.YES || harBoddUtenforNorgeSiste12Mnd === YesOrNo.NO) &&
-    (skalBoUtenforNorgeNeste12Mnd === YesOrNo.YES || skalBoUtenforNorgeNeste12Mnd === YesOrNo.NO);
+    yesOrNoIsAnswered(harBoddUtenforNorgeSiste12Mnd) && yesOrNoIsAnswered(skalBoUtenforNorgeNeste12Mnd);
