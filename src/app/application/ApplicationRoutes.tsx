@@ -4,7 +4,7 @@ import { useFormikContext } from 'formik';
 import ConfirmationPage from '../components/pages/confirmation-page/ConfirmationPage';
 import GeneralErrorPage from '../components/pages/general-error-page/GeneralErrorPage';
 import WelcomingPage from '../components/pages/welcoming-page/WelcomingPage';
-import RouteConfig from '../config/routeConfig';
+import RouteConfig, { getRouteUrl } from '../config/routeConfig';
 import { StepID } from '../config/stepConfig';
 import { ApplicationFormData } from '../types/ApplicationFormData';
 import { navigateTo } from '../utils/navigationUtils';
@@ -71,7 +71,7 @@ const ApplicationRoutes: React.FunctionComponent = () => {
                     render={() => (
                         <OppsummeringStep
                             onApplicationSent={() => {
-                                window.location.href = RouteConfig.APPLICATION_SENDT_ROUTE; // Ensures history is lost
+                                window.location.href = getRouteUrl(RouteConfig.APPLICATION_SENDT_ROUTE); // Ensures history is lost
                             }}
                         />
                     )}
