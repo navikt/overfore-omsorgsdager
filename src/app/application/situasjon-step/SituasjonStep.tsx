@@ -26,7 +26,7 @@ const SituasjonStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
         <ApplicationStep id={StepID.SITUASJON} onValidFormSubmit={onValidSubmit}>
             <FormikCheckboxPanelGroup<ApplicationFormField>
-                legend={intlHelper(intl, 'steg.situasjon.spm')}
+                legend={intlHelper(intl, 'steg.situasjon.arbeidssituasjon.spm')}
                 name={ApplicationFormField.arbeidssituasjon}
                 checkboxes={[
                     {
@@ -47,7 +47,7 @@ const SituasjonStep = ({ onValidSubmit }: StepConfigProps) => {
             <FormBlock>
                 <ApplicationFormComponents.YesOrNoQuestion
                     name={ApplicationFormField.harFosterbarn}
-                    legend="Har du fosterbarn?"
+                    legend={intlHelper(intl, 'steg.situasjon.fosterbarn.spm')}
                     validate={validateYesOrNoIsAnswered}
                 />
             </FormBlock>

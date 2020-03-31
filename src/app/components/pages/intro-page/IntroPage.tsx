@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedHTMLMessage, FormattedMessage, useIntl } from 'react-intl';
 import {
     commonFieldErrorRenderer
 } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
@@ -36,26 +36,7 @@ const IntroPage: React.StatelessComponent = () => {
             topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
             <Box margin="xxxl" padBottom="xxl">
                 <InformationPoster>
-                    <p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p>
-                    <ul>
-                        <li>den andre forelderen</li>
-                        <li>nåværende samboer eller ektefelle</li>
-                    </ul>
-                    <p>
-                        Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene
-                        under:
-                    </p>
-                    <ul>
-                        <li>
-                            <FormattedMessage id={`steg.overføring.info.li.1`} />
-                        </li>
-                        <li>
-                            <FormattedMessage id={`steg.overføring.info.li.2`} />
-                        </li>
-                        <li>
-                            <FormattedMessage id={`steg.overføring.info.li.3`} />
-                        </li>
-                    </ul>
+                    <FormattedHTMLMessage id="info.overføring.html" />
                 </InformationPoster>
             </Box>
 
@@ -73,8 +54,7 @@ const IntroPage: React.StatelessComponent = () => {
                         {mottakerErGyldig === YesOrNo.NO && (
                             <Box margin="l">
                                 <AlertStripeAdvarsel>
-                                    Hvis personen ikke er arbeidstaker, selvstendig næringsdrivende eller frilanser, er
-                                    det ikke mulig å overføre omsorgsdager.
+                                    <FormattedMessage id="introPage.melding.stopp" />
                                 </AlertStripeAdvarsel>
                             </Box>
                         )}

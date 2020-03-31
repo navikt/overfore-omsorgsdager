@@ -84,7 +84,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
                         </Normaltekst>
                     </ContentWithHeader>
-                    <SummaryBlock header="Hva er din arbeidssituasjon?">
+                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.arbeidssituasjon.header')}>
                         <SummaryList
                             items={apiValues.arbeidssituasjon}
                             itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
@@ -92,7 +92,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                     </SummaryBlock>
                     {fosterbarn.length > 0 && (
                         <>
-                            <SummaryBlock header="Fosterbarn">
+                            <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.fosterbarn.header')}>
                                 <SummaryList
                                     items={fosterbarn}
                                     itemRenderer={(barn: FosterbarnApi) => (
@@ -104,11 +104,13 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             </SummaryBlock>
                         </>
                     )}
-                    <SummaryBlock header="Hva er fødselsnummeret til den som skal motta omsorgsdagene?">
+                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.overførerTilFnr.header')}>
                         {apiValues.fnrMottaker}
                     </SummaryBlock>
 
-                    <SummaryBlock header="Hvor mange dager ønsker du å overføre?">{apiValues.antallDager}</SummaryBlock>
+                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.antallDager.header')}>
+                        {apiValues.antallDager}
+                    </SummaryBlock>
 
                     <MedlemsskapSummary medlemskap={apiValues.medlemskap} />
                 </Panel>
