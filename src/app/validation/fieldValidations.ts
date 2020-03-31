@@ -1,11 +1,7 @@
-import {
-    createFieldValidationError
-} from '@navikt/sif-common-core/lib/validation/fieldValidations';
+import { createFieldValidationError } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { FormikValidateFunction, YesOrNo } from '@navikt/sif-common-formik/lib';
 import { Utenlandsopphold } from 'common/forms/utenlandsopphold/types';
-import {
-    date1YearAgo, date1YearFromNow, dateRangesCollide, dateRangesExceedsRange
-} from 'common/utils/dateUtils';
+import { date1YearAgo, date1YearFromNow, dateRangesCollide, dateRangesExceedsRange } from 'common/utils/dateUtils';
 import { FieldValidationResult } from 'common/validation/types';
 import { Arbeidssituasjon } from '../types/ApplicationFormData';
 import { fødselsnummerIsValid, FødselsnummerValidationErrorReason } from './fødselsnummerValidator';
@@ -100,13 +96,17 @@ export const validateArbeid = (value: Arbeidssituasjon[]): FieldValidationResult
     return undefined;
 };
 
+const onlyNumberInString = (str: string): boolean => {
+    return /^\d+$/.test(str);
+};
+
 export const validateNumericValue = ({ min, max }: { min?: number; max?: number }) => (
     value: any
 ): FieldValidationResult => {
-    const num = parseFloat(value);
-    if (isNaN(num)) {
+    if (typeof value === 'string' && !onlyNumberInString(value)) {
         return createFieldValidationError(AppFieldValidationErrors.dager_er_ikke_tall);
     }
+    const num = parseFloat(value);
     if ((min !== undefined && num < min) || (max !== undefined && value > max)) {
         return createFieldValidationError(AppFieldValidationErrors.dager_feil_antall);
     }
