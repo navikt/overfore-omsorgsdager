@@ -26,6 +26,7 @@ spec:
             cpu: 50m
             memory: 128Mi
     ingresses:
+        - https://www.nav.no/familie/sykdom-i-familien/soknad/overfore-omsorgsdager
         - https://overfore-omsorgsdager.nais.oera.no
     replicas:
         min: 1
