@@ -20,8 +20,6 @@ export interface UtenlandsoppholdApiData {
 
 export interface FosterbarnApi {
     fødselsnummer: string;
-    fornavn: string;
-    etternavn: string;
 }
 
 export interface ApplicationApiData {

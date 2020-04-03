@@ -31,6 +31,7 @@ const ApplicationRoutes: React.FunctionComponent = () => {
             }
         });
     };
+
     return (
         <Switch>
             <Route
