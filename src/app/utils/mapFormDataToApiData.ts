@@ -45,8 +45,8 @@ export const mapFormDataToApiData = (
 
     if (harFosterbarn === YesOrNo.YES && fosterbarn.length > 0) {
         apiData.fosterbarn = fosterbarn.map((barn) => {
-            const { id, ...rest } = barn;
-            return rest;
+            const { fødselsnummer } = barn;
+            return { fødselsnummer };
         });
     }
     return apiData;

@@ -95,11 +95,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.fosterbarn.header')}>
                                 <SummaryList
                                     items={fosterbarn}
-                                    itemRenderer={(barn: FosterbarnApi) => (
-                                        <>
-                                            {barn.fødselsnummer} - {formatName(barn.fornavn, barn.etternavn)}
-                                        </>
-                                    )}
+                                    itemRenderer={(barn: FosterbarnApi) => <>{barn.fødselsnummer}</>}
                                 />
                             </SummaryBlock>
                         </>
