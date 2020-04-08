@@ -124,7 +124,7 @@
 
     "steg.overføring.fnr.spm": "Hva er fødselsnummeret til den som skal motta omsorgsdagene?",
     "steg.overføring.antallDager.spm": "Hvor mange dager ønsker du å overføre?",
-    "steg.overføring.antallDager.info": "Du velger selv hvor mange omsorgsdager du vil overføre. Du kan kun overføre de dagene du har fått ekstra på grunn av at barnehagen eller skolen er stengt som følge av koronaviruset.",
+    "steg.overføring.antallDager.info": "Du velger selv hvor mange av dine omsorgsdager du vil overføre. Du kan overføre opp til alle du har tilgjengelig, inkludert de ekstra dagene du har fått på grunn av koronasituasjonen.",
 
     "steg.medlemsskap.veilder.textFørLenke": "Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du vanligvis medlem. Du kan lese mer om medlemskap på",
     "steg.medlemsskap.veilder.lenketekst.nav.no": "nav.no",

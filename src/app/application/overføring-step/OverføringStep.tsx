@@ -3,14 +3,14 @@ import { FormattedHTMLMessage, useIntl } from 'react-intl';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import {
-    validateFødselsnummer, validateRequiredField
-} from '@navikt/sif-common-core/lib/validation/fieldValidations';
+import { validateFødselsnummer, validateRequiredField } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicantDataContext } from '../../context/ApplicantDataContext';
 import { ApplicationFormField } from '../../types/ApplicationFormData';
 import {
-    validateAll, validateFødselsnummerIsDifferentThan, validateNumericValue
+    validateAll,
+    validateFødselsnummerIsDifferentThan,
+    validateNumericValue
 } from '../../validation/fieldValidations';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
@@ -43,7 +43,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     bredde="XS"
                     name={ApplicationFormField.antallDager}
                     label={intlHelper(intl, 'steg.overføring.antallDager.spm')}
-                    validate={validateAll([validateRequiredField, validateNumericValue({ min: 1, max: 99 })])}
+                    validate={validateAll([validateRequiredField, validateNumericValue({ min: 1, max: 999 })])}
                     inputMode="numeric"
                     max={2}
                     maxLength={2}
