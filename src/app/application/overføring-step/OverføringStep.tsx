@@ -45,8 +45,9 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     label={intlHelper(intl, 'steg.overføring.antallDager.spm')}
                     validate={validateAll([validateRequiredField, validateNumericValue({ min: 1, max: 999 })])}
                     inputMode="numeric"
-                    max={2}
-                    maxLength={2}
+                    min={1}
+                    max={999}
+                    maxLength={3}
                     description={intlHelper(intl, 'steg.overføring.antallDager.info')}
                 />
             </FormBlock>
