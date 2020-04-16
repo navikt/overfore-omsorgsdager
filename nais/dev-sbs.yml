@@ -41,7 +41,7 @@ spec:
         - name: APPRES_CMS_URL
           value: http://appres.nav.no
         - name: API_URL
-          value: https://omsorgspengesoknad-api-q.nav.no
+          value: https://omsorgsdageroverforingsoknad-api-q.nav.no
         - name: PUBLIC_PATH
           value: /familie/sykdom-i-familien/soknad/overfore-omsorgsdager
         - name: LOGIN_URL
