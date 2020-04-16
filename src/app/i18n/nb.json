@@ -123,6 +123,7 @@
     "steg.situasjon.fosterbarn.spm": "Har du fosterbarn?",
 
     "steg.overføring.fnr.spm": "Hva er fødselsnummeret til den som skal motta omsorgsdagene?",
+    "steg.overføring.navn.spm": "Hva er navnet til den som skal motta omsorgsdagene?",
     "steg.overføring.antallDager.spm": "Hvor mange dager ønsker du å overføre?",
     "steg.overføring.antallDager.info": "Du velger selv hvor mange av dine omsorgsdager du vil overføre. Du kan overføre opp til alle du har tilgjengelig, inkludert de ekstra dagene du har fått på grunn av koronasituasjonen.",
 
@@ -141,6 +142,7 @@
     "steg.oppsummering.arbeidssituasjon.header": "Hva er din arbeidssituasjon?",
     "steg.oppsummering.fosterbarn.header": "Fosterbarn",
     "steg.oppsummering.overførerTilFnr.header": "Hva er fødselsnummeret til den som skal motta omsorgsdagene?",
+    "steg.oppsummering.overførerTilNavn.header": "Hva er navnet til den som skal motta omsorgsdagene?",
     "steg.oppsummering.antallDager.header": "Hvor mange dager ønsker du å overføre?",
     "steg.oppsummering.utlandetSiste12.liste.header": "Utenlandsopphold siste 12 måneder",
     "steg.oppsummering.utlandetNeste12.liste.header": "Utenlandsopphold neste 12 måneder",

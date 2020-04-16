@@ -14,6 +14,7 @@ export enum ApplicationFormField {
     harFosterbarn = 'harFosterbarn',
     fosterbarn = 'fosterbarn',
     fnrMottaker = 'fnrMottaker',
+    navnMottaker = 'navnMottaker',
     antallDager = 'antallDager',
     harBoddUtenforNorgeSiste12Mnd = 'harBoddUtenforNorgeSiste12Mnd',
     utenlandsoppholdSiste12Mnd = 'utenlandsoppholdSiste12Mnd',
@@ -29,6 +30,7 @@ export interface ApplicationFormData {
     [ApplicationFormField.harFosterbarn]: YesOrNo;
     [ApplicationFormField.fosterbarn]: Fosterbarn[];
     [ApplicationFormField.fnrMottaker]: string;
+    [ApplicationFormField.navnMottaker]: string;
     [ApplicationFormField.antallDager]: number;
     [ApplicationFormField.arbeidssituasjon]: Arbeidssituasjon[];
     [ApplicationFormField.harBoddUtenforNorgeSiste12Mnd]: YesOrNo;
@@ -41,6 +43,7 @@ export const initialApplicationValues: Partial<ApplicationFormData> = {
     [ApplicationFormField.harForståttRettigheterOgPlikter]: false,
     [ApplicationFormField.harBekreftetOpplysninger]: false,
     [ApplicationFormField.fnrMottaker]: '',
+    [ApplicationFormField.navnMottaker]: '',
     [ApplicationFormField.arbeidssituasjon]: [],
     [ApplicationFormField.harFosterbarn]: YesOrNo.UNANSWERED,
     [ApplicationFormField.fosterbarn]: [],

@@ -40,6 +40,16 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             </FormBlock>
             <FormBlock>
                 <ApplicationFormComponents.Input
+                    bredde="XL"
+                    name={ApplicationFormField.navnMottaker}
+                    label={intlHelper(intl, 'steg.overføring.navn.spm')}
+                    validate={
+                        validateRequiredField
+                    }
+                />
+            </FormBlock>
+            <FormBlock>
+                <ApplicationFormComponents.Input
                     bredde="XS"
                     name={ApplicationFormField.antallDager}
                     label={intlHelper(intl, 'steg.overføring.antallDager.spm')}
