@@ -38,6 +38,7 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer }: Props) => {
                 } else if (!userIsCurrentlyOnErrorPage()) {
                     navigateToErrorPage(history);
                 }
+                
                 // this timeout is set because if isLoading is updated in the state too soon,
                 // the contentLoadedRenderer() will be called while the user is still on the wrong route,
                 // because the redirect to routeConfig.ERROR_PAGE_ROUTE will not have happened yet.
