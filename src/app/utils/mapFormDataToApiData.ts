@@ -16,6 +16,7 @@ export const mapFormDataToApiData = (
         fosterbarn,
         antallDager,
         fnrMottaker,
+        navnMottaker,
         skalBoUtenforNorgeNeste12Mnd,
         utenlandsoppholdNeste12Mnd,
         utenlandsoppholdSiste12Mnd
@@ -26,6 +27,7 @@ export const mapFormDataToApiData = (
         språk: (sprak as any) === 'en' ? 'nn' : sprak,
         arbeidssituasjon,
         fnrMottaker,
+        navnMottaker,
         antallDager,
         medlemskap: {
             harBoddIUtlandetSiste12Mnd: harBoddUtenforNorgeSiste12Mnd === YesOrNo.YES,

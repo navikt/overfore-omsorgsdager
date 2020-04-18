@@ -17,8 +17,8 @@ export const situasjonStepIsValid = ({
     return harForståttRettigheterOgPlikter && harValgtArbeidsSituasjon && harValidFosterbarn;
 };
 
-export const opplysningerOmOverføringIsValid = ({ fnrMottaker, antallDager }: ApplicationFormData) => {
-    return hasValue(fnrMottaker) && hasValue(antallDager) && isValidFnr(fnrMottaker);
+export const opplysningerOmOverføringIsValid = ({ fnrMottaker, navnMottaker, antallDager }: ApplicationFormData) => {
+    return hasValue(fnrMottaker) && hasValue(navnMottaker) && hasValue(antallDager) && isValidFnr(fnrMottaker);
 };
 
 export const medlemskapStepIsValid = ({

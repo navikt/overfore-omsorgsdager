@@ -26,6 +26,7 @@ export interface ApplicationApiData {
     språk: Locale;
     arbeidssituasjon: Arbeidssituasjon[];
     fnrMottaker: string;
+    navnMottaker: string;
     fosterbarn?: FosterbarnApi[];
     antallDager: number;
     medlemskap: MedlemskapApiData;
