@@ -100,10 +100,10 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             </SummaryBlock>
                         </>
                     )}
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.overførerTilFnr.header')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.fnr.spm')}>
                         {apiValues.fnrMottaker}
                     </SummaryBlock>
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.overførerTilNavn.header')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.navn.spm')}>
                         {apiValues.navnMottaker}
                     </SummaryBlock>
 
