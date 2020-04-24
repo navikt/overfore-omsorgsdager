@@ -122,8 +122,8 @@
     "steg.situasjon.arbeidssituasjon.spm": "Hva er din arbeidssituasjon? Du kan velge flere.",
     "steg.situasjon.fosterbarn.spm": "Har du fosterbarn?",
 
-    "steg.overføring.fnr.spm": "Hva er fødselsnummeret til den som skal motta omsorgsdagene?",
-    "steg.overføring.navn.spm": "Hva er navnet til den som skal motta omsorgsdagene? (Skriv inn hele navnet)",
+    "steg.overføring.fnr.spm": "Hva er fødselsnummeret til den du skal overføre omsorgsdager til?",
+    "steg.overføring.navn.spm": "Hva er navnet til den du skal overføre omsorgsdager til? (Skriv inn hele navnet)",
     "steg.overføring.antallDager.spm": "Hvor mange dager ønsker du å overføre?",
     "steg.overføring.antallDager.info": "Du velger selv hvor mange av dine omsorgsdager du vil overføre. Du kan overføre opp til alle du har tilgjengelig, inkludert de ekstra dagene du har fått på grunn av koronasituasjonen.",
 
