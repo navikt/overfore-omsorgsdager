@@ -77,7 +77,7 @@
     "step.oppsummering.stepTitle": "Oppsummering",
     "step.oppsummering.stepIndicatorLabel": "Oppsummering",
 
-    "info.overføring.html": "<p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p><ul><li>den andre forelderen</li><li>nåværende samboer eller ektefelle</li></ul><p>Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene under:</p><ul><li>arbeidstager</li><li>selvstendig næringsdrivende</li><li>frilanser</li></ul>",
+    "info.overføring.html": "<p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p><ul><li>den andre forelderen</li><li>nåværende samboer eller ektefelle</li></ul><p>Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene under:</p><ul><li>arbeidstaker</li><li>selvstendig næringsdrivende</li><li>frilanser</li></ul>",
 
     "introPage.tittel": "Melding om overføring av omsorgsdager",
     "introPage.stegTittel": "Kan jeg overføre omsorgsdager?",
@@ -124,6 +124,8 @@
 
     "steg.overføring.fnr.spm": "Hva er fødselsnummeret til den du skal overføre omsorgsdager til?",
     "steg.overføring.navn.spm": "Hva er navnet til den du skal overføre omsorgsdager til? (Skriv inn hele navnet)",
+    "steg.overføring.erYrkesaktiv.spm": "Er den du skal overføre dager til yrkesaktiv?",
+    "steg.overføring.erYrkesaktiv.info": "Man <strong>må</strong> være yrkesaktiv for å ha rett til å bruke omsorgsdager. Du kan ikke overføre omsorgsdager til en person som ikke er yrkesaktiv.",
     "steg.overføring.antallDager.spm": "Hvor mange dager ønsker du å overføre?",
     "steg.overføring.antallDager.info": "Du velger selv hvor mange av dine omsorgsdager du vil overføre. Du kan overføre opp til alle du har tilgjengelig, inkludert de ekstra dagene du har fått på grunn av koronasituasjonen.",
 
