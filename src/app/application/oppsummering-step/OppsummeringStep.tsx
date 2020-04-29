@@ -26,6 +26,7 @@ import ApplicationStep from '../ApplicationStep';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
+import { YesOrNo } from 'common/types/YesOrNo';
 
 interface Props {
     onApplicationSent: () => void;
@@ -106,9 +107,11 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                     <SummaryBlock header={intlHelper(intl, 'steg.overføring.navn.spm')}>
                         {apiValues.navnMottaker}
                     </SummaryBlock>
+
                     <SummaryBlock header={intlHelper(intl, 'steg.overføring.erYrkesaktiv.spm')}>
-                        <FormattedMessage id={apiValues.mottakerErYrkesaktiv ? 'Ja' : 'Nei'} />
+                        <FormattedMessage id={formik.values[ApplicationFormField.erYrkesaktiv] === YesOrNo.YES ? 'Ja' : 'Nei'} />
                     </SummaryBlock>
+
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.antallDager.header')}>
                         {apiValues.antallDager}
                     </SummaryBlock>

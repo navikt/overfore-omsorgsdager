@@ -29,7 +29,6 @@ export const mapFormDataToApiData = (
         arbeidssituasjon,
         fnrMottaker,
         navnMottaker,
-        mottakerErYrkesaktiv: erYrkesaktiv === YesOrNo.YES,
         antallDager,
         medlemskap: {
             harBoddIUtlandetSiste12Mnd: harBoddUtenforNorgeSiste12Mnd === YesOrNo.YES,
