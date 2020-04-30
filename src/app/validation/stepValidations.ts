@@ -17,8 +17,19 @@ export const situasjonStepIsValid = ({
     return harForståttRettigheterOgPlikter && harValgtArbeidsSituasjon && harValidFosterbarn;
 };
 
-export const opplysningerOmOverføringIsValid = ({ fnrMottaker, navnMottaker, antallDager }: ApplicationFormData) => {
-    return hasValue(fnrMottaker) && hasValue(navnMottaker) && hasValue(antallDager) && isValidFnr(fnrMottaker);
+export const opplysningerOmOverføringIsValid = ({
+    fnrMottaker,
+    navnMottaker,
+    antallDager,
+    erYrkesaktiv
+}: ApplicationFormData) => {
+    return (
+        hasValue(fnrMottaker) &&
+        hasValue(navnMottaker) &&
+        erYrkesaktiv === YesOrNo.YES &&
+        hasValue(antallDager) &&
+        isValidFnr(fnrMottaker)
+    );
 };
 
 export const medlemskapStepIsValid = ({

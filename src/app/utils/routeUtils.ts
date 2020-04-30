@@ -1,9 +1,13 @@
 import RouteConfig from '../config/routeConfig';
 import { getStepConfig, StepID } from '../config/stepConfig';
 import { ApplicationFormData } from '../types/ApplicationFormData';
-import { welcomingPageIsValid } from '../validation/stepValidations';
 import { appIsRunningInDevEnvironment } from './envUtils';
-import { arbeidStepIsAvailable, medlemskapStepAvailable, summaryStepAvailable } from './stepUtils';
+import {
+    medlemskapStepAvailable,
+    overføringStepIsAvailable,
+    situasjonStepIsAvailable,
+    summaryStepAvailable
+} from './stepUtils';
 
 export const getApplicationRoute = (stepId: StepID | undefined) => {
     if (stepId !== undefined) {
@@ -25,9 +29,9 @@ export const isAvailable = (
     if (!appIsRunningInDevEnvironment()) {
         switch (path) {
             case StepID.SITUASJON:
-                return welcomingPageIsValid(values);
+                return situasjonStepIsAvailable(values);
             case StepID.OVERFØRING:
-                return arbeidStepIsAvailable(values);
+                return overføringStepIsAvailable(values);
             case StepID.MEDLEMSKAP:
                 return medlemskapStepAvailable(values);
             case StepID.SUMMARY:

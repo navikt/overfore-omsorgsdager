@@ -17,6 +17,7 @@ export const mapFormDataToApiData = (
         antallDager,
         fnrMottaker,
         navnMottaker,
+        erYrkesaktiv,
         skalBoUtenforNorgeNeste12Mnd,
         utenlandsoppholdNeste12Mnd,
         utenlandsoppholdSiste12Mnd

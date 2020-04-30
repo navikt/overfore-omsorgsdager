@@ -3,10 +3,14 @@ import { FormattedHTMLMessage, useIntl } from 'react-intl';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
-import { validateFødselsnummer, validateRequiredField } from '@navikt/sif-common-core/lib/validation/fieldValidations';
+import {
+    validateFødselsnummer,
+    validateRequiredField,
+    validateYesOrNoIsAnswered
+} from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicantDataContext } from '../../context/ApplicantDataContext';
-import { ApplicationFormField } from '../../types/ApplicationFormData';
+import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import {
     validateAll,
     validateFødselsnummerIsDifferentThan,
@@ -14,6 +18,10 @@ import {
 } from '../../validation/fieldValidations';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
+import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
+import Box from 'common/components/box/Box';
+import { useFormikContext } from 'formik';
+import { YesOrNo } from 'common/types/YesOrNo';
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -21,8 +29,13 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     if (!applicantInfo) {
         return null;
     }
+    const { values } = useFormikContext<ApplicationFormData>();
+
     return (
-        <ApplicationStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit}>
+        <ApplicationStep
+            id={StepID.OVERFØRING}
+            onValidFormSubmit={onValidSubmit}
+            buttonDisabled={values[ApplicationFormField.erYrkesaktiv] === YesOrNo.NO}>
             <CounsellorPanel>
                 <FormattedHTMLMessage id="info.overføring.html" />
             </CounsellorPanel>
@@ -43,11 +56,25 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
                     bredde="XL"
                     name={ApplicationFormField.navnMottaker}
                     label={intlHelper(intl, 'steg.overføring.navn.spm')}
-                    validate={
-                        validateRequiredField
-                    }
+                    validate={validateRequiredField}
                 />
             </FormBlock>
+            <FormBlock>
+                <ApplicationFormComponents.YesOrNoQuestion
+                    name={ApplicationFormField.erYrkesaktiv}
+                    legend={intlHelper(intl, 'steg.overføring.erYrkesaktiv.spm')}
+                    validate={validateYesOrNoIsAnswered}
+                />
+            </FormBlock>
+
+            {values[ApplicationFormField.erYrkesaktiv] === YesOrNo.NO && (
+                <Box margin="l">
+                    <AlertStripeAdvarsel>
+                        <FormattedHTMLMessage id="steg.overføring.erYrkesaktiv.info" />
+                    </AlertStripeAdvarsel>
+                </Box>
+            )}
+
             <FormBlock>
                 <ApplicationFormComponents.Input
                     bredde="XS"

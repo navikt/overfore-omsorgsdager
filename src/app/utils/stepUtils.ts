@@ -18,7 +18,7 @@ export const getStepTexts = (intl: IntlShape, stepId: StepID, stepConfig: StepCo
     };
 };
 
-export const arbeidStepIsAvailable = (formData: ApplicationFormData) => {
+export const situasjonStepIsAvailable = (formData: ApplicationFormData) => {
     return welcomingPageIsValid(formData);
 };
 
