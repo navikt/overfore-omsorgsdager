@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedHTMLMessage, FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi';
 import Box from 'common/components/box/Box';
 import CheckmarkIcon from 'common/components/checkmark-icon/CheckmarkIcon';
@@ -28,10 +28,10 @@ const ConfirmationPage: React.FunctionComponent = () => {
                 </Ingress>
                 <ul className="checklist">
                     <li>
-                        <FormattedHTMLMessage id="page.confirmation.hvaSkjer1" />
+                        <FormattedMessage id="page.confirmation.hvaSkjer1" />
                     </li>
                     <li>
-                        <FormattedHTMLMessage id="page.confirmation.hvaSkjer2" />
+                        <FormattedMessage id="page.confirmation.hvaSkjer2" />
                     </li>
                 </ul>
             </Box>

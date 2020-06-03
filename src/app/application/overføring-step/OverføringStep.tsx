@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FormattedHTMLMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
@@ -37,7 +37,20 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             onValidFormSubmit={onValidSubmit}
             buttonDisabled={values[ApplicationFormField.erYrkesaktiv] === YesOrNo.NO}>
             <CounsellorPanel>
-                <FormattedHTMLMessage id="info.overføring.html" />
+                <p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p>
+                <ul>
+                    <li>den andre forelderen</li>
+                    <li>nåværende samboer eller ektefelle</li>
+                </ul>
+                <p>
+                    Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene
+                    under:
+                </p>
+                <ul>
+                    <li>arbeidstaker</li>
+                    <li>selvstendig næringsdrivende</li>
+                    <li>frilanser</li>
+                </ul>
             </CounsellorPanel>
             <FormBlock>
                 <ApplicationFormComponents.Input
@@ -70,7 +83,8 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             {values[ApplicationFormField.erYrkesaktiv] === YesOrNo.NO && (
                 <Box margin="l">
                     <AlertStripeAdvarsel>
-                        <FormattedHTMLMessage id="steg.overføring.erYrkesaktiv.info" />
+                        Man <strong>må</strong> være yrkesaktiv for å ha rett til å bruke omsorgsdager. Du kan ikke
+                        overføre omsorgsdager til en person som ikke er yrkesaktiv.
                     </AlertStripeAdvarsel>
                 </Box>
             )}

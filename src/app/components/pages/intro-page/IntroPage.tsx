@@ -1,8 +1,6 @@
 import React from 'react';
-import { FormattedHTMLMessage, FormattedMessage, useIntl } from 'react-intl';
-import {
-    commonFieldErrorRenderer
-} from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { commonFieldErrorRenderer } from '@navikt/sif-common-core/lib/utils/commonFieldErrorRenderer';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 import { getTypedFormComponents, YesOrNo } from '@navikt/sif-common-formik/lib';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
@@ -36,7 +34,20 @@ const IntroPage: React.StatelessComponent = () => {
             topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
             <Box margin="xxxl" padBottom="xxl">
                 <InformationPoster>
-                    <FormattedHTMLMessage id="info.overføring.html" />
+                    <p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p>
+                    <ul>
+                        <li>den andre forelderen</li>
+                        <li>nåværende samboer eller ektefelle</li>
+                    </ul>
+                    <p>
+                        Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene
+                        under:
+                    </p>
+                    <ul>
+                        <li>arbeidstaker</li>
+                        <li>selvstendig næringsdrivende</li>
+                        <li>frilanser</li>
+                    </ul>{' '}
                 </InformationPoster>
             </Box>
 
