@@ -15,7 +15,6 @@ import { sendApplication } from '../../api/api';
 import RouteConfig from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
 import { ApplicantDataContext } from '../../context/ApplicantDataContext';
-import { ApplicantData } from '../../types/ApplicantData';
 import { ApplicationApiData, FosterbarnApi } from '../../types/ApplicationApiData';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import * as apiUtils from '../../utils/apiUtils';
@@ -27,12 +26,13 @@ import MedlemsskapSummary from './MedlemsskapSummary';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
 import { YesOrNo } from 'common/types/YesOrNo';
+import appSentryLogger from '../../utils/appSentryLogger';
 
 interface Props {
     onApplicationSent: () => void;
 }
 
-const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }) => {
+const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }: Props) => {
     const intl = useIntl();
     const formik = useFormikContext<ApplicationFormData>();
     const søkerdata = React.useContext(ApplicantDataContext);
@@ -40,7 +40,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
 
     const [sendingInProgress, setSendingInProgress] = useState(false);
 
-    async function send(data: ApplicationApiData, søker: ApplicantData) {
+    async function send(data: ApplicationApiData) {
         setSendingInProgress(true);
         try {
             await sendApplication(data);
@@ -49,6 +49,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
             if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
                 navigateToLoginPage();
             } else {
+                appSentryLogger.logApiError(error);
                 navigateTo(RouteConfig.ERROR_PAGE_ROUTE, history);
             }
         }
@@ -59,7 +60,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
     }
 
     const {
-        person: { fornavn, mellomnavn, etternavn, fødselsnummer }
+        person: { fornavn, mellomnavn, etternavn, fødselsnummer },
     } = søkerdata;
     const apiValues = mapFormDataToApiData(formik.values, intl.locale as Locale);
     const fosterbarn = apiValues.fosterbarn || [];
@@ -68,7 +69,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
             id={StepID.SUMMARY}
             onValidFormSubmit={() => {
                 setTimeout(() => {
-                    send(apiValues, søkerdata); // La view oppdatere seg først
+                    send(apiValues); // La view oppdatere seg først
                 });
             }}
             useValidationErrorSummary={false}
@@ -109,7 +110,9 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                     </SummaryBlock>
 
                     <SummaryBlock header={intlHelper(intl, 'steg.overføring.erYrkesaktiv.spm')}>
-                        <FormattedMessage id={formik.values[ApplicationFormField.erYrkesaktiv] === YesOrNo.YES ? 'Ja' : 'Nei'} />
+                        <FormattedMessage
+                            id={formik.values[ApplicationFormField.erYrkesaktiv] === YesOrNo.YES ? 'Ja' : 'Nei'}
+                        />
                     </SummaryBlock>
 
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.antallDager.header')}>

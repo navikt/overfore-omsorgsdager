@@ -6,8 +6,12 @@ import { ApplicantDataContextProvider } from '../context/ApplicantDataContext';
 import { ApplicantData } from '../types/ApplicantData';
 import * as apiUtils from '../utils/apiUtils';
 import {
-    navigateToErrorPage, navigateToLoginPage, navigateToWelcomePage, userIsCurrentlyOnErrorPage
+    navigateToErrorPage,
+    navigateToLoginPage,
+    navigateToWelcomePage,
+    userIsCurrentlyOnErrorPage,
 } from '../utils/navigationUtils';
+import appSentryLogger from '../utils/appSentryLogger';
 
 interface Props {
     contentLoadedRenderer: (søkerdata?: ApplicantData) => React.ReactNode;
@@ -32,13 +36,14 @@ const ApplicationEssentialsLoader = ({ contentLoadedRenderer }: Props) => {
                 if (userIsCurrentlyOnErrorPage()) {
                     navigateToWelcomePage();
                 }
-            } catch (response) {
-                if (apiUtils.isForbidden(response) || apiUtils.isUnauthorized(response)) {
+            } catch (error) {
+                if (apiUtils.isForbidden(error) || apiUtils.isUnauthorized(error)) {
                     navigateToLoginPage();
                 } else if (!userIsCurrentlyOnErrorPage()) {
+                    appSentryLogger.logApiError(error);
                     navigateToErrorPage(history);
                 }
-                
+
                 // this timeout is set because if isLoading is updated in the state too soon,
                 // the contentLoadedRenderer() will be called while the user is still on the wrong route,
                 // because the redirect to routeConfig.ERROR_PAGE_ROUTE will not have happened yet.
