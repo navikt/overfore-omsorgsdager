@@ -7,10 +7,9 @@ function createEnvSettingsFile(settingsFile) {
             `window.appSettings = {
                 API_URL: '${process.env.API_URL}',
                 LOGIN_URL: '${process.env.LOGIN_URL}',
-                DEMO_MODE: '${process.env.DEMO_MODE}',
                 PUBLIC_PATH: '${process.env.PUBLIC_PATH}',
-                UTILGJENGELIG: '${process.env.UTILGJENGELIG}',
-                OVERFOR_OMSORGSDAGER: '${process.env.OVERFOR_OMSORGSDAGER}'
+                APPSTATUS_PROJECT_ID: '${process.env.APPSTATUS_PROJECT_ID}',
+                APPSTATUS_DATASET: '${process.env.APPSTATUS_DATASET}',
             };`
         );
     });

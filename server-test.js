@@ -19,8 +19,6 @@ server.engine('html', mustacheExpress());
 console.error('process.env.PORT', process.env.PORT);
 console.error('process.env.PUBLIC_PATH', process.env.PUBLIC_PATH);
 console.error('process.env.API_URL', process.env.API_URL);
-console.error('process.env.DEMO_MODE', process.env.DEMO_MODE);
-console.error('process.env.OVERFOR_OMSORGSDAGER', process.env.OVERFOR_OMSORGSDAGER);
 
 const PUBLIC_PATH = process.env.PUBLIC_PATH;
 

@@ -46,4 +46,9 @@ spec:
           value: /familie/sykdom-i-familien/soknad/overfore-omsorgsdager
         - name: LOGIN_URL
           value: https://loginservice-q.nav.no/login?redirect=https://www-q0.nav.no/familie/sykdom-i-familien/soknad/overfore-omsorgsdager/melding
+        - name: APPSTATUS_PROJECT_ID
+          value: "ryujtq87"
+        - name: APPSTATUS_DATASET
+          value: "staging"
+
 
