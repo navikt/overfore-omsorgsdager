@@ -2,8 +2,6 @@ FROM node
 WORKDIR /usr/src/app
 ENV API_URL=http://api-mock:8083
 ENV PUBLIC_PATH=/familie/sykdom-i-familien/soknad/overfore-omsorgsdager
-ENV DEMO_MODE=off
-ENV OVERFOR_OMSORGSDAGER=on
 
 COPY . .
 #RUN apk update && apk add bash && apk add curl
