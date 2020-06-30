@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import ExpandableInfo from '@navikt/sif-common-core/lib/components/expandable-content/ExpandableInfo';
 import { validateYesOrNoIsAnswered } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { useFormikContext } from 'formik';
 import Lenke from 'nav-frontend-lenker';
@@ -10,7 +11,8 @@ import { YesOrNo } from 'common/types/YesOrNo';
 import { date1YearAgo, date1YearFromNow, dateToday } from 'common/utils/dateUtils';
 import intlHelper from 'common/utils/intlUtils';
 import {
-    validateUtenlandsoppholdNeste12Mnd, validateUtenlandsoppholdSiste12Mnd
+    validateUtenlandsoppholdNeste12Mnd,
+    validateUtenlandsoppholdSiste12Mnd,
 } from 'app/validation/fieldValidations';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import getLenker from '../../lenker';
@@ -35,7 +37,11 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.spm')}
                     name={ApplicationFormField.harBoddUtenforNorgeSiste12Mnd}
                     validate={validateYesOrNoIsAnswered}
-                    info={intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.hjelp')}
+                    description={
+                        <ExpandableInfo title="Hva betyr dette?">
+                            {intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.hjelp')}
+                        </ExpandableInfo>
+                    }
                 />
             </FormBlock>
             {values.harBoddUtenforNorgeSiste12Mnd === YesOrNo.YES && (
@@ -47,7 +53,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                         validate={validateUtenlandsoppholdSiste12Mnd}
                         labels={{
                             addLabel: 'Legg til nytt utenlandsopphold',
-                            modalTitle: 'Utenlandsopphold siste 12 måneder'
+                            modalTitle: 'Utenlandsopphold siste 12 måneder',
                         }}
                     />
                 </FormBlock>
@@ -57,7 +63,11 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                     legend={intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.spm')}
                     name={ApplicationFormField.skalBoUtenforNorgeNeste12Mnd}
                     validate={validateYesOrNoIsAnswered}
-                    info={intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.hjelp')}
+                    description={
+                        <ExpandableInfo title="Hva betyr dette?">
+                            {intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.hjelp')}
+                        </ExpandableInfo>
+                    }
                 />
             </FormBlock>
             {values.skalBoUtenforNorgeNeste12Mnd === YesOrNo.YES && (
@@ -69,7 +79,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                         validate={validateUtenlandsoppholdNeste12Mnd}
                         labels={{
                             addLabel: 'Legg til nytt utenlandsopphold',
-                            modalTitle: 'Utenlandsopphold neste 12 måneder'
+                            modalTitle: 'Utenlandsopphold neste 12 måneder',
                         }}
                     />
                 </FormBlock>
