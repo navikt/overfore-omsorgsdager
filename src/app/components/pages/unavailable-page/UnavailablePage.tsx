@@ -5,6 +5,7 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import './unavailablePage.less';
+import { FormattedMessage } from 'react-intl';
 
 const bem = bemUtils('introPage');
 
@@ -15,10 +16,11 @@ const UnavailablePage: React.StatelessComponent<{}> = () => {
             <Box margin="xxxl">
                 <AlertStripeAdvarsel>
                     <p>
-                        Den digitale tjenesten for melde om overføring av omsorgsdager er dessverre ikke tilgjengelig på
-                        grunn av teknisk feil. Vi jobber med å løse feilen slik at du kan søke digitalt.
+                        <FormattedMessage id="page.unavailable.info.1" />
                     </p>
-                    <p>Vi beklager.</p>
+                    <p>
+                        <FormattedMessage id="page.unavailable.info.2" />
+                    </p>
                 </AlertStripeAdvarsel>
             </Box>
         </Page>
