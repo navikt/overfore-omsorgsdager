@@ -37,7 +37,7 @@ const WelcomingPage = ({ onValidSubmit }: Props) => {
                         bannerSize="large"
                         counsellorWithSpeechBubbleProps={{
                             strongText: intlHelper(intl, 'welcomingPage.banner.tittel'),
-                            normalText: intlHelper(intl, 'welcomingPage.banner.tekst')
+                            normalText: intlHelper(intl, 'welcomingPage.banner.tekst'),
                         }}
                     />
                 )}>

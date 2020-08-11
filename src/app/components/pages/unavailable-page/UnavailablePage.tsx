@@ -5,12 +5,14 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import './unavailablePage.less';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 
 const bem = bemUtils('introPage');
 
 const UnavailablePage: React.StatelessComponent<{}> = () => {
-    const title = 'Melding om overføring av omsorgsdager';
+    const intl = useIntl();
+    const title = intlHelper(intl, 'page.unavailable.title');
     return (
         <Page className={bem.block} title={title} topContentRenderer={() => <StepBanner text={title} />}>
             <Box margin="xxxl">
