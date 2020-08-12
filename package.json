@@ -113,7 +113,7 @@
         "eslint-plugin-react": "^7.20.5",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "html-webpack-harddisk-plugin": "^1.0.2",
-        "html-webpack-plugin": "^3.2.0",
+        "html-webpack-plugin": "^4.3.0",
         "jest": "^24.9.0",
         "jest-css-modules": "^2.1.0",
         "jsdom": "^15.1.1",
