@@ -3,16 +3,15 @@ import { useIntl } from 'react-intl';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import { YesOrNo } from '@navikt/sif-common-core/lib/types/YesOrNo';
 import {
-    validateRequiredList, validateYesOrNoIsAnswered
+    validateRequiredList,
+    validateYesOrNoIsAnswered,
 } from '@navikt/sif-common-core/lib/validation/fieldValidations';
 import { FormikCheckboxPanelGroup } from '@navikt/sif-common-formik/lib';
 import FosterbarnListAndDialog from '@navikt/sif-common-forms/lib/fosterbarn/FosterbarnListAndDialog';
 import { useFormikContext } from 'formik';
 import intlHelper from 'common/utils/intlUtils';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
-import {
-    ApplicationFormData, ApplicationFormField, Arbeidssituasjon
-} from '../../types/ApplicationFormData';
+import { ApplicationFormData, ApplicationFormField, Arbeidssituasjon } from '../../types/ApplicationFormData';
 import { validateArbeid } from '../../validation/fieldValidations';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
@@ -20,7 +19,7 @@ import ApplicationStep from '../ApplicationStep';
 const SituasjonStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
     const {
-        values: { harFosterbarn }
+        values: { harFosterbarn },
     } = useFormikContext<ApplicationFormData>();
 
     return (
@@ -31,16 +30,16 @@ const SituasjonStep = ({ onValidSubmit }: StepConfigProps) => {
                 checkboxes={[
                     {
                         label: intlHelper(intl, 'arbeidssituasjon.arbeidstaker'),
-                        value: Arbeidssituasjon.arbeidstaker
+                        value: Arbeidssituasjon.arbeidstaker,
                     },
                     {
                         label: intlHelper(intl, 'arbeidssituasjon.selvstendigNæringsdrivende'),
-                        value: Arbeidssituasjon.selvstendigNæringsdrivende
+                        value: Arbeidssituasjon.selvstendigNæringsdrivende,
                     },
                     {
                         label: intlHelper(intl, 'arbeidssituasjon.frilanser'),
-                        value: Arbeidssituasjon.frilanser
-                    }
+                        value: Arbeidssituasjon.frilanser,
+                    },
                 ]}
                 validate={validateArbeid}
             />

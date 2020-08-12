@@ -11,11 +11,12 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import RouteConfig, { getRouteUrl } from '../../../config/routeConfig';
+import OverforeTilInfo from '../../information/overfore-til-info/OverforeTilInfo';
 
 const bem = bemUtils('introPage');
 
 enum PageFormField {
-    'mottakerErGyldig' = 'mottakerErGyldig'
+    'mottakerErGyldig' = 'mottakerErGyldig',
 }
 
 interface PageFormValues {
@@ -34,20 +35,7 @@ const IntroPage: React.StatelessComponent = () => {
             topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
             <Box margin="xxxl" padBottom="xxl">
                 <InformationPoster>
-                    <p>Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være</p>
-                    <ul>
-                        <li>den andre forelderen</li>
-                        <li>nåværende samboer eller ektefelle</li>
-                    </ul>
-                    <p>
-                        Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene
-                        under:
-                    </p>
-                    <ul>
-                        <li>arbeidstaker</li>
-                        <li>selvstendig næringsdrivende</li>
-                        <li>frilanser</li>
-                    </ul>{' '}
+                    <OverforeTilInfo />
                 </InformationPoster>
             </Box>
 

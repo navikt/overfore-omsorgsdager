@@ -53,6 +53,14 @@
     "step.sendButtonLabel": "Send inn",
     "step.sendButtonAriaLabel": "Send inn",
 
+    "info.overføreTil.1": "Du kan overføre omsorgsdager til en annen omsorgsperson, det kan være",
+    "info.overføreTil.2": "den andre forelderen",
+    "info.overføreTil.3": "nåværende samboer eller ektefelle",
+    "info.overføreTil.4": "Den du skal overføre omsorgsdager til må være yrkesaktiv, altså være èn eller flere av punktene under:",
+    "info.overføreTil.5": "arbeidstaker",
+    "info.overføreTil.6": "selvstendig næringsdrivende",
+    "info.overføreTil.7": "frilanser",
+
     "step.overføring.pageTitle": "Om overføring",
     "step.overføring.stepTitle": "Om overføring",
     "step.overføring.stepIndicatorLabel": "Om overføring",
@@ -125,6 +133,8 @@
     "steg.overføring.erYrkesaktiv.spm": "Er den du skal overføre dager til yrkesaktiv?",
     "steg.overføring.antallDager.spm": "Hvor mange dager ønsker du å overføre?",
     "steg.overføring.antallDager.info": "Du velger selv hvor mange av omsorgsdagene dine du vil overføre. Du kan overføre opp til alle omsorgsdager du har tilgjengelig.",
+    "steg.overføring.ikkeYrkesaktiv.info.html": "Man <strong>må</strong> være yrkesaktiv for å ha rett til å bruke omsorgsdager. Du kan ikke overføre omsorgsdager til en person som ikke er yrkesaktiv.",
+    "steg.overføring.info.1": "",
 
     "steg.medlemsskap.veilder.textFørLenke": "Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du vanligvis medlem. Du kan lese mer om medlemskap på",
     "steg.medlemsskap.veilder.lenketekst.nav.no": "nav.no",
@@ -157,6 +167,10 @@
     "page.generalErrorPage.sidetittel": "Feil",
     "page.generalErrorPage.tittel": "Noe gikk galt...",
     "page.generalErrorPage.tekst": "Beklager, her har det dessverre skjedd en feil. Vennligst prøv igjen senere.",
+
+    "page.unavailable.title": "Melding om overføring av omsorgsdager",
+    "page.unavailable.info.1": "Den digitale tjenesten for melde om overføring av omsorgsdager er dessverre ikke tilgjengelig på grunn av teknisk feil. Vi jobber med å løse feilen slik at du kan søke digitalt.",
+    "page.unavailable.info.2": "Vi beklager.",
 
     "page.ikkeMyndig.sidetittel": "Melding om overføring av omsorgsdager - ikke myndig",
     "page.ikkeMyndig.banner.tittel": "Hei!",

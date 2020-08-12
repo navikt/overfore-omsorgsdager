@@ -5,20 +5,24 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import './unavailablePage.less';
+import { FormattedMessage, useIntl } from 'react-intl';
+import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
 
 const bem = bemUtils('introPage');
 
 const UnavailablePage: React.StatelessComponent<{}> = () => {
-    const title = 'Melding om overføring av omsorgsdager';
+    const intl = useIntl();
+    const title = intlHelper(intl, 'page.unavailable.title');
     return (
         <Page className={bem.block} title={title} topContentRenderer={() => <StepBanner text={title} />}>
             <Box margin="xxxl">
                 <AlertStripeAdvarsel>
                     <p>
-                        Den digitale tjenesten for melde om overføring av omsorgsdager er dessverre ikke tilgjengelig på
-                        grunn av teknisk feil. Vi jobber med å løse feilen slik at du kan søke digitalt.
+                        <FormattedMessage id="page.unavailable.info.1" />
                     </p>
-                    <p>Vi beklager.</p>
+                    <p>
+                        <FormattedMessage id="page.unavailable.info.2" />
+                    </p>
                 </AlertStripeAdvarsel>
             </Box>
         </Page>
