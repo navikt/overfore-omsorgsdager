@@ -1,5 +1,5 @@
 import { YesOrNo } from '@navikt/sif-common-formik/lib';
-import { ApplicationFormData } from '../types/ApplicationFormData';
+import { ApplicationFormData, Stengingsperiode } from '../types/ApplicationFormData';
 import { hasValue, isValidFnr, yesOrNoIsAnswered } from './fieldValidations';
 
 export const welcomingPageIsValid = ({ harForståttRettigheterOgPlikter }: ApplicationFormData) => {
@@ -21,8 +21,11 @@ export const mottakerStepIsValid = ({ fnrMottaker, navnMottaker, erYrkesaktiv }:
     return hasValue(fnrMottaker) && hasValue(navnMottaker) && erYrkesaktiv === YesOrNo.YES && isValidFnr(fnrMottaker);
 };
 
-export const overføringStepIsValid = ({ antallDager }: ApplicationFormData) => {
-    return hasValue(antallDager);
+export const overføringStepIsValid = ({ antallDager, stengingsperiode }: ApplicationFormData) => {
+    return (
+        hasValue(antallDager) &&
+        (stengingsperiode === Stengingsperiode.etterAugust9 || stengingsperiode === Stengingsperiode.mars13tilJuni30)
+    );
 };
 
 export const medlemskapStepIsValid = ({

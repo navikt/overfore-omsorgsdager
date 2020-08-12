@@ -61,7 +61,7 @@ export const getStepConfig = (): StepConfigInterface => {
             ...getStepConfigItemTextKeys(StepID.MEDLEMSKAP),
             index: idx++,
             nextStep: StepID.SUMMARY,
-            backLinkHref: getApplicationRoute(StepID.MOTTAKER),
+            backLinkHref: getApplicationRoute(StepID.OVERFØRING),
         },
         [StepID.SUMMARY]: {
             ...getStepConfigItemTextKeys(StepID.SUMMARY),

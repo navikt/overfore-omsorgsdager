@@ -13,8 +13,8 @@ const mapUtenlandsoppholdTilApiData = (opphold: Utenlandsopphold, locale: string
     tilOgMed: formatDateToApiFormat(opphold.tom),
 });
 
-export const mapFormDataToApiData = (
-    {
+export const mapFormDataToApiData = (formData: ApplicationFormData, sprak: Locale): ApplicationApiData => {
+    const {
         harBekreftetOpplysninger,
         harForståttRettigheterOgPlikter,
         harBoddUtenforNorgeSiste12Mnd,
@@ -29,9 +29,8 @@ export const mapFormDataToApiData = (
         skalBoUtenforNorgeNeste12Mnd,
         utenlandsoppholdNeste12Mnd,
         utenlandsoppholdSiste12Mnd,
-    }: ApplicationFormData,
-    sprak: Locale
-): ApplicationApiData => {
+    } = formData;
+
     const apiData: ApplicationApiData = {
         språk: (sprak as any) === 'en' ? 'nn' : sprak,
         arbeidssituasjon,
