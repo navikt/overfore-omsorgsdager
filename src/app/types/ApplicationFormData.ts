@@ -5,7 +5,12 @@ import { YesOrNo } from 'common/types/YesOrNo';
 export enum Arbeidssituasjon {
     'arbeidstaker' = 'arbeidstaker',
     'selvstendigNæringsdrivende' = 'selvstendigNæringsdrivende',
-    'frilanser' = 'frilanser'
+    'frilanser' = 'frilanser',
+}
+
+export enum Stengingsperiode {
+    'mars13tilJuni30' = 'mars13tilJuni30',
+    'etterAugust10' = 'etterAugust10',
 }
 
 export enum ApplicationFormField {
@@ -17,11 +22,12 @@ export enum ApplicationFormField {
     navnMottaker = 'navnMottaker',
     erYrkesaktiv = 'erYrkesaktiv',
     antallDager = 'antallDager',
+    stengingsperiode = 'stengingsperiode',
     harBoddUtenforNorgeSiste12Mnd = 'harBoddUtenforNorgeSiste12Mnd',
     utenlandsoppholdSiste12Mnd = 'utenlandsoppholdSiste12Mnd',
     skalBoUtenforNorgeNeste12Mnd = 'skalBoUtenforNorgeNeste12Mnd',
     utenlandsoppholdNeste12Mnd = 'utenlandsoppholdNeste12Mnd',
-    arbeidssituasjon = 'arbeidssituasjon'
+    arbeidssituasjon = 'arbeidssituasjon',
 }
 
 export interface ApplicationFormData {
@@ -33,6 +39,7 @@ export interface ApplicationFormData {
     [ApplicationFormField.navnMottaker]: string;
     [ApplicationFormField.erYrkesaktiv]: YesOrNo;
     [ApplicationFormField.antallDager]: number;
+    [ApplicationFormField.stengingsperiode]: Stengingsperiode;
     [ApplicationFormField.arbeidssituasjon]: Arbeidssituasjon[];
     [ApplicationFormField.harBoddUtenforNorgeSiste12Mnd]: YesOrNo;
     [ApplicationFormField.utenlandsoppholdSiste12Mnd]: Utenlandsopphold[];
@@ -52,5 +59,5 @@ export const initialApplicationValues: Partial<ApplicationFormData> = {
     [ApplicationFormField.harBoddUtenforNorgeSiste12Mnd]: YesOrNo.UNANSWERED,
     [ApplicationFormField.utenlandsoppholdSiste12Mnd]: [],
     [ApplicationFormField.skalBoUtenforNorgeNeste12Mnd]: YesOrNo.UNANSWERED,
-    [ApplicationFormField.utenlandsoppholdNeste12Mnd]: []
+    [ApplicationFormField.utenlandsoppholdNeste12Mnd]: [],
 };
