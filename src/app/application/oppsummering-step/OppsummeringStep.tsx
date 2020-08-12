@@ -116,7 +116,7 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                     </SummaryBlock>
 
                     <SummaryBlock header={intlHelper(intl, 'steg.overføring.stengingsperiode.spm')}>
-                        <FormattedMessage id={`steg.overføring.stengingsperiode.${apiValues.stengingsperiode}`} />
+                        <FormattedMessage id={`steg.oppsummering.stengingsperiode.${apiValues.stengingsperiode}`} />
                     </SummaryBlock>
 
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.antallDager.header')}>
