@@ -14,6 +14,7 @@ import { ApplicationFormData, ApplicationFormField, Stengingsperiode } from '../
 import { validateAll, validateNumericValue } from '../../validation/fieldValidations';
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
+import Box from '@navikt/sif-common-core/lib/components/box/Box';
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
