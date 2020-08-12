@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import React, { useContext } from 'react';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 import intlHelper from '@navikt/sif-common-core/lib/utils/intlUtils';
@@ -15,6 +15,7 @@ import { validateAll, validateNumericValue } from '../../validation/fieldValidat
 import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
+import OverføringInfo from '../../components/information/overføring-info/OverføringInfo';
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -30,8 +31,7 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     return (
         <ApplicationStep id={StepID.OVERFØRING} onValidFormSubmit={onValidSubmit} buttonDisabled={buttonDisabled}>
             <CounsellorPanel>
-                info
-                {/* <OverforeTilInfo /> */}
+                <OverføringInfo />
             </CounsellorPanel>
             <FormBlock>
                 <FormikRadioPanelGroup
@@ -55,22 +55,26 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             </FormBlock>
             {values.stengingsperiode === Stengingsperiode.annen && (
                 <Box margin="l">
-                    <AlertStripeAdvarsel>Melding ved annen - stopp</AlertStripeAdvarsel>
+                    <AlertStripeAdvarsel>
+                        <FormattedMessage id="steg.overføring.info.annenStengingsperiode" />
+                    </AlertStripeAdvarsel>
                 </Box>
             )}
-            <FormBlock>
-                <ApplicationFormComponents.Input
-                    bredde="XS"
-                    name={ApplicationFormField.antallDager}
-                    label={intlHelper(intl, 'steg.overføring.antallDager.spm')}
-                    validate={validateAll([validateRequiredField, validateNumericValue({ min: 1, max: 999 })])}
-                    inputMode="numeric"
-                    min={1}
-                    max={999}
-                    maxLength={3}
-                    description={intlHelper(intl, 'steg.overføring.antallDager.info')}
-                />
-            </FormBlock>
+            {values.stengingsperiode !== Stengingsperiode.annen && (
+                <FormBlock>
+                    <ApplicationFormComponents.Input
+                        bredde="XS"
+                        name={ApplicationFormField.antallDager}
+                        label={intlHelper(intl, 'steg.overføring.antallDager.spm')}
+                        validate={validateAll([validateRequiredField, validateNumericValue({ min: 1, max: 999 })])}
+                        inputMode="numeric"
+                        min={1}
+                        max={999}
+                        maxLength={3}
+                        description={intlHelper(intl, 'steg.overføring.antallDager.info')}
+                    />
+                </FormBlock>
+            )}
         </ApplicationStep>
     );
 };

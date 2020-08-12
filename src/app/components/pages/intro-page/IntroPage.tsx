@@ -11,7 +11,7 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import RouteConfig, { getRouteUrl } from '../../../config/routeConfig';
-import OverforeTilInfo from '../../information/overfore-til-info/OverforeTilInfo';
+import MottakerInfo from '../../information/mottaker-info/MottakerInfo';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 
 const bem = bemUtils('introPage');
@@ -38,7 +38,7 @@ const IntroPage: React.StatelessComponent = () => {
             topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
             <Box margin="xxxl" padBottom="xxl">
                 <InformationPoster>
-                    <OverforeTilInfo />
+                    <MottakerInfo />
                 </InformationPoster>
             </Box>
 
@@ -71,7 +71,13 @@ const IntroPage: React.StatelessComponent = () => {
                         {gjelderKoronastenging === YesOrNo.NO && (
                             <Box margin="l">
                                 <AlertStripeAdvarsel>
-                                    <FormattedMessage id="introPage.melding.stopp.koronastenging" />
+                                    <FormattedMessage id="introPage.melding.stopp.koronastenging.1" />
+                                    <br />
+                                    <FormattedMessage id="introPage.melding.stopp.koronastenging.2.a" />{' '}
+                                    <Lenke href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-kan-du-dele-omsorgsdagene-dine">
+                                        <FormattedMessage id="introPage.melding.stopp.koronastenging.2.b" />
+                                    </Lenke>
+                                    .
                                 </AlertStripeAdvarsel>
                             </Box>
                         )}

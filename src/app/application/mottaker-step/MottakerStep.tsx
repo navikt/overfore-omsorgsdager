@@ -13,7 +13,7 @@ import { useFormikContext } from 'formik';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import Box from 'common/components/box/Box';
 import { YesOrNo } from 'common/types/YesOrNo';
-import OverforeTilInfo from '../../components/information/overfore-til-info/OverforeTilInfo';
+import MottakerInfo from '../../components/information/mottaker-info/MottakerInfo';
 import { StepConfigProps, StepID } from '../../config/stepConfig';
 import { ApplicantDataContext } from '../../context/ApplicantDataContext';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
@@ -35,7 +35,7 @@ const MottakerStep = ({ onValidSubmit }: StepConfigProps) => {
             onValidFormSubmit={onValidSubmit}
             buttonDisabled={values[ApplicationFormField.erYrkesaktiv] === YesOrNo.NO}>
             <CounsellorPanel>
-                <OverforeTilInfo />
+                <MottakerInfo />
             </CounsellorPanel>
             <FormBlock>
                 <ApplicationFormComponents.Input
