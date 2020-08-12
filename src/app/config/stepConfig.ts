@@ -2,10 +2,11 @@ import { getApplicationRoute } from '../utils/routeUtils';
 import routeConfig from './routeConfig';
 
 export enum StepID {
+    'MOTTAKER' = 'mottaker',
     'OVERFØRING' = 'overføring',
     'MEDLEMSKAP' = 'medlemskap',
     'SITUASJON' = 'situasjon',
-    'SUMMARY' = 'oppsummering'
+    'SUMMARY' = 'oppsummering',
 }
 
 export interface StepConfigItemTexts {
@@ -31,7 +32,7 @@ const getStepConfigItemTextKeys = (stepId: StepID): StepConfigItemTexts => {
         stepTitle: `step.${stepId}.stepTitle`,
         stepIndicatorLabel: `step.${stepId}.stepIndicatorLabel`,
         nextButtonLabel: 'step.nextButtonLabel',
-        nextButtonAriaLabel: 'step.nextButtonAriaLabel'
+        nextButtonAriaLabel: 'step.nextButtonAriaLabel',
     };
 };
 
@@ -41,28 +42,34 @@ export const getStepConfig = (): StepConfigInterface => {
         [StepID.SITUASJON]: {
             ...getStepConfigItemTextKeys(StepID.SITUASJON),
             index: idx++,
+            nextStep: StepID.MOTTAKER,
+            backLinkHref: routeConfig.WELCOMING_PAGE_ROUTE,
+        },
+        [StepID.MOTTAKER]: {
+            ...getStepConfigItemTextKeys(StepID.MOTTAKER),
+            index: idx++,
             nextStep: StepID.OVERFØRING,
-            backLinkHref: routeConfig.WELCOMING_PAGE_ROUTE
+            backLinkHref: getApplicationRoute(StepID.SITUASJON),
         },
         [StepID.OVERFØRING]: {
             ...getStepConfigItemTextKeys(StepID.OVERFØRING),
             index: idx++,
             nextStep: StepID.MEDLEMSKAP,
-            backLinkHref: getApplicationRoute(StepID.SITUASJON)
+            backLinkHref: getApplicationRoute(StepID.MOTTAKER),
         },
         [StepID.MEDLEMSKAP]: {
             ...getStepConfigItemTextKeys(StepID.MEDLEMSKAP),
             index: idx++,
             nextStep: StepID.SUMMARY,
-            backLinkHref: getApplicationRoute(StepID.OVERFØRING)
+            backLinkHref: getApplicationRoute(StepID.MOTTAKER),
         },
         [StepID.SUMMARY]: {
             ...getStepConfigItemTextKeys(StepID.SUMMARY),
             index: idx++,
             backLinkHref: getApplicationRoute(StepID.MEDLEMSKAP),
             nextButtonLabel: 'step.sendButtonLabel',
-            nextButtonAriaLabel: 'step.sendButtonAriaLabel'
-        }
+            nextButtonAriaLabel: 'step.sendButtonAriaLabel',
+        },
     };
 
     return config;

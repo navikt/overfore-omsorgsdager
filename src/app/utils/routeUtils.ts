@@ -4,9 +4,10 @@ import { ApplicationFormData } from '../types/ApplicationFormData';
 import { appIsRunningInDevEnvironment } from './envUtils';
 import {
     medlemskapStepAvailable,
-    overføringStepIsAvailable,
+    mottakerStepIsAvailable,
     situasjonStepIsAvailable,
-    summaryStepAvailable
+    summaryStepAvailable,
+    overføringStepIsAvailable,
 } from './stepUtils';
 
 export const getApplicationRoute = (stepId: StepID | undefined) => {
@@ -30,6 +31,8 @@ export const isAvailable = (
         switch (path) {
             case StepID.SITUASJON:
                 return situasjonStepIsAvailable(values);
+            case StepID.MOTTAKER:
+                return mottakerStepIsAvailable(values);
             case StepID.OVERFØRING:
                 return overføringStepIsAvailable(values);
             case StepID.MEDLEMSKAP:

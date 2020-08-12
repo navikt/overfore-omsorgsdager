@@ -10,7 +10,8 @@ export enum Arbeidssituasjon {
 
 export enum Stengingsperiode {
     'mars13tilJuni30' = 'mars13tilJuni30',
-    'etterAugust10' = 'etterAugust10',
+    'etterAugust9' = 'etterAugust9',
+    'annen' = 'annen',
 }
 
 export enum ApplicationFormField {

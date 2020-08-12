@@ -102,14 +102,14 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             </SummaryBlock>
                         </>
                     )}
-                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.fnr.spm')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.fnr.spm')}>
                         {apiValues.fnrMottaker}
                     </SummaryBlock>
-                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.navn.spm')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.navn.spm')}>
                         {apiValues.navnMottaker}
                     </SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.erYrkesaktiv.spm')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.erYrkesaktiv.spm')}>
                         <FormattedMessage
                             id={formik.values[ApplicationFormField.erYrkesaktiv] === YesOrNo.YES ? 'Ja' : 'Nei'}
                         />

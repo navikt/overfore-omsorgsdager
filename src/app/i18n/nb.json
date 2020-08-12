@@ -61,6 +61,10 @@
     "info.overføreTil.6": "selvstendig næringsdrivende",
     "info.overføreTil.7": "frilanser",
 
+    "step.mottaker.pageTitle": "Hvem skal du overføre dager til?",
+    "step.mottaker.stepTitle": "Hvem skal du overføre dager til?",
+    "step.mottaker.stepIndicatorLabel": "Hvem skal du overføre dager til?",
+
     "step.overføring.pageTitle": "Om overføring",
     "step.overføring.stepTitle": "Om overføring",
     "step.overføring.stepIndicatorLabel": "Om overføring",
@@ -128,13 +132,17 @@
     "steg.situasjon.arbeidssituasjon.spm": "Hva er din arbeidssituasjon? Du kan velge flere.",
     "steg.situasjon.fosterbarn.spm": "Har du fosterbarn?",
 
-    "steg.overføring.fnr.spm": "Hva er fødselsnummeret til den du skal overføre omsorgsdager til?",
-    "steg.overføring.navn.spm": "Hva er navnet til den du skal overføre omsorgsdager til? (Skriv inn hele navnet)",
-    "steg.overføring.erYrkesaktiv.spm": "Er den du skal overføre dager til yrkesaktiv?",
+    "steg.mottaker.fnr.spm": "Hva er fødselsnummeret til den du skal overføre omsorgsdager til?",
+    "steg.mottaker.navn.spm": "Hva er navnet til den du skal overføre omsorgsdager til? (Skriv inn hele navnet)",
+    "steg.mottaker.erYrkesaktiv.spm": "Er den du skal overføre dager til yrkesaktiv?",
+    "steg.mottaker.ikkeYrkesaktiv.info.html": "Man <strong>må</strong> være yrkesaktiv for å ha rett til å bruke omsorgsdager. Du kan ikke overføre omsorgsdager til en person som ikke er yrkesaktiv.",
+
     "steg.overføring.antallDager.spm": "Hvor mange dager ønsker du å overføre?",
     "steg.overføring.antallDager.info": "Du velger selv hvor mange av omsorgsdagene dine du vil overføre. Du kan overføre opp til alle omsorgsdager du har tilgjengelig.",
-    "steg.overføring.ikkeYrkesaktiv.info.html": "Man <strong>må</strong> være yrkesaktiv for å ha rett til å bruke omsorgsdager. Du kan ikke overføre omsorgsdager til en person som ikke er yrkesaktiv.",
-    "steg.overføring.info.1": "",
+    "steg.overføring.stengingsperiode.spm": "Innenfor hvilken periode med stengt barnehage eller skole skal overføringen av dagene gjelde for?",
+    "steg.overføring.stengingsperiode.mars13tilJuni30": "13. mars – 30. juni",
+    "steg.overføring.stengingsperiode.etterAugust9": "Etter 9. august",
+    "steg.overføring.stengingsperiode.annen": "Annen periode",
 
     "steg.medlemsskap.veilder.textFørLenke": "Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du vanligvis medlem. Du kan lese mer om medlemskap på",
     "steg.medlemsskap.veilder.lenketekst.nav.no": "nav.no",

@@ -13,6 +13,7 @@ import MedlemsskapStep from './medlemskap-step/MedlemsskapStep';
 import OppsummeringStep from './oppsummering-step/OppsummeringStep';
 import OverføringStep from './overføring-step/OverføringStep';
 import SituasjonStep from './situasjon-step/SituasjonStep';
+import MottakerStep from './mottaker-step/MottakerStep';
 
 export interface KvitteringInfo {
     søkernavn: string;
@@ -23,7 +24,7 @@ const ApplicationRoutes: React.FunctionComponent = () => {
 
     const history = useHistory();
 
-    const navigateToNextStep = (stepId: StepID) => {
+    const navigateToNextStepFrom = (stepId: StepID) => {
         setTimeout(() => {
             const nextStepRoute = getNextStepRoute(stepId);
             if (nextStepRoute) {
@@ -50,19 +51,25 @@ const ApplicationRoutes: React.FunctionComponent = () => {
             {isAvailable(StepID.SITUASJON, values) && (
                 <Route
                     path={getApplicationRoute(StepID.SITUASJON)}
-                    render={() => <SituasjonStep onValidSubmit={() => navigateToNextStep(StepID.SITUASJON)} />}
+                    render={() => <SituasjonStep onValidSubmit={() => navigateToNextStepFrom(StepID.SITUASJON)} />}
+                />
+            )}
+            {isAvailable(StepID.MOTTAKER, values) && (
+                <Route
+                    path={getApplicationRoute(StepID.MOTTAKER)}
+                    render={() => <MottakerStep onValidSubmit={() => navigateToNextStepFrom(StepID.MOTTAKER)} />}
                 />
             )}
             {isAvailable(StepID.OVERFØRING, values) && (
                 <Route
                     path={getApplicationRoute(StepID.OVERFØRING)}
-                    render={() => <OverføringStep onValidSubmit={() => navigateToNextStep(StepID.OVERFØRING)} />}
+                    render={() => <OverføringStep onValidSubmit={() => navigateToNextStepFrom(StepID.OVERFØRING)} />}
                 />
             )}
             {isAvailable(StepID.MEDLEMSKAP, values) && (
                 <Route
                     path={getApplicationRoute(StepID.MEDLEMSKAP)}
-                    render={() => <MedlemsskapStep onValidSubmit={() => navigateToNextStep(StepID.MEDLEMSKAP)} />}
+                    render={() => <MedlemsskapStep onValidSubmit={() => navigateToNextStepFrom(StepID.MEDLEMSKAP)} />}
                 />
             )}
 
