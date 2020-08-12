@@ -151,7 +151,9 @@
     "steg.overføring.stengingsperiode.mars13tilJuni30": "13. mars – 30. juni",
     "steg.overføring.stengingsperiode.etterAugust9": "Fra og med 10. august 2020 eller senere",
     "steg.overføring.stengingsperiode.annen": "Annen periode",
-    "steg.overføring.info.annenStengingsperiode": "Her kan du kun overføre dager til en annen omsorgsperson hvis dagene skal brukes i en periode barnehagen/skolen har vært eller er stengt på grunn av koronaviruset. Hvis du er alene om omsorgen kan du dele omsorgsdager med den andre forelderen eller ny samboer, ektefelle eller partner.",
+    "steg.overføring.info.annenStengingsperiode.1": "Her kan du kun overføre dager til en annen omsorgsperson hvis dagene skal brukes i en periode barnehagen/skolen har vært eller er stengt på grunn av koronaviruset.",
+    "steg.overføring.info.annenStengingsperiode.2.a": "Hvis du er alene om omsorgen kan du .",
+    "steg.overføring.info.annenStengingsperiode.2.b": "dele omsorgsdager med den andre forelderen eller ny samboer, ektefelle eller partner",
 
     "steg.medlemsskap.veilder.textFørLenke": "Medlemskap i folketrygden er nøkkelen til rettigheter fra NAV. Hvis du bor eller jobber i Norge er du vanligvis medlem. Du kan lese mer om medlemskap på",
     "steg.medlemsskap.veilder.lenketekst.nav.no": "nav.no",

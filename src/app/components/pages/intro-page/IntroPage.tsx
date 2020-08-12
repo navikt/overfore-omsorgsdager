@@ -74,7 +74,9 @@ const IntroPage: React.StatelessComponent = () => {
                                     <FormattedMessage id="introPage.melding.stopp.koronastenging.1" />
                                     <br />
                                     <FormattedMessage id="introPage.melding.stopp.koronastenging.2.a" />{' '}
-                                    <Lenke href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-kan-du-dele-omsorgsdagene-dine">
+                                    <Lenke
+                                        href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-kan-du-dele-omsorgsdagene-dine"
+                                        target="_blank">
                                         <FormattedMessage id="introPage.melding.stopp.koronastenging.2.b" />
                                     </Lenke>
                                     .

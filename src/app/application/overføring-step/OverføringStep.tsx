@@ -16,6 +16,7 @@ import ApplicationFormComponents from '../ApplicationFormComponents';
 import ApplicationStep from '../ApplicationStep';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
 import OverføringInfo from '../../components/information/overføring-info/OverføringInfo';
+import Lenke from 'nav-frontend-lenker';
 
 const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
     const intl = useIntl();
@@ -56,7 +57,15 @@ const OverføringStep = ({ onValidSubmit }: StepConfigProps) => {
             {values.stengingsperiode === Stengingsperiode.annen && (
                 <Box margin="l">
                     <AlertStripeAdvarsel>
-                        <FormattedMessage id="steg.overføring.info.annenStengingsperiode" />
+                        <FormattedMessage id="steg.overføring.info.annenStengingsperiode.1" />
+                        <br />
+                        <FormattedMessage id="steg.overføring.info.annenStengingsperiode.2.a" />{' '}
+                        <Lenke
+                            href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-kan-du-dele-omsorgsdagene-dine"
+                            target="_blank">
+                            <FormattedMessage id="steg.overføring.info.annenStengingsperiode.2.b" />
+                        </Lenke>
+                        .
                     </AlertStripeAdvarsel>
                 </Box>
             )}
