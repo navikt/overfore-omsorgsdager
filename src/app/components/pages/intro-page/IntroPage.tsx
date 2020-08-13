@@ -11,16 +11,19 @@ import Page from 'common/components/page/Page';
 import StepBanner from 'common/components/step-banner/StepBanner';
 import bemUtils from 'common/utils/bemUtils';
 import RouteConfig, { getRouteUrl } from '../../../config/routeConfig';
-import OverforeTilInfo from '../../information/overfore-til-info/OverforeTilInfo';
+import MottakerInfo from '../../information/mottaker-info/MottakerInfo';
+import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
 
 const bem = bemUtils('introPage');
 
 enum PageFormField {
     'mottakerErGyldig' = 'mottakerErGyldig',
+    'gjelderKoronastenging' = 'gjelderKoronastenging',
 }
 
 interface PageFormValues {
     [PageFormField.mottakerErGyldig]: YesOrNo;
+    [PageFormField.gjelderKoronastenging]: YesOrNo;
 }
 
 const PageForm = getTypedFormComponents<PageFormField, PageFormValues>();
@@ -35,14 +38,14 @@ const IntroPage: React.StatelessComponent = () => {
             topContentRenderer={() => <StepBanner text={intlHelper(intl, 'introPage.stegTittel')} />}>
             <Box margin="xxxl" padBottom="xxl">
                 <InformationPoster>
-                    <OverforeTilInfo />
+                    <MottakerInfo />
                 </InformationPoster>
             </Box>
 
             <PageForm.FormikWrapper
                 onSubmit={() => null}
                 initialValues={initialValues}
-                renderForm={({ values: { mottakerErGyldig } }) => (
+                renderForm={({ values: { mottakerErGyldig, gjelderKoronastenging } }) => (
                     <PageForm.Form
                         fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}
                         includeButtons={false}>
@@ -57,8 +60,30 @@ const IntroPage: React.StatelessComponent = () => {
                                 </AlertStripeAdvarsel>
                             </Box>
                         )}
-
                         {mottakerErGyldig === YesOrNo.YES && (
+                            <FormBlock>
+                                <PageForm.YesOrNoQuestion
+                                    name={PageFormField.gjelderKoronastenging}
+                                    legend={intlHelper(intl, 'introPage.gjelderKoronastenging.spm')}
+                                />
+                            </FormBlock>
+                        )}
+                        {gjelderKoronastenging === YesOrNo.NO && (
+                            <Box margin="l">
+                                <AlertStripeAdvarsel>
+                                    <FormattedMessage id="introPage.melding.stopp.koronastenging.1" />
+                                    <br />
+                                    <FormattedMessage id="introPage.melding.stopp.koronastenging.2.a" />{' '}
+                                    <Lenke
+                                        href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-kan-du-dele-omsorgsdagene-dine"
+                                        target="_blank">
+                                        <FormattedMessage id="introPage.melding.stopp.koronastenging.2.b" />
+                                    </Lenke>
+                                    .
+                                </AlertStripeAdvarsel>
+                            </Box>
+                        )}
+                        {mottakerErGyldig === YesOrNo.YES && gjelderKoronastenging === YesOrNo.YES && (
                             <Box margin="xl" textAlignCenter={true}>
                                 <Lenke href={getRouteUrl(RouteConfig.WELCOMING_PAGE_ROUTE)}>
                                     <FormattedMessage id="gotoApplicationLink.lenketekst" />

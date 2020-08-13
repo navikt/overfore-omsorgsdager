@@ -1,6 +1,6 @@
 import { ApiStringDate } from 'common/types/ApiStringDate';
 import { Locale } from 'common/types/Locale';
-import { Arbeidssituasjon } from './ApplicationFormData';
+import { Arbeidssituasjon, Stengingsperiode } from './ApplicationFormData';
 
 export type ISO8601Duration = string;
 
@@ -26,9 +26,11 @@ export interface ApplicationApiData {
     språk: Locale;
     arbeidssituasjon: Arbeidssituasjon[];
     fnrMottaker: string;
+    erYrkesaktiv: boolean;
     navnMottaker: string;
     fosterbarn?: FosterbarnApi[];
     antallDager: number;
+    stengingsperiode: Stengingsperiode;
     medlemskap: MedlemskapApiData;
     harForståttRettigheterOgPlikter: boolean;
     harBekreftetOpplysninger: boolean;

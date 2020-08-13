@@ -11,6 +11,7 @@ import { formatName } from '@navikt/sif-common-core/lib/utils/personUtils';
 import { useFormikContext } from 'formik';
 import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
+import { YesOrNo } from 'common/types/YesOrNo';
 import { sendApplication } from '../../api/api';
 import RouteConfig from '../../config/routeConfig';
 import { StepID } from '../../config/stepConfig';
@@ -18,6 +19,7 @@ import { ApplicantDataContext } from '../../context/ApplicantDataContext';
 import { ApplicationApiData, FosterbarnApi } from '../../types/ApplicationApiData';
 import { ApplicationFormData, ApplicationFormField } from '../../types/ApplicationFormData';
 import * as apiUtils from '../../utils/apiUtils';
+import appSentryLogger from '../../utils/appSentryLogger';
 import { mapFormDataToApiData } from '../../utils/mapFormDataToApiData';
 import { navigateTo, navigateToLoginPage } from '../../utils/navigationUtils';
 import ApplicationFormComponents from '../ApplicationFormComponents';
@@ -25,8 +27,6 @@ import ApplicationStep from '../ApplicationStep';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
-import { YesOrNo } from 'common/types/YesOrNo';
-import appSentryLogger from '../../utils/appSentryLogger';
 
 interface Props {
     onApplicationSent: () => void;
@@ -102,17 +102,21 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
                             </SummaryBlock>
                         </>
                     )}
-                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.fnr.spm')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.fnr.spm')}>
                         {apiValues.fnrMottaker}
                     </SummaryBlock>
-                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.navn.spm')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.navn.spm')}>
                         {apiValues.navnMottaker}
                     </SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.erYrkesaktiv.spm')}>
+                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.erYrkesaktiv.spm')}>
                         <FormattedMessage
                             id={formik.values[ApplicationFormField.erYrkesaktiv] === YesOrNo.YES ? 'Ja' : 'Nei'}
                         />
+                    </SummaryBlock>
+
+                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.stengingsperiode.spm')}>
+                        <FormattedMessage id={`steg.oppsummering.stengingsperiode.${apiValues.stengingsperiode}`} />
                     </SummaryBlock>
 
                     <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.antallDager.header')}>
