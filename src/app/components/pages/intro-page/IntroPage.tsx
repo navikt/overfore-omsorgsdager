@@ -61,27 +61,29 @@ const IntroPage: React.StatelessComponent = () => {
                             </Box>
                         )}
                         {mottakerErGyldig === YesOrNo.YES && (
-                            <FormBlock>
-                                <PageForm.YesOrNoQuestion
-                                    name={PageFormField.gjelderKoronastenging}
-                                    legend={intlHelper(intl, 'introPage.gjelderKoronastenging.spm')}
-                                />
-                            </FormBlock>
-                        )}
-                        {gjelderKoronastenging === YesOrNo.NO && (
-                            <Box margin="l">
-                                <AlertStripeAdvarsel>
-                                    <FormattedMessage id="introPage.melding.stopp.koronastenging.1" />
-                                    <br />
-                                    <FormattedMessage id="introPage.melding.stopp.koronastenging.2.a" />{' '}
-                                    <Lenke
-                                        href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-kan-du-dele-omsorgsdagene-dine"
-                                        target="_blank">
-                                        <FormattedMessage id="introPage.melding.stopp.koronastenging.2.b" />
-                                    </Lenke>
-                                    .
-                                </AlertStripeAdvarsel>
-                            </Box>
+                            <>
+                                <FormBlock>
+                                    <PageForm.YesOrNoQuestion
+                                        name={PageFormField.gjelderKoronastenging}
+                                        legend={intlHelper(intl, 'introPage.gjelderKoronastenging.spm')}
+                                    />
+                                </FormBlock>
+                                {gjelderKoronastenging === YesOrNo.NO && (
+                                    <Box margin="l">
+                                        <AlertStripeAdvarsel>
+                                            <FormattedMessage id="introPage.melding.stopp.koronastenging.1" />
+                                            <br />
+                                            <FormattedMessage id="introPage.melding.stopp.koronastenging.2.a" />{' '}
+                                            <Lenke
+                                                href="https://www.nav.no/familie/sykdom-i-familien/nb/omsorgspenger#Slik-kan-du-dele-omsorgsdagene-dine"
+                                                target="_blank">
+                                                <FormattedMessage id="introPage.melding.stopp.koronastenging.2.b" />
+                                            </Lenke>
+                                            .
+                                        </AlertStripeAdvarsel>
+                                    </Box>
+                                )}
+                            </>
                         )}
                         {mottakerErGyldig === YesOrNo.YES && gjelderKoronastenging === YesOrNo.YES && (
                             <Box margin="xl" textAlignCenter={true}>
