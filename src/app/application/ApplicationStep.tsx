@@ -34,15 +34,17 @@ const ApplicationStep: React.FunctionComponent<Props> = (props: Props) => {
                 fieldErrorRenderer={(error) => commonFieldErrorRenderer(intl, error)}>
                 {children}
                 <FormBlock>
-                    <Knapp
-                        type="hoved"
-                        htmlType="submit"
-                        className={'step__button'}
-                        spinner={showButtonSpinner || false}
-                        disabled={buttonDisabled || false}
-                        aria-label={texts.nextButtonAriaLabel}>
-                        {texts.nextButtonLabel}
-                    </Knapp>
+                    <div className={'step__buttonWrapper'}>
+                        <Knapp
+                            type="hoved"
+                            htmlType="submit"
+                            className={'step__button'}
+                            spinner={showButtonSpinner || false}
+                            disabled={buttonDisabled || false}
+                            aria-label={texts.nextButtonAriaLabel}>
+                            {texts.nextButtonLabel}
+                        </Knapp>
+                    </div>
                 </FormBlock>
             </ApplicationFormComponents.Form>
         </Step>
