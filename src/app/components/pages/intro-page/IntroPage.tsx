@@ -13,6 +13,8 @@ import bemUtils from 'common/utils/bemUtils';
 import RouteConfig, { getRouteUrl } from '../../../config/routeConfig';
 import MottakerInfo from '../../information/mottaker-info/MottakerInfo';
 import FormBlock from '@navikt/sif-common-core/lib/components/form-block/FormBlock';
+import './introPage.less';
+import Knappelenke from 'common/components/knappelenke/Knappelenke';
 
 const bem = bemUtils('introPage');
 
@@ -87,9 +89,16 @@ const IntroPage: React.StatelessComponent = () => {
                         )}
                         {mottakerErGyldig === YesOrNo.YES && gjelderKoronastenging === YesOrNo.YES && (
                             <Box margin="xl" textAlignCenter={true}>
-                                <Lenke href={getRouteUrl(RouteConfig.WELCOMING_PAGE_ROUTE)}>
-                                    <FormattedMessage id="gotoApplicationLink.lenketekst" />
-                                </Lenke>
+                                <Box
+                                    margin="xl"
+                                    textAlignCenter={true}
+                                    className={bem.element('gaTilSoknadenKnappelenkeWrapper')}>
+                                    <Knappelenke
+                                        type={'hoved'}
+                                        href={getRouteUrl(RouteConfig.WELCOMING_PAGE_ROUTE)}>
+                                        <FormattedMessage id="gotoApplicationLink.lenketekst" />
+                                    </Knappelenke>
+                                </Box>
                             </Box>
                         )}
                     </PageForm.Form>

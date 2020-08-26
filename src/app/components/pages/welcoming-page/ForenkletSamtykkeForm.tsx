@@ -51,9 +51,11 @@ const ForenkletSamtykkeForm: React.FunctionComponent<Props> = ({
             </FormBlock>
 
             <FormBlock>
-                <Hovedknapp className={bem.element('startApplicationButton')}>
-                    {intlHelper(intl, 'welcomingPage.start')}
-                </Hovedknapp>
+                <div className={bem.element('startApplicationButtonWrapper')}>
+                    <Hovedknapp className={bem.element('startApplicationButton')}>
+                        {intlHelper(intl, 'welcomingPage.start')}
+                    </Hovedknapp>
+                </div>
             </FormBlock>
             <FormBlock>
                 <div className={bem.element('personopplysningModalLenke')}>
