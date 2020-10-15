@@ -40,7 +40,7 @@
         "@navikt/sif-common-forms": "^8.0.16",
         "@navikt/sif-common-question-config": "0.0.6",
         "@navikt/sif-common-sentry": "^0.0.13",
-        "@testing-library/react": "^9.4.0",
+        "@testing-library/react": "^11.1.0",
         "axios": "^0.19.2",
         "busboy": "^0.3.0",
         "classnames": "^2.2.6",
