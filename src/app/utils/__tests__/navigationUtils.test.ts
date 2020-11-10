@@ -3,7 +3,7 @@ import routeConfig from '../../config/routeConfig';
 import { navigateTo, navigateToErrorPage, userIsCurrentlyOnErrorPage } from '../navigationUtils';
 
 const historyMock: Partial<History> = {
-    push: jest.fn()
+    push: jest.fn(),
 };
 
 jest.mock('./../envUtils.ts', () => {
@@ -15,10 +15,10 @@ jest.mock('./../envUtils.ts', () => {
 // https://github.com/facebook/jest/issues/5124
 const setWindowLocationPathname = (pathname: string | undefined) => {
     const windowLocation = JSON.stringify(window.location);
-    delete window.location;
+    delete (window as any).location;
     Object.defineProperty(window, 'location', {
         value: { ...JSON.parse(windowLocation), pathname },
-        configurable: true
+        configurable: true,
     });
 };
 

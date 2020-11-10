@@ -1,6 +1,4 @@
 const express = require('express');
-// const Busboy = require('busboy');
-
 const server = express();
 
 server.use(express.json());
@@ -9,7 +7,7 @@ server.use((req, res, next) => {
         'http://host.docker.internal:8084',
         'https://overfore-omsorgsdager-mock.nais.oera.no',
         'http://localhost:8084',
-        'http://web:8084'
+        'http://web:8084',
     ];
     const requestOrigin = req.headers.origin;
     if (allowedOrigins.indexOf(requestOrigin) >= 0) {
@@ -21,7 +19,7 @@ server.use((req, res, next) => {
     res.set('X-XSS-Protection', '1; mode=block');
     res.set('X-Content-Type-Options', 'nosniff');
     res.set('Access-Control-Allow-Headers', 'content-type');
-    res.set('Access-Control-Allow-Methods', ['GET','POST','DELETE']);
+    res.set('Access-Control-Allow-Methods', ['GET', 'POST', 'DELETE']);
     res.set('Access-Control-Allow-Credentials', true);
     next();
 });
@@ -31,7 +29,7 @@ const søkerMock = {
     mellomnavn: undefined,
     etternavn: 'Testesen',
     fødselsnummer: '12345123456',
-    myndig: true
+    myndig: true,
 };
 
 const startExpressServer = () => {
@@ -56,4 +54,3 @@ const startExpressServer = () => {
 };
 
 startExpressServer();
-
