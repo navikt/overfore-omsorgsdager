@@ -39,7 +39,7 @@
         "@navikt/sif-common-forms": "^10.0.4",
         "@navikt/sif-common-question-config": "0.0.6",
         "@navikt/sif-common-sentry": "^0.0.13",
-        "@testing-library/react": "^11.1.0",
+        "@testing-library/react": "^11.1.2",
         "axios": "^0.21.0",
         "classnames": "^2.2.6",
         "compression": "^1.7.4",
