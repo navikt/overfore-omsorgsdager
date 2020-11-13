@@ -38,7 +38,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                     name={ApplicationFormField.harBoddUtenforNorgeSiste12Mnd}
                     validate={validateYesOrNoIsAnswered}
                     description={
-                        <ExpandableInfo title="Hva betyr dette?">
+                        <ExpandableInfo title={intlHelper(intl, 'expandableInfo.hvaBetyrDette')}>
                             {intlHelper(intl, 'steg.medlemsskap.annetLandSiste12.hjelp')}
                         </ExpandableInfo>
                     }
@@ -52,8 +52,8 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                         maxDate={dateToday}
                         validate={validateUtenlandsoppholdSiste12Mnd}
                         labels={{
-                            addLabel: 'Legg til nytt utenlandsopphold',
-                            modalTitle: 'Utenlandsopphold siste 12 måneder',
+                            addLabel: intlHelper(intl, 'steg.medlemsskap.opphold.addLabel'),
+                            modalTitle: intlHelper(intl, 'steg.medlemsskap.oppholdSiste12.modalTitle'),
                         }}
                     />
                 </FormBlock>
@@ -64,7 +64,7 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                     name={ApplicationFormField.skalBoUtenforNorgeNeste12Mnd}
                     validate={validateYesOrNoIsAnswered}
                     description={
-                        <ExpandableInfo title="Hva betyr dette?">
+                        <ExpandableInfo title={intlHelper(intl, 'expandableInfo.hvaBetyrDette')}>
                             {intlHelper(intl, 'steg.medlemsskap.annetLandNeste12.hjelp')}
                         </ExpandableInfo>
                     }
@@ -78,8 +78,8 @@ const MedlemsskapStep: React.FunctionComponent<StepConfigProps> = ({ onValidSubm
                         name={ApplicationFormField.utenlandsoppholdNeste12Mnd}
                         validate={validateUtenlandsoppholdNeste12Mnd}
                         labels={{
-                            addLabel: 'Legg til nytt utenlandsopphold',
-                            modalTitle: 'Utenlandsopphold neste 12 måneder',
+                            addLabel: intlHelper(intl, 'steg.medlemsskap.opphold.addLabel'),
+                            modalTitle: intlHelper(intl, 'steg.medlemsskap.oppholdNeste12.modalTitle'),
                         }}
                     />
                 </FormBlock>

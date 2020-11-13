@@ -15,7 +15,7 @@ export enum AppFieldValidationErrors {
     'utenlandsopphold_utenfor_periode' = 'fieldvalidation.utenlandsopphold_utenfor_periode',
     'dager_er_ikke_tall' = 'fieldvalidation.dager_er_ikke_tall',
     'dager_feil_antall' = 'fieldvalidation.dager_feil_antall',
-    'fnr_lik_applicantFnr' = 'fieldvalidation.fnr_lik_applicantFnr'
+    'fnr_lik_applicantFnr' = 'fieldvalidation.fnr_lik_applicantFnr',
 }
 
 export const hasValue = (v: any) => v !== '' && v !== undefined && v !== null;

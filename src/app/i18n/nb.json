@@ -163,6 +163,9 @@
     "steg.medlemsskap.annetLandSiste12.listeTittel": "Utenlandsopphold siste 12 måneder",
     "steg.medlemsskap.annetLandNeste12.hjelp": "Du svarer ja bare hvis du planlegger å oppholde deg fast i et annet land enn Norge. Korte utlandsturer i forbindelse med for eksempel ferie regnes ikke med.",
     "steg.medlemsskap.annetLandNeste12.listeTittel": "Utenlandsopphold neste 12 måneder",
+    "steg.medlemsskap.opphold.addLabel": "Legg til nytt utenlandsopphold",
+    "steg.medlemsskap.oppholdSiste12.modalTitle": "Utenlandsopphold siste 12 måneder",
+    "steg.medlemsskap.oppholdNeste12.modalTitle": "Utenlandsopphold neste 12 måneder",
 
     "steg.oppsummering.info": "Les gjennom oppsummeringen før du sender inn. Hvis du vil gjøre endringer, kan du gå tilbake.",
     "steg.oppsummering.søker.header": "Ditt navn",
@@ -211,5 +214,7 @@
     "fieldvalidation.utenlandsopphold_utenfor_periode": "Ett eller flere av utenlandsoppholdene er utenfor tillatt tidsrom",
     "fieldvalidation.fnr_lik_applicantFnr": "Du har oppgitt ditt eget fødselsnummer",
     "fieldvalidation.dager_feil_antall": "Ugyldig antall dager",
-    "fieldvalidation.dager_er_ikke_tall": "Ugyldig verdi"
+    "fieldvalidation.dager_er_ikke_tall": "Ugyldig verdi",
+
+    "expandableInfo.hvaBetyrDette": "Hva betyr dette?"
 }
