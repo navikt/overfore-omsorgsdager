@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import Box from '@navikt/sif-common-core/lib/components/box/Box';
-import ContentWithHeader from '@navikt/sif-common-core/lib/components/content-with-header/ContentWithHeader';
+// import ContentWithHeader from '@navikt/sif-common-core/lib/components/content-with-header/ContentWithHeader';
 import CounsellorPanel from '@navikt/sif-common-core/lib/components/counsellor-panel/CounsellorPanel';
 import SummaryList from '@navikt/sif-common-core/lib/components/summary-list/SummaryList';
 import { Locale } from '@navikt/sif-common-core/lib/types/Locale';
@@ -27,12 +27,13 @@ import ApplicationStep from '../ApplicationStep';
 import MedlemsskapSummary from './MedlemsskapSummary';
 import SummaryBlock from './SummaryBlock';
 import './oppsummering.less';
+import SummarySection from '@navikt/sif-common-soknad/lib/soknad-summary/summary-section/SummarySection';
 
 interface Props {
     onApplicationSent: () => void;
 }
 
-const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }: Props) => {
+const OppsummeringStep: React.FunctionComponent<Props> = ({ onApplicationSent }: Props) => {
     const intl = useIntl();
     const formik = useFormikContext<ApplicationFormData>();
     const søkerdata = React.useContext(ApplicantDataContext);
@@ -80,50 +81,61 @@ const OppsummeringStep: React.StatelessComponent<Props> = ({ onApplicationSent }
             </CounsellorPanel>
             <Box margin="xl">
                 <Panel border={true}>
-                    <ContentWithHeader header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
-                        <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
-                        <Normaltekst>
-                            <FormattedMessage id="steg.oppsummering.søker.fnr" values={{ fødselsnummer }} />
-                        </Normaltekst>
-                    </ContentWithHeader>
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.arbeidssituasjon.header')}>
-                        <SummaryList
-                            items={apiValues.arbeidssituasjon}
-                            itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
-                        />
-                    </SummaryBlock>
-                    {fosterbarn.length > 0 && (
-                        <>
-                            <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.fosterbarn.header')}>
-                                <SummaryList
-                                    items={fosterbarn}
-                                    itemRenderer={(barn: FosterbarnApi) => <>{barn.fødselsnummer}</>}
-                                />
-                            </SummaryBlock>
-                        </>
-                    )}
-                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.fnr.spm')}>
-                        {apiValues.fnrMottaker}
-                    </SummaryBlock>
-                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.navn.spm')}>
-                        {apiValues.navnMottaker}
-                    </SummaryBlock>
+                    {/* Om deg */}
+                    <SummarySection header={intlHelper(intl, 'steg.oppsummering.søker.header')}>
+                        <Box margin="m">
+                            <Normaltekst>{formatName(fornavn, etternavn, mellomnavn)}</Normaltekst>
+                            <Normaltekst>Fødselsnummer: {fødselsnummer}</Normaltekst>
+                        </Box>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.mottaker.erYrkesaktiv.spm')}>
-                        <FormattedMessage
-                            id={formik.values[ApplicationFormField.erYrkesaktiv] === YesOrNo.YES ? 'Ja' : 'Nei'}
-                        />
-                    </SummaryBlock>
+                        {fosterbarn.length > 0 && (
+                            <>
+                                <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.fosterbarn.header')}>
+                                    <SummaryList
+                                        items={fosterbarn}
+                                        itemRenderer={(barn: FosterbarnApi) => <>{barn.fødselsnummer}</>}
+                                    />
+                                </SummaryBlock>
+                            </>
+                        )}
+                        <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.arbeidssituasjon.header')}>
+                            <SummaryList
+                                items={apiValues.arbeidssituasjon}
+                                itemRenderer={(situasjon) => <FormattedMessage id={`arbeidssituasjon.${situasjon}`} />}
+                            />
+                        </SummaryBlock>
+                    </SummarySection>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.overføring.stengingsperiode.spm')}>
-                        <FormattedMessage id={`steg.oppsummering.stengingsperiode.${apiValues.stengingsperiode}`} />
-                    </SummaryBlock>
+                    {/* Om den du skal overføre til */}
+                    <SummarySection header={intlHelper(intl, 'steg.oppsummering.overførerTil.header')}>
+                        <SummaryBlock header={intlHelper(intl, 'steg.mottaker.fnr.spm')}>
+                            {apiValues.fnrMottaker}
+                        </SummaryBlock>
+                        <SummaryBlock header={intlHelper(intl, 'steg.mottaker.navn.spm')}>
+                            {apiValues.navnMottaker}
+                        </SummaryBlock>
 
-                    <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.antallDager.header')}>
-                        {apiValues.antallDager}
-                    </SummaryBlock>
+                        <SummaryBlock header={intlHelper(intl, 'steg.mottaker.erYrkesaktiv.spm')}>
+                            <FormattedMessage
+                                id={formik.values[ApplicationFormField.erYrkesaktiv] === YesOrNo.YES ? 'Ja' : 'Nei'}
+                            />
+                        </SummaryBlock>
+                    </SummarySection>
 
-                    <MedlemsskapSummary medlemskap={apiValues.medlemskap} />
+                    {/* Om overføringen */}
+                    <SummarySection header={intlHelper(intl, 'steg.oppsummering.omOverførengingen.header')}>
+                        <SummaryBlock header={intlHelper(intl, 'steg.overføring.stengingsperiode.spm')}>
+                            <FormattedMessage id={`steg.oppsummering.stengingsperiode.${apiValues.stengingsperiode}`} />
+                        </SummaryBlock>
+
+                        <SummaryBlock header={intlHelper(intl, 'steg.oppsummering.antallDager.header')}>
+                            {apiValues.antallDager}
+                        </SummaryBlock>
+                    </SummarySection>
+                    {/* Medlemskap */}
+                    <SummarySection header={intlHelper(intl, 'steg.oppsummering.medlemskap.header')}>
+                        <MedlemsskapSummary medlemskap={apiValues.medlemskap} />
+                    </SummarySection>
                 </Panel>
             </Box>
 
