@@ -11,7 +11,7 @@ interface Props {
     medlemskap: MedlemskapApiData;
 }
 
-const MedlemsskapSummary: React.FunctionComponent<Props> = ({ medlemskap }) => {
+const MedlemsskapSummary: React.FunctionComponent<Props> = ({ medlemskap }: Props) => {
     const intl = useIntl();
     return (
         <>
