@@ -30,6 +30,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Test code
         run: |
+          npm ci
           npm run test
 
   build-code-and-push-docker:
