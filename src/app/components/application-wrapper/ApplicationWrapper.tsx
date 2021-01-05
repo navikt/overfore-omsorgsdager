@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import LanguageToggle from '@navikt/sif-common-core/lib/components/language-toggle/LanguageToggle';
 import { Normaltekst } from 'nav-frontend-typografi';
 import ApplicationMessages from 'common/dev-utils/intl/application-messages/ApplicationMessages';
 import { Locale } from 'common/types/Locale';
@@ -15,10 +14,9 @@ interface ApplicationWrapperProps {
     onChangeLocale: (locale: Locale) => void;
 }
 
-const ApplicationWrapper = ({ locale, onChangeLocale, children }: ApplicationWrapperProps) => {
+const ApplicationWrapper = ({ locale, children }: ApplicationWrapperProps) => {
     return (
         <IntlProvider locale={locale}>
-            <LanguageToggle locale={locale} toggle={onChangeLocale} />
             <Normaltekst tag="div">
                 <Router basename={getEnvironmentVariable('PUBLIC_PATH')}>
                     {children}
