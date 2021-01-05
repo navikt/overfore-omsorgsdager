@@ -42,7 +42,7 @@
         "@navikt/sif-common-sentry": "^0.0.13",
         "@navikt/sif-common-soknad": "^1.0.10",
         "@testing-library/react": "^11.1.2",
-        "axios": "^0.21.0",
+        "axios": "^0.21.1",
         "classnames": "^2.2.6",
         "compression": "^1.7.4",
         "dotenv": "^8.2.0",
