@@ -8,38 +8,5 @@ describe('Overføre Omsorgsdager', () => {
                 expect(loc.pathname).to.eq('/');
             });
         });
-        context('Sjekker default verdier i skjema', () => {
-            it('Har Ja/Nei radioknappene for "mottakerErGyldig", som ikke er merket', () => {
-                cy.get('[name="mottakerErGyldig"]').parent().find('input').should('not.be.checked');
-            });
-        });
-        describe('Er den du skal overføre omsorgsdager til arbeidstaker, selvstendig næringsdrivende eller frilanser?', () => {
-            context('Ja, skal overføre omsorgsdager', () => {
-                it('Merker "Ja" radio', () => {
-                    cy.get('input[name="mottakerErGyldig"]').first().click({ force: true });
-                });
-            });
-
-            context('Koronarelatert overføring', () => {
-                it('Merker "Ja" radio', () => {
-                    cy.get('input[name="gjelderKoronastenging"]').first().click({ force: true });
-                });
-            });
-
-            context('Bruker kan gå videre', () => {
-                it('Viser linken "Gå videre"', () => {
-                    cy.get('a[href*="/familie/sykdom-i-familien/soknad/overfore-omsorgsdager/melding/velkommen"]');
-                });
-            });
-
-            context('Nei, skal ikke overføre omsorgsdager', () => {
-                it('Merker "Nei" radio', () => {
-                    cy.get('input[type=radio]').last().click({ force: true });
-                });
-                it('Viser info panel"', () => {
-                    cy.get('[class="alertstripe alertstripe--advarsel"]');
-                });
-            });
-        });
     });
 });
