@@ -15,15 +15,3 @@ services:
       - 8084:8084
     depends_on:
       - api-mock
-  e2e:
-    build: .
-    depends_on:
-      - web
-    environment:
-      - CYPRESS_video=false
-      - CYPRESS_baseUrl=http://web:8084
-# Dersom debugging er nødvendig
-#    working_dir: /e2e
-#    volumes:
-#      - ./:/e2e
-
