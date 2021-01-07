@@ -1,3 +1,7 @@
+# Dette repoet er arkivert, og ikke lenger i bruk.
+Funksjonaliteten er erstattet av https://github.com/navikt/omsorgsdager-deling-dialog.
+
+
 # Melding om overføring av omsorgsdager
 
 Kildekoden til frontend-appen for ny selvbetjeningsløsning for
